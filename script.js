@@ -555,8 +555,9 @@ function renderLinkSet(links, className, options = {}) {
 
 function setActiveNav() {
   const currentPage = document.body.dataset.page || "home";
+  const effectivePage = currentPage === "project-detail" ? "work" : currentPage;
   document.querySelectorAll(".site-nav a[data-nav-page]").forEach((link) => {
-    if (link.dataset.navPage === currentPage) {
+    if (link.dataset.navPage === effectivePage) {
       link.classList.add("is-active");
     }
   });
