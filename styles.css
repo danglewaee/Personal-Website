@@ -653,6 +653,86 @@ h2 {
   font-size: 0.96rem;
   line-height: 1.72;
 }
+
+.project-selector-list {
+  border-top: 1px solid var(--line);
+}
+
+.project-selector {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding: 18px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  color: inherit;
+  text-align: left;
+  background: transparent;
+  cursor: pointer;
+  transition: color 180ms ease, transform 180ms ease, opacity 180ms ease;
+}
+
+.project-selector:hover,
+.project-selector:focus-visible,
+.project-selector.is-active {
+  color: var(--text);
+  transform: translateX(4px);
+  outline: none;
+}
+
+.project-selector-index,
+.project-selector-arrow {
+  color: rgba(255, 255, 255, 0.48);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.project-selector-copy {
+  display: grid;
+  gap: 6px;
+}
+
+.project-selector-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.project-selector-meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.project-selector.is-active .project-selector-index,
+.project-selector.is-active .project-selector-arrow,
+.project-selector:hover .project-selector-index,
+.project-selector:hover .project-selector-arrow {
+  color: var(--text);
+}
+
+.project-reveal-panel {
+  min-height: 88px;
+  margin-top: 28px;
+}
+
+.project-reveal-placeholder {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.project-reveal-panel .case-study {
+  padding-top: 6px;
+}
 .project-list {
   display: grid;
   gap: 48px;
@@ -1258,6 +1338,14 @@ h3 {
 }
 
 @media (max-width: 780px) {
+  .project-selector {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .project-selector-arrow {
+    display: none;
+  }
+
   .site-shell {
     width: min(calc(100% - 28px), var(--max-width));
   }

@@ -589,72 +589,106 @@ function renderProjects(containerId, projects) {
     .join("");
 }
 
-function renderCaseStudyProjects(containerId, projects) {
-  const container = document.getElementById(containerId);
-  if (!container) {
+function buildCaseStudyMarkup(project) {
+  const caseStudy = caseStudyContent[project.name] || { stats: [], blocks: [] };
+  const statsMarkup = caseStudy.stats.length
+    ? `
+      <div class="case-study-stats">
+        ${caseStudy.stats.map((stat) => `<span class="case-study-stat">${stat}</span>`).join("")}
+      </div>
+    `
+    : "";
+  const blocksMarkup = caseStudy.blocks.length
+    ? `
+      <div class="case-study-grid">
+        ${caseStudy.blocks
+          .map(
+            (block) => `
+              <article class="case-study-block">
+                <p class="case-study-label">${block.label}</p>
+                <p class="case-study-text">${block.copy}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
+    `
+    : "";
+
+  return `
+    <article class="case-study">
+      <a class="project-cover ${project.coverClass}" href="${project.href}" target="_blank" rel="noreferrer" aria-label="View ${project.name} on GitHub">
+        <div class="cover-top">
+          <span class="cover-chip">${project.coverLabel}</span>
+          <span class="cover-year">${project.year}</span>
+        </div>
+        ${renderProjectPreview(project)}
+        <div class="cover-bottom">
+          <h3 class="cover-title">${project.name}</h3>
+          <p class="cover-caption">${project.coverCaption}</p>
+        </div>
+      </a>
+      <div class="case-study-copy">
+        <div class="project-meta">
+          <p class="project-type">${project.type}</p>
+          <p class="project-year">${project.year}</p>
+        </div>
+        <div class="case-study-heading">
+          <h3>${project.name}</h3>
+          <p class="project-summary">${project.summary}</p>
+        </div>
+        ${statsMarkup}
+        ${blocksMarkup}
+        <p class="project-stack">${project.stack}</p>
+        <div class="project-links">
+          <a class="text-link" href="${project.href}" target="_blank" rel="noreferrer">View GitHub</a>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function renderProjectSelector(listId, panelId, projects) {
+  const list = document.getElementById(listId);
+  const panel = document.getElementById(panelId);
+  if (!list || !panel) {
     return;
   }
 
-  container.innerHTML = projects
-    .map((project) => {
-      const caseStudy = caseStudyContent[project.name] || { stats: [], blocks: [] };
-      const statsMarkup = caseStudy.stats.length
-        ? `
-          <div class="case-study-stats">
-            ${caseStudy.stats.map((stat) => `<span class="case-study-stat">${stat}</span>`).join("")}
-          </div>
-        `
-        : "";
-      const blocksMarkup = caseStudy.blocks.length
-        ? `
-          <div class="case-study-grid">
-            ${caseStudy.blocks
-              .map(
-                (block) => `
-                  <article class="case-study-block">
-                    <p class="case-study-label">${block.label}</p>
-                    <p class="case-study-text">${block.copy}</p>
-                  </article>
-                `
-              )
-              .join("")}
-          </div>
-        `
-        : "";
+  const placeholder = '<p class="project-reveal-placeholder">Open a project to see the system, the tradeoffs, and the proof.</p>';
 
-      return `
-        <article class="case-study reveal">
-          <a class="project-cover ${project.coverClass}" href="${project.href}" target="_blank" rel="noreferrer" aria-label="View ${project.name} on GitHub">
-            <div class="cover-top">
-              <span class="cover-chip">${project.coverLabel}</span>
-              <span class="cover-year">${project.year}</span>
-            </div>
-            ${renderProjectPreview(project)}
-            <div class="cover-bottom">
-              <h3 class="cover-title">${project.name}</h3>
-              <p class="cover-caption">${project.coverCaption}</p>
-            </div>
-          </a>
-          <div class="case-study-copy">
-            <div class="project-meta">
-              <p class="project-type">${project.type}</p>
-              <p class="project-year">${project.year}</p>
-            </div>
-            <div class="case-study-heading">
-              <h3>${project.name}</h3>
-              <p class="project-summary">${project.summary}</p>
-            </div>
-            ${statsMarkup}
-            ${blocksMarkup}
-            <p class="project-stack">${project.stack}</p>
-            <div class="project-links">
-              <a class="text-link" href="${project.href}" target="_blank" rel="noreferrer">View GitHub</a>
-            </div>
-          </div>
-        </article>
-      `;
-    })
+  list.innerHTML = projects
+    .map(
+      (project, index) => `
+        <button class="project-selector reveal" type="button" data-project-index="${index}">
+          <span class="project-selector-index">0${index + 1}</span>
+          <span class="project-selector-copy">
+            <span class="project-selector-title">${project.name}</span>
+            <span class="project-selector-meta">${project.type} / ${project.year}</span>
+          </span>
+          <span class="project-selector-arrow">Open</span>
+        </button>
+      `
+    )
     .join("");
+
+  panel.innerHTML = placeholder;
+
+  list.querySelectorAll(".project-selector").forEach((button) => {
+    button.addEventListener("click", () => {
+      const isActive = button.classList.contains("is-active");
+      list.querySelectorAll(".project-selector").forEach((entry) => entry.classList.remove("is-active"));
+
+      if (isActive) {
+        panel.innerHTML = placeholder;
+        return;
+      }
+
+      button.classList.add("is-active");
+      const project = projects[Number(button.dataset.projectIndex)];
+      panel.innerHTML = buildCaseStudyMarkup(project);
+    });
+  });
 }
 
 function renderCompactProjects(containerId, projects) {
@@ -804,7 +838,7 @@ function renderAboutPage() {
 }
 
 function renderWorkPage() {
-  renderCaseStudyProjects("featured-case-studies", caseStudyProjects);
+  renderProjectSelector("featured-project-index", "featured-project-reveal", caseStudyProjects);
   renderCompactProjects("compact-project-grid", archiveProjects);
   renderSkillGroups("work-skills");
 }
