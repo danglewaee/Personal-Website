@@ -387,6 +387,55 @@ function renderEducationCards(containerId) {
     .join("");
 }
 
+function attachAboutEssayCards() {
+  if (document.body.dataset.page !== "about") {
+    return;
+  }
+
+  document.querySelectorAll(".about-essay-stack .essay-block").forEach((block) => {
+    if (block.dataset.enhanced === "true") {
+      return;
+    }
+
+    const kicker = block.querySelector(".section-kicker");
+    const body = block.querySelector(".essay-body");
+    const title = body?.querySelector(".essay-title");
+    const copies = body ? Array.from(body.querySelectorAll(".essay-copy")) : [];
+
+    if (!kicker || !body || !title || !copies.length) {
+      return;
+    }
+
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "essay-toggle";
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.innerHTML = `
+      <span class="section-kicker">${kicker.textContent}</span>
+      <span class="essay-toggle-body">
+        <span class="essay-title">${title.textContent}</span>
+        <span class="story-card-arrow">Open</span>
+      </span>
+    `;
+
+    const detail = document.createElement("div");
+    detail.className = "essay-detail";
+    detail.hidden = true;
+    copies.forEach((paragraph) => detail.appendChild(paragraph));
+
+    block.innerHTML = "";
+    block.appendChild(toggle);
+    block.appendChild(detail);
+    block.dataset.enhanced = "true";
+
+    toggle.addEventListener("click", () => {
+      const isOpen = block.classList.toggle("is-open");
+      detail.hidden = !isOpen;
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.querySelector(".story-card-arrow").textContent = isOpen ? "Close" : "Open";
+    });
+  });
+}
 function renderSkillGroups(containerId) {
   const container = document.getElementById(containerId);
   if (!container) {
@@ -850,6 +899,7 @@ function renderHomePage() {
 
 function renderAboutPage() {
   renderEducationCards("about-background-grid");
+  attachAboutEssayCards();
 }
 
 function renderWorkPage() {
@@ -891,4 +941,5 @@ function renderPage() {
 }
 
 renderPage();
+
 
