@@ -425,7 +425,6 @@ h2 {
 .beyond-grid,
 .education-grid,
 .skill-groups,
-.compact-project-grid,
 .experience-card-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -435,7 +434,6 @@ h2 {
 .story-card,
 .education-card,
 .skill-group,
-.compact-project,
 .experience-card {
   padding: 24px;
   border: 1px solid var(--line);
@@ -517,6 +515,11 @@ h2 {
   display: grid;
   gap: 18px;
   align-content: start;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
 }
 
 .skill-label {
@@ -625,17 +628,21 @@ h2 {
 
 .case-study-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--line);
 }
 
 .case-study-block {
   display: grid;
-  gap: 10px;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
+  grid-template-columns: minmax(120px, 0.32fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding: 20px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: none;
 }
 
 .case-study-label {
@@ -708,6 +715,55 @@ h2 {
   color: var(--text);
 }
 
+.archive-project-list {
+  border-top: 1px solid var(--line);
+}
+
+.archive-project-link {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.45fr) auto auto;
+  gap: 18px;
+  align-items: start;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  color: inherit;
+  transition: transform 180ms ease, color 180ms ease;
+}
+
+.archive-project-link:hover {
+  color: var(--text);
+  transform: translateX(4px);
+}
+
+.archive-project-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+}
+
+.archive-project-summary {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.archive-project-meta,
+.archive-project-arrow {
+  color: rgba(255, 255, 255, 0.48);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.archive-project-link:hover .archive-project-meta,
+.archive-project-link:hover .archive-project-arrow {
+  color: var(--text);
+}
+
 .project-detail-intro {
   padding-bottom: 0;
 }
@@ -731,16 +787,24 @@ h2 {
 .project-detail-meta-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .project-detail-meta-card {
   display: grid;
   gap: 10px;
-  padding: 18px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
+  padding: 18px 18px 18px 0;
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-radius: 0;
+  background: none;
+}
+
+.project-detail-meta-card:last-child {
+  padding-right: 0;
+  border-right: 0;
 }
 
 .project-detail-meta-label {
@@ -765,11 +829,16 @@ h2 {
 
 .project-detail-story-grid {
   display: grid;
-  gap: 24px;
+  gap: 30px;
 }
 
 .project-detail-links {
-  padding-top: 4px;
+  padding-top: 2px;
+}
+
+.project-detail-visual .project-cover {
+  min-height: 380px;
+  box-shadow: none;
 }
 .project-list {
   display: grid;
@@ -1191,10 +1260,6 @@ h3 {
   margin-bottom: 22px;
 }
 
-.compact-project-grid.is-collapsed {
-  display: none;
-}
-
 .subsection-heading {
   display: grid;
   gap: 10px;
@@ -1340,8 +1405,7 @@ h3 {
 }
 
 .project-item:hover .project-cover,
-.case-study:hover .project-cover,
-.compact-project:hover {
+.case-study:hover .project-cover {
   border-color: var(--line-strong);
   box-shadow: 0 34px 88px rgba(0, 0, 0, 0.42);
 }
@@ -1365,7 +1429,6 @@ h3 {
   .beyond-grid,
   .case-study-grid,
   .skill-groups,
-  .compact-project-grid,
   .experience-card-grid {
     grid-template-columns: 1fr;
   }
@@ -1382,6 +1445,31 @@ h3 {
 
   .featured-project-arrow {
     display: none;
+  }
+
+  .archive-project-link {
+    grid-template-columns: 1fr auto;
+    gap: 10px 14px;
+  }
+
+  .archive-project-summary,
+  .archive-project-meta {
+    grid-column: 1 / -1;
+  }
+
+  .project-detail-meta-card {
+    padding: 16px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .project-detail-meta-card:last-child {
+    border-bottom: 0;
+  }
+
+  .case-study-block {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 
   .project-detail-meta-grid {
@@ -1451,3 +1539,4 @@ h3 {
     padding: 22px;
   }
 }
+

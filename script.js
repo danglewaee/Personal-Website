@@ -623,7 +623,7 @@ function renderFeaturedProjectLinks(containerId, projects) {
     .map((project, index) => {
       const link = getProjectLinkAttrs(project);
       return `
-        <a class="featured-project-link reveal" href="${link.href}">
+        <a class="featured-project-link reveal" href="${link.href}"${link.attrs}>
           <span class="featured-project-index">0${index + 1}</span>
           <span class="featured-project-copy">
             <span class="featured-project-title">${project.name}</span>
@@ -636,7 +636,7 @@ function renderFeaturedProjectLinks(containerId, projects) {
     .join("");
 }
 
-function renderCompactProjects(containerId, projects) {
+function renderArchiveProjectLinks(containerId, projects) {
   const container = document.getElementById(containerId);
   if (!container) {
     return;
@@ -645,22 +645,20 @@ function renderCompactProjects(containerId, projects) {
   container.innerHTML = projects
     .map((project) => {
       const link = getProjectLinkAttrs(project);
-      const ctaLabel = caseStudyPages[project.name] ? "Open project" : "View GitHub";
+      const ctaLabel = caseStudyPages[project.name] ? "Open" : "GitHub";
       return `
-        <article class="compact-project reveal">
-          <div class="compact-project-meta">
-            <p class="project-type">${project.type}</p>
-            <p class="project-year">${project.year}</p>
-          </div>
-          <h3 class="compact-project-title">${project.name}</h3>
-          <p class="compact-project-summary">${project.summary}</p>
-          <p class="compact-project-stack">${project.stack}</p>
-          <a class="text-link" href="${link.href}"${link.attrs}>${ctaLabel}</a>
-        </article>
+        <a class="archive-project-link reveal" href="${link.href}"${link.attrs}>
+          <span class="archive-project-title">${project.name}</span>
+          <span class="archive-project-summary">${project.summary}</span>
+          <span class="archive-project-meta">${project.type} / ${project.year}</span>
+          <span class="archive-project-arrow">${ctaLabel}</span>
+        </a>
       `;
     })
     .join("");
 }
+
+
 
 function renderExperienceCards(containerId, items) {
   const container = document.getElementById(containerId);
@@ -761,20 +759,6 @@ function attachModalControls() {
   });
 }
 
-function attachArchiveToggle() {
-  const button = document.getElementById("archive-toggle");
-  const archive = document.getElementById("compact-project-grid");
-  if (!button || !archive) {
-    return;
-  }
-
-  button.addEventListener("click", () => {
-    const expanded = button.getAttribute("aria-expanded") === "true";
-    button.setAttribute("aria-expanded", String(!expanded));
-    button.textContent = expanded ? "Open project archive" : "Close project archive";
-    archive.classList.toggle("is-collapsed", expanded);
-  });
-}
 
 function renderProjectDetailPage() {
   const hero = document.getElementById("project-detail-hero");
@@ -860,7 +844,7 @@ function renderProjectDetailPage() {
   `;
 }
 function renderHomePage() {
-  renderProjects("home-project-list", caseStudyProjects);
+  renderFeaturedProjectLinks("home-project-links", caseStudyProjects);
 }
 
 function renderAboutPage() {
@@ -869,7 +853,7 @@ function renderAboutPage() {
 
 function renderWorkPage() {
   renderFeaturedProjectLinks("featured-project-links", caseStudyProjects);
-  renderCompactProjects("compact-project-grid", archiveProjects);
+  renderArchiveProjectLinks("archive-project-links", archiveProjects);
   renderSkillGroups("work-skills");
 }
 
@@ -901,9 +885,9 @@ function renderPage() {
       break;
   }
 
-  attachArchiveToggle();
   attachModalControls();
   attachReveal();
 }
 
 renderPage();
+
