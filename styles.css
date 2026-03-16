@@ -1194,6 +1194,15 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
+.contact-footer {
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.contact-footer .footer-grid {
+  width: min(100%, 760px);
+}
+
 .footer-copy h2 {
   margin-bottom: 18px;
 }
