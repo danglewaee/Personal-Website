@@ -1948,4 +1948,46 @@ body[data-page="project-detail"] h1 {
     border-radius: 28px;
   }
 }
+.about-intro-grid {
+  max-width: 1080px;
+}
+
+.about-intro-copy {
+  max-width: 56ch;
+}
+
+.about-essay-stack {
+  gap: 82px;
+}
+
+.about-essay-stack .essay-block {
+  gap: 42px;
+}
+
+.about-essay-stack .essay-body {
+  max-width: 900px;
+}
+
+.site-footnote {
+  margin-top: 72px;
+  padding: 18px 0 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.site-footnote p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 780px) {
+  .site-footnote {
+    margin-top: 52px;
+  }
+
+  .about-essay-stack {
+    gap: 56px;
+  }
+}
 
