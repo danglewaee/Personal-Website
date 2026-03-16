@@ -126,8 +126,8 @@ const storyCards = [
 const beyondCards = [
   {
     label: "Football",
-    title: "I love playing and watching the game",
-    copy: "Football keeps reminding me that trust is not abstract. Good teams move well because people read space, commit to each other, and act before the whole picture is obvious. I grew up loving Manchester United, and I still come back to that mix of rhythm, pressure, and shared belief.",
+    title: "Manchester United taught me patience",
+    copy: "I have followed Manchester United since 2014. Even while other clubs kept winning and United kept searching for itself after Sir Alex Ferguson, I stayed with the same belief: after the rain, the sky clears again. That loyalty feels personal. I was left behind too, near the bottom in swimming in third grade and almost at the back of my class in seventh grade, before I slowly found confidence through physics, narrowed the gap, finished in the top six of my class in ninth grade, and earned admission to one of the top gifted schools in my city. Maybe that is why I still believe in United. Some teams, and some people, take time to find their rhythm before the comeback really begins.",
   },
   {
     label: "Books",
