@@ -272,6 +272,23 @@ h2 {
   gap: 10px;
 }
 
+.story-trigger {
+  width: fit-content;
+  padding: 0;
+  border: 0;
+  color: var(--text);
+  background: transparent;
+  cursor: pointer;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.story-trigger:hover {
+  color: var(--accent);
+}
+
 .link-icon {
   display: inline-flex;
   align-items: center;
@@ -366,6 +383,33 @@ h2 {
   color: var(--muted);
   font-size: 0.98rem;
   line-height: 1.8;
+}
+
+.story-card-button {
+  display: grid;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+
+.story-card-button:hover,
+.story-card-button:focus-visible {
+  transform: translateY(-6px);
+  border-color: var(--line-strong);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 34px 88px rgba(0, 0, 0, 0.42);
+  outline: none;
+}
+
+.story-card-arrow {
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .education-list {
@@ -878,6 +922,14 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
+.archive-trigger {
+  margin-bottom: 22px;
+}
+
+.compact-project-grid.is-collapsed {
+  display: none;
+}
+
 .subsection-heading {
   display: grid;
   gap: 10px;
@@ -906,6 +958,10 @@ h3 {
 .experience-card-teaser,
 .detail-copy {
   margin: 0;
+}
+
+.detail-copy {
+  white-space: pre-line;
 }
 
 .experience-card {

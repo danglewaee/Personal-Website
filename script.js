@@ -100,26 +100,62 @@ const education = [
   },
 ];
 
+const storyIntro = {
+  kicker: "About",
+  title: "The longer version",
+  meta: "Vietnam / forecasting / trust",
+  copy:
+    "AI opened the door. Purpose made me stay.\n\nGrowing up in Vietnam, I watched what fragile forecasts and fragile systems could do, especially through my father's work in meteorology. That question led me from river-basin data at ISTI to community work in An Giang, where I met children learning on the same old desktop computers that first pulled me toward computing myself.\n\nThe hardest lesson came early: detection is not prevention. If a system is going to help people act, it has to earn trust through data, rigor, and resilience.",
+};
+
 const storyCards = [
   {
     label: "Start",
     title: "AI opened the door",
+    teaser: "I came to computer science later than many people around me.",
     copy: "I came to computer science later than many people around me, at the moment AI began to feel immediate, useful, and full of consequence.",
   },
   {
     label: "Why it stayed",
     title: "Forecasts made it personal",
+    teaser: "My father's work in meteorology made the stakes feel real.",
     copy: "Watching my father work in meteorology taught me how much damage fragile systems can do when people need them most.",
   },
   {
     label: "Image",
     title: "I saw myself in An Giang",
+    teaser: "Those old classroom computers collapsed my past and future into one image.",
     copy: "Meeting children learning on old computers in An Giang brought together my own beginning and the future I want technology to make possible.",
   },
   {
     label: "Lesson",
     title: "Detection is not prevention",
+    teaser: "Useful technology is not just about seeing the problem.",
     copy: "A small water-monitoring system taught me that useful technology is not just about seeing the problem. It is about earning enough trust for people to act.",
+  },
+];
+
+const foundationsCards = [
+  {
+    label: "Training",
+    title: "UMass Amherst",
+    teaser: "BS in Computer Science / Spring 2028",
+    copy:
+      "BS in Computer Science at the University of Massachusetts Amherst.\n\nHonors: Dean's List, Chancellor's Award, SASMO Bronze Medal.\n\nCoursework: Algorithms, Data Structures, Machine Learning, Artificial Intelligence, Object-Oriented Programming, Stats and Reasoning, Methodology Programming, Computer Principles, Computation.",
+  },
+  {
+    label: "Direction",
+    title: "What I am building toward",
+    teaser: "Trustworthy AI systems for forecasting, planning, and decision-support.",
+    copy:
+      "Current direction: trustworthy AI systems for forecasting, planning, decision-support, and infrastructure people can actually rely on.",
+  },
+  {
+    label: "Toolkit",
+    title: "How I usually build",
+    teaser: "Python, FastAPI, Postgres, React, PyTorch, Redis, Docker, and more.",
+    copy:
+      "Languages: Python, Java, C++, JavaScript/TypeScript, C#, HTML/CSS.\n\nDatabases and Infra: PostgreSQL, Redis, MongoDB, Kafka, Neo4j.\n\nFrameworks and Tools: FastAPI, Flask, React, Node.js, Docker, Kubernetes, Git, REST API, PyTorch, TensorFlow, NumPy, Pandas.",
   },
 ];
 
@@ -127,16 +163,19 @@ const beyondCards = [
   {
     label: "Football",
     title: "Manchester United taught me patience",
+    teaser: "Some comebacks take longer than anyone wants, but they still matter.",
     copy: "I have followed Manchester United since 2014. Through the long years after Sir Alex Ferguson, I kept believing the same thing: after the rain, the sky clears again. That faith feels personal. I was left behind too, in swimming in third grade and near the back of my class in seventh, before physics gave me a way back. Step by step, I closed the gap, finished in the top six of my class, and earned admission to a top gifted school. Maybe that is why I still believe comebacks can be slow and real.",
   },
   {
     label: "Books",
     title: "Detective and spy novels stay with me",
+    teaser: "I like stories where truth has to be assembled from fragments.",
     copy: "I am drawn to stories where the truth is buried in fragments. Good detective and intelligence fiction makes pattern-finding feel human: incomplete signals, uncertain motives, and consequences that only become clear if you reason carefully.",
   },
   {
     label: "Codebreaking",
     title: "Why the Bombe story matters to me",
+    teaser: "Codebreaking still feels like the cleanest version of signal into action.",
     copy: "Turing, Bletchley Park, and the Bombe stay with me because codebreaking was not only about intelligence. It was about building a system strong enough to turn hidden signals into decisions other people could trust.",
   },
 ];
@@ -521,34 +560,31 @@ function renderEducation() {
     .join("");
 }
 
-function renderStoryCards() {
-  const container = document.getElementById("story-card-grid");
-  container.innerHTML = storyCards
+function renderDetailCards(containerId, items, groupLabel) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = items
     .map(
-      (item) => `
-        <article class="story-card reveal">
+      (item, index) => `
+        <button class="story-card story-card-button reveal" type="button" data-detail-key="${groupLabel}" data-detail-index="${index}">
           <p class="education-label">${item.label}</p>
           <h3>${item.title}</h3>
-          <p class="story-card-copy">${item.copy}</p>
-        </article>
+          <p class="story-card-copy">${item.teaser}</p>
+          <span class="story-card-arrow">Open</span>
+        </button>
       `
     )
     .join("");
-}
 
-function renderBeyondCards() {
-  const container = document.getElementById("beyond-grid");
-  container.innerHTML = beyondCards
-    .map(
-      (item) => `
-        <article class="story-card reveal">
-          <p class="education-label">${item.label}</p>
-          <h3>${item.title}</h3>
-          <p class="story-card-copy">${item.copy}</p>
-        </article>
-      `
-    )
-    .join("");
+  container.querySelectorAll(".story-card-button").forEach((card) => {
+    card.addEventListener("click", () => {
+      openDetailModal({
+        kicker: groupLabel === "story" ? "About" : groupLabel === "foundations" ? "Foundations" : "Beyond Work",
+        title: items[Number(card.dataset.detailIndex)].title,
+        meta: items[Number(card.dataset.detailIndex)].label,
+        copy: items[Number(card.dataset.detailIndex)].copy,
+      });
+    });
+  });
 }
 
 function renderProjects() {
@@ -610,8 +646,8 @@ function renderCompactProjects() {
 function openDetailModal(item) {
   const modal = document.getElementById("detail-modal");
   document.getElementById("detail-kicker").textContent = item.kicker;
-  document.getElementById("detail-title").textContent = `${item.company} / ${item.title}`;
-  document.getElementById("detail-meta").textContent = item.meta;
+  document.getElementById("detail-title").textContent = item.company ? `${item.company} / ${item.title}` : item.title;
+  document.getElementById("detail-meta").textContent = item.meta || "";
   document.getElementById("detail-copy").textContent = item.copy;
   modal.classList.add("is-open");
   modal.setAttribute("aria-hidden", "false");
@@ -699,6 +735,10 @@ function attachReveal() {
 }
 
 function attachModalControls() {
+  document.querySelectorAll("[data-detail-key='story-intro']").forEach((element) => {
+    element.addEventListener("click", () => openDetailModal(storyIntro));
+  });
+
   document.querySelectorAll("[data-close-modal]").forEach((element) => {
     element.addEventListener("click", closeDetailModal);
   });
@@ -710,14 +750,26 @@ function attachModalControls() {
   });
 }
 
+function attachArchiveToggle() {
+  const button = document.getElementById("archive-toggle");
+  const archive = document.getElementById("compact-project-grid");
+
+  button.addEventListener("click", () => {
+    const expanded = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", String(!expanded));
+    button.textContent = expanded ? "Open project archive" : "Close project archive";
+    archive.classList.toggle("is-collapsed", expanded);
+  });
+}
+
 renderLinks();
-renderStoryCards();
-renderBeyondCards();
-renderEducation();
+renderDetailCards("story-card-grid", storyCards, "story");
+renderDetailCards("foundations-grid", foundationsCards, "foundations");
+renderDetailCards("beyond-grid", beyondCards, "beyond");
 renderProjects();
 renderCompactProjects();
 renderExperienceCards("experience-list", experiences);
 renderExperienceCards("leadership-list", leadership);
-renderSkills();
 attachReveal();
 attachModalControls();
+attachArchiveToggle();
