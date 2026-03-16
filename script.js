@@ -153,41 +153,62 @@ const additionalProjects = [
 const experiences = [
   {
     company: "AriesView",
-    role: "Software Engineer Intern / Boston, USA (hybrid) / September 2025 to December 2025",
+    title: "Software Engineer Intern",
+    meta: "Boston, USA (hybrid) / September 2025 to December 2025",
+    teaser: "RAG, Neo4j, OCR, and LLM workflows over real-estate data.",
     copy: "Built RAG pipelines and integrated Neo4j graph databases to improve semantic search precision on client insights by about 42 percent, then developed OCR pipelines and an LLM chatbot over real-estate datasets for natural-language lookup.",
+    kicker: "Professional and Research",
   },
   {
     company: "Institute for Science and Technology Innovation",
-    role: "Software Engineer Intern / HCMC, Vietnam (on-site) / June 2023 to July 2023",
+    title: "Software Engineer Intern",
+    meta: "HCMC, Vietnam (on-site) / June 2023 to July 2023",
+    teaser: "Hydro-met processing and basin flow simulation for water quality assessment.",
     copy: "Collected and synthesized documents on water resource quality assessment for the Dong Nai and Sai Gon river basin system, then processed 4 years of hydro-met data for MIKE 11 and NAM flow simulations with water-level RMSE around 1.55 m.",
+    kicker: "Professional and Research",
   },
   {
     company: "Ho Chi Minh University of Technology",
-    role: "Research Volunteer / HCMC, Vietnam (on-site) / May 2025 to Aug 2025",
+    title: "Research Volunteer",
+    meta: "HCMC, Vietnam (on-site) / May 2025 to Aug 2025",
+    teaser: "Radar nowcasting research with ConvLSTM and Axial Attention.",
     copy: "Collaborated on radar nowcasting research using deep learning and Axial Attention, reproduced a ConvLSTM in PyTorch for sequence-to-one CAPPI reflectivity prediction, and improved MAE through preprocessing ablation studies and stronger training validation loops.",
+    kicker: "Professional and Research",
   },
   {
     company: "UMASS CICS PLASMA Lab",
-    role: "Undergraduate Research Volunteer / Amherst, MA / September 2025 to Present",
+    title: "Undergraduate Research Volunteer",
+    meta: "Amherst, MA / September 2025 to Present",
+    teaser: "Type inference and static analysis for Python safety.",
     copy: "Contributed to RightTyper, a Python type inference and static analysis tool, by implementing inference logic across core modules and validating performance against tools such as mypy and MonkeyType.",
+    kicker: "Professional and Research",
   },
   {
     company: "UMASS CICS ml4ed Lab",
-    role: "Undergraduate Research Volunteer / Amherst, MA / September 2025 to Present",
+    title: "Undergraduate Research Volunteer",
+    meta: "Amherst, MA / September 2025 to Present",
+    teaser: "RAG-based academic advising chatbot over university data.",
     copy: "Developed an AI-powered advising chatbot using RAG to help students navigate degree requirements and academic policies, integrating course prerequisites and roadmaps into a searchable vector database for retrieval.",
+    kicker: "Professional and Research",
   },
 ];
 
 const leadership = [
   {
     company: "MassAI",
-    role: "Project Lead / Events Coordinator / Amherst, MA / January 2025 to Present",
+    title: "Project Lead / Events Coordinator",
+    meta: "Amherst, MA / January 2025 to Present",
+    teaser: "Led a 6-member team on sea level prediction for flood-prone communities.",
     copy: "Led a 6-member team to deliver a sea rising level prediction model inspired by direct observations of high-tide flooding in Vietnam, achieving about 24 ms inference latency and 2.3 percent RMSE improvement over polynomial baselines.",
+    kicker: "Leadership",
   },
   {
     company: "League of Coders",
-    role: "Vice President",
+    title: "Vice President",
+    meta: "Vietnam / Student-led non-profit work",
+    teaser: "Community technology education and a self-funded water monitoring system.",
     copy: "Self-funded and organized a summer camp for underprivileged children and implemented a water monitoring system for the community.",
+    kicker: "Leadership",
   },
 ];
 
@@ -396,21 +417,50 @@ function renderCompactProjects() {
     .join("");
 }
 
-function renderTimeline(containerId, items) {
+function openDetailModal(item) {
+  const modal = document.getElementById("detail-modal");
+  document.getElementById("detail-kicker").textContent = item.kicker;
+  document.getElementById("detail-title").textContent = `${item.company} / ${item.title}`;
+  document.getElementById("detail-meta").textContent = item.meta;
+  document.getElementById("detail-copy").textContent = item.copy;
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeDetailModal() {
+  const modal = document.getElementById("detail-modal");
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
+function renderExperienceCards(containerId, items) {
   const container = document.getElementById(containerId);
   container.innerHTML = items
     .map(
-      (item) => `
-        <article class="experience-item reveal">
-          <div>
-            <p class="experience-company">${item.company}</p>
-            <p class="experience-role">${item.role}</p>
+      (item, index) => `
+        <button class="experience-card reveal" type="button" data-source="${containerId}" data-index="${index}">
+          <div class="experience-card-top">
+            <p class="experience-card-company">${item.company}</p>
+            <span class="experience-card-arrow">Open</span>
           </div>
-          <p class="experience-copy">${item.copy}</p>
-        </article>
+          <p class="experience-card-title">${item.title}</p>
+          <p class="experience-card-meta">${item.meta}</p>
+          <p class="experience-card-teaser">${item.teaser}</p>
+        </button>
       `
     )
     .join("");
+
+  container.querySelectorAll(".experience-card").forEach((card) => {
+    card.addEventListener("click", () => {
+      const source = card.dataset.source;
+      const index = Number(card.dataset.index);
+      const collection = source === "leadership-list" ? leadership : experiences;
+      openDetailModal(collection[index]);
+    });
+  });
 }
 
 function renderSkills() {
@@ -445,11 +495,24 @@ function attachReveal() {
   document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 }
 
+function attachModalControls() {
+  document.querySelectorAll("[data-close-modal]").forEach((element) => {
+    element.addEventListener("click", closeDetailModal);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeDetailModal();
+    }
+  });
+}
+
 renderLinks();
 renderEducation();
 renderProjects();
 renderCompactProjects();
-renderTimeline("experience-list", experiences);
-renderTimeline("leadership-list", leadership);
+renderExperienceCards("experience-list", experiences);
+renderExperienceCards("leadership-list", leadership);
 renderSkills();
 attachReveal();
+attachModalControls();
