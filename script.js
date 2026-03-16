@@ -96,30 +96,30 @@ const education = [
   {
     label: "Focus",
     title: "Current direction",
-    copy: "Trustworthy AI systems, forecasting, decision-support under uncertainty, and infrastructure people can actually rely on.",
+    copy: "Trustworthy AI systems for forecasting, planning, decision-support, and infrastructure people can actually rely on.",
   },
 ];
 
 const storyCards = [
   {
-    label: "What started it",
-    title: "A late start, but a real reason",
-    copy: "AI first pulled me toward computer science, but purpose kept me there. I was less interested in novelty than in what intelligent systems could change when trust really mattered.",
+    label: "Start",
+    title: "AI opened the door",
+    copy: "I came to computer science later than many people around me, at the moment AI began to feel immediate, useful, and full of consequence.",
   },
   {
-    label: "What made it personal",
-    title: "Forecasts, Vietnam, and trust",
-    copy: "Seeing my father come home after inaccurate forecasts made me understand how painful fragile systems can be in a country shaped by storms, floods, and drought.",
+    label: "Why it stayed",
+    title: "Forecasts made it personal",
+    copy: "Watching my father work in meteorology taught me how much damage fragile systems can do when people need them most.",
   },
   {
-    label: "The image that stayed",
+    label: "Image",
     title: "I saw myself in An Giang",
-    copy: "When I met children in An Giang learning on old computers, I saw both my own beginning and the possibility that technology could help them shape more than a game.",
+    copy: "Meeting children learning on old computers in An Giang brought together my own beginning and the future I want technology to make possible.",
   },
   {
-    label: "What changed me",
+    label: "Lesson",
     title: "Detection is not prevention",
-    copy: "Building a small water-monitoring system taught me that useful technology has to earn trust. Data, rigor, and resilience matter as much as technical ambition.",
+    copy: "A small water-monitoring system taught me that useful technology is not just about seeing the problem. It is about earning enough trust for people to act.",
   },
 ];
 
@@ -127,17 +127,17 @@ const beyondCards = [
   {
     label: "Football",
     title: "Manchester United taught me patience",
-    copy: "I have followed Manchester United since 2014. Even while other clubs kept winning and United kept searching for itself after Sir Alex Ferguson, I stayed with the same belief: after the rain, the sky clears again. That loyalty feels personal. I was left behind too, near the bottom in swimming in third grade and almost at the back of my class in seventh grade, before I slowly found confidence through physics, narrowed the gap, finished in the top six of my class in ninth grade, and earned admission to one of the top gifted schools in my city. Maybe that is why I still believe in United. Some teams, and some people, take time to find their rhythm before the comeback really begins.",
+    copy: "I have followed Manchester United since 2014. Through the long years after Sir Alex Ferguson, I kept believing the same thing: after the rain, the sky clears again. That faith feels personal. I was left behind too, in swimming in third grade and near the back of my class in seventh, before physics gave me a way back. Step by step, I closed the gap, finished in the top six of my class, and earned admission to a top gifted school. Maybe that is why I still believe comebacks can be slow and real.",
   },
   {
     label: "Books",
     title: "Detective and spy novels stay with me",
-    copy: "I am drawn to stories where the truth is buried in fragments. Good detective and intelligence fiction makes pattern recognition feel human: people working with incomplete signals, imperfect judgment, and consequences that only become clear if they reason carefully.",
+    copy: "I am drawn to stories where the truth is buried in fragments. Good detective and intelligence fiction makes pattern-finding feel human: incomplete signals, uncertain motives, and consequences that only become clear if you reason carefully.",
   },
   {
     label: "Codebreaking",
     title: "Why the Bombe story matters to me",
-    copy: "I keep thinking about Turing, wartime codebreaking at Bletchley Park, and the Bombe countering Enigma. That story sits right at the intersection I care about: intelligence, engineering, uncertainty, and building systems strong enough for other people to trust.",
+    copy: "Turing, Bletchley Park, and the Bombe stay with me because codebreaking was not only about intelligence. It was about building a system strong enough to turn hidden signals into decisions other people could trust.",
   },
 ];
 
