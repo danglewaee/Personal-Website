@@ -579,6 +579,80 @@ h2 {
   line-height: 1.35;
 }
 
+.case-study-list {
+  display: grid;
+  gap: 56px;
+}
+
+.case-study {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+  gap: 34px;
+  align-items: start;
+}
+
+.case-study-copy {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.case-study-heading {
+  display: grid;
+  gap: 12px;
+}
+
+.case-study-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.case-study-stat {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.case-study-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.case-study-block {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015));
+}
+
+.case-study-label {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.case-study-text {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.96rem;
+  line-height: 1.72;
+}
 .project-list {
   display: grid;
   gap: 48px;
@@ -1148,12 +1222,14 @@ h3 {
 }
 
 .project-item:hover .project-cover,
+.case-study:hover .project-cover,
 .compact-project:hover {
   border-color: var(--line-strong);
   box-shadow: 0 34px 88px rgba(0, 0, 0, 0.42);
 }
 
-.project-item:hover .project-cover {
+.project-item:hover .project-cover,
+.case-study:hover .project-cover {
   transform: translateY(-6px);
 }
 
@@ -1161,6 +1237,7 @@ h3 {
   .hero-grid,
   .page-intro-grid,
   .project-item,
+  .case-study,
   .essay-block,
   .about-layout,
   .foundations-layout,
@@ -1168,6 +1245,7 @@ h3 {
   .education-grid,
   .story-card-grid,
   .beyond-grid,
+  .case-study-grid,
   .skill-groups,
   .compact-project-grid,
   .experience-card-grid {

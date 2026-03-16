@@ -206,8 +206,45 @@ const additionalProjects = [
   },
 ];
 
-const flagshipProjects = featuredProjects.slice(0, 3);
-const archiveProjects = [...featuredProjects.slice(3), ...additionalProjects];
+const caseStudyProjects = featuredProjects.slice(0, 2);
+const archiveProjects = [...featuredProjects.slice(2), ...additionalProjects];
+
+const caseStudyContent = {
+  "Incident-Intelligence Platform": {
+    stats: ["80.8% less triage noise", "100% top-2 over 4 failures"],
+    blocks: [
+      {
+        label: "Problem",
+        copy: "Distributed telemetry can tell you something is wrong without showing what actually broke or what deserves attention first.",
+      },
+      {
+        label: "System",
+        copy: "I built event-driven ingestion, anomaly clustering, and dependency-aware ranking over temporal signals, service topology, and deployment context.",
+      },
+      {
+        label: "Outcome",
+        copy: "The system surfaced the true source within the top two candidates across 4 injected failures while cutting triage noise by 80.8 percent.",
+      },
+    ],
+  },
+  "AnomalyGuard": {
+    stats: ["0.81 ms p50 search", "5,000 concurrent upserts"],
+    blocks: [
+      {
+        label: "Problem",
+        copy: "Water telemetry only matters if unusual conditions are caught early and explained clearly enough for someone to trust the alert.",
+      },
+      {
+        label: "System",
+        copy: "I combined FastAPI ingestion, TimescaleDB, Kafka, and an Isolation Forest plus SHAP pipeline to turn raw readings into explainable pollutant warnings.",
+      },
+      {
+        label: "Outcome",
+        copy: "The platform delivered live monitoring and alerting with sub-millisecond p50 search latency during a 5,000-upsert benchmark.",
+      },
+    ],
+  },
+};
 
 const experiences = [
   {
@@ -552,6 +589,74 @@ function renderProjects(containerId, projects) {
     .join("");
 }
 
+function renderCaseStudyProjects(containerId, projects) {
+  const container = document.getElementById(containerId);
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = projects
+    .map((project) => {
+      const caseStudy = caseStudyContent[project.name] || { stats: [], blocks: [] };
+      const statsMarkup = caseStudy.stats.length
+        ? `
+          <div class="case-study-stats">
+            ${caseStudy.stats.map((stat) => `<span class="case-study-stat">${stat}</span>`).join("")}
+          </div>
+        `
+        : "";
+      const blocksMarkup = caseStudy.blocks.length
+        ? `
+          <div class="case-study-grid">
+            ${caseStudy.blocks
+              .map(
+                (block) => `
+                  <article class="case-study-block">
+                    <p class="case-study-label">${block.label}</p>
+                    <p class="case-study-text">${block.copy}</p>
+                  </article>
+                `
+              )
+              .join("")}
+          </div>
+        `
+        : "";
+
+      return `
+        <article class="case-study reveal">
+          <a class="project-cover ${project.coverClass}" href="${project.href}" target="_blank" rel="noreferrer" aria-label="View ${project.name} on GitHub">
+            <div class="cover-top">
+              <span class="cover-chip">${project.coverLabel}</span>
+              <span class="cover-year">${project.year}</span>
+            </div>
+            ${renderProjectPreview(project)}
+            <div class="cover-bottom">
+              <h3 class="cover-title">${project.name}</h3>
+              <p class="cover-caption">${project.coverCaption}</p>
+            </div>
+          </a>
+          <div class="case-study-copy">
+            <div class="project-meta">
+              <p class="project-type">${project.type}</p>
+              <p class="project-year">${project.year}</p>
+            </div>
+            <div class="case-study-heading">
+              <h3>${project.name}</h3>
+              <p class="project-summary">${project.summary}</p>
+            </div>
+            ${statsMarkup}
+            ${blocksMarkup}
+            <p class="project-stack">${project.stack}</p>
+            <div class="project-links">
+              <a class="text-link" href="${project.href}" target="_blank" rel="noreferrer">View GitHub</a>
+            </div>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+}
+
 function renderCompactProjects(containerId, projects) {
   const container = document.getElementById(containerId);
   if (!container) {
@@ -691,7 +796,7 @@ function attachArchiveToggle() {
 }
 
 function renderHomePage() {
-  renderProjects("home-project-list", flagshipProjects.slice(0, 2));
+  renderProjects("home-project-list", caseStudyProjects);
 }
 
 function renderAboutPage() {
@@ -699,7 +804,7 @@ function renderAboutPage() {
 }
 
 function renderWorkPage() {
-  renderProjects("project-list", flagshipProjects);
+  renderCaseStudyProjects("featured-case-studies", caseStudyProjects);
   renderCompactProjects("compact-project-grid", archiveProjects);
   renderSkillGroups("work-skills");
 }
