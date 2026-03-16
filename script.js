@@ -90,7 +90,30 @@ const education = [
   {
     label: "Focus",
     title: "Current direction",
-    copy: "Backend systems, AI-assisted products, planning engines, and applied ML tooling grounded in real operational problems.",
+    copy: "Trustworthy AI systems, forecasting, decision-support under uncertainty, and infrastructure people can actually rely on.",
+  },
+];
+
+const storyCards = [
+  {
+    label: "What started it",
+    title: "A late start, but a real reason",
+    copy: "AI first pulled me toward computer science, but purpose kept me there. I was less interested in novelty than in what intelligent systems could change when trust really mattered.",
+  },
+  {
+    label: "What made it personal",
+    title: "Forecasts, Vietnam, and trust",
+    copy: "Seeing my father come home after inaccurate forecasts made me understand how painful fragile systems can be in a country shaped by storms, floods, and drought.",
+  },
+  {
+    label: "The image that stayed",
+    title: "I saw myself in An Giang",
+    copy: "When I met children in An Giang learning on old computers, I saw both my own beginning and the possibility that technology could help them shape more than a game.",
+  },
+  {
+    label: "What changed me",
+    title: "Detection is not prevention",
+    copy: "Building a small water-monitoring system taught me that useful technology has to earn trust. Data, rigor, and resilience matter as much as technical ambition.",
   },
 ];
 
@@ -474,6 +497,21 @@ function renderEducation() {
     .join("");
 }
 
+function renderStoryCards() {
+  const container = document.getElementById("story-card-grid");
+  container.innerHTML = storyCards
+    .map(
+      (item) => `
+        <article class="story-card reveal">
+          <p class="education-label">${item.label}</p>
+          <h3>${item.title}</h3>
+          <p class="story-card-copy">${item.copy}</p>
+        </article>
+      `
+    )
+    .join("");
+}
+
 function renderProjects() {
   const container = document.getElementById("project-list");
   container.innerHTML = featuredProjects
@@ -634,6 +672,7 @@ function attachModalControls() {
 }
 
 renderLinks();
+renderStoryCards();
 renderEducation();
 renderProjects();
 renderCompactProjects();
