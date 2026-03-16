@@ -103,7 +103,7 @@ button {
 }
 
 .brand {
-  font-family: "Syne", sans-serif;
+  font-family: "Inter Tight", sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -174,7 +174,7 @@ button {
 
 .hero-name {
   margin: 0 0 10px;
-  font-family: "Syne", sans-serif;
+  font-family: "Inter Tight", sans-serif;
   font-size: clamp(2.6rem, 5vw, 4.4rem);
   font-weight: 700;
   letter-spacing: -0.06em;
@@ -182,10 +182,8 @@ button {
 }
 
 .hero-tagline {
-  margin: 0;
-  color: var(--muted);
-  font-size: 1.06rem;
-  line-height: 1.75;
+  max-width: 22ch;
+  font-size: 0.98rem;
 }
 
 .eyebrow,
@@ -207,7 +205,7 @@ button {
 .section-kicker {
   margin: 0;
   color: var(--text);
-  font-family: "Syne", sans-serif;
+  font-family: "Inter Tight", sans-serif;
   font-size: 0.96rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -221,7 +219,7 @@ h3,
 .compact-project-title,
 .experience-card-title,
 .detail-title {
-  font-family: "Syne", sans-serif;
+  font-family: "Inter Tight", sans-serif;
   letter-spacing: -0.06em;
 }
 
@@ -287,7 +285,7 @@ h2 {
   color: var(--text);
   background: transparent;
   cursor: pointer;
-  font-family: "Syne", sans-serif;
+  font-family: "Inter Tight", sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -568,7 +566,7 @@ h2 {
 
 .skill-fallback {
   color: var(--text);
-  font-family: "Syne", sans-serif;
+  font-family: "Inter Tight", sans-serif;
   font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -684,7 +682,7 @@ h2 {
 .featured-project-index,
 .featured-project-arrow {
   color: rgba(255, 255, 255, 0.48);
-  font-family: "Syne", sans-serif;
+  font-family: "Inter Tight", sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -697,7 +695,7 @@ h2 {
 }
 
 .featured-project-title {
-  font-family: "Syne", sans-serif;
+  font-family: "Inter Tight", sans-serif;
   font-size: clamp(1.55rem, 2.2vw, 2.2rem);
   font-weight: 700;
   letter-spacing: -0.05em;
@@ -736,7 +734,7 @@ h2 {
 }
 
 .archive-project-title {
-  font-family: "Syne", sans-serif;
+  font-family: "Inter Tight", sans-serif;
   font-size: 1.08rem;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -752,7 +750,7 @@ h2 {
 .archive-project-meta,
 .archive-project-arrow {
   color: rgba(255, 255, 255, 0.48);
-  font-family: "Syne", sans-serif;
+  font-family: "Inter Tight", sans-serif;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -1614,8 +1612,8 @@ body {
 }
 
 .hero-tagline {
-  max-width: 24ch;
-  font-size: 1rem;
+  max-width: 22ch;
+  font-size: 0.98rem;
 }
 
 .hero-side {
@@ -1632,11 +1630,11 @@ body {
 }
 
 .hero-lede {
-  max-width: 10.5ch;
+  max-width: 8.8ch;
   margin: 0;
   color: var(--text);
-  font-family: "Syne", sans-serif;
-  font-size: clamp(3.8rem, 8.8vw, 8rem);
+  font-family: "Inter Tight", sans-serif;
+  font-size: clamp(3.6rem, 8vw, 7rem);
   font-weight: 700;
   letter-spacing: -0.09em;
   line-height: 0.9;
@@ -1748,7 +1746,7 @@ body[data-page="project-detail"] .page-intro {
 
 .featured-project-submeta {
   color: rgba(255, 255, 255, 0.46);
-  font-family: "Syne", sans-serif;
+  font-family: "Inter Tight", sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -1889,8 +1887,10 @@ body[data-page="project-detail"] h1 {
   }
 
   .hero-lede {
-    max-width: 12ch;
+    max-width: none;
+    font-size: clamp(2.8rem, 12vw, 5rem);
   }
+
 
   body[data-page="work"] .skill-groups {
     gap: 28px;
@@ -1920,8 +1920,9 @@ body[data-page="project-detail"] h1 {
 
   .hero-lede {
     max-width: none;
-    font-size: clamp(2.9rem, 13vw, 5.2rem);
+    font-size: clamp(2.8rem, 12vw, 5rem);
   }
+
 
   .featured-project-link {
     gap: 14px;
