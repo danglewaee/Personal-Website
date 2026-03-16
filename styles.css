@@ -216,7 +216,7 @@ h3,
 }
 
 h2 {
-  max-width: min(19ch, 100%);
+  max-width: 100%;
   margin-bottom: 0;
   font-size: clamp(2rem, 4vw, 3.5rem);
   line-height: 0.98;
@@ -263,7 +263,7 @@ h2 {
 .section-header {
   display: grid;
   gap: 12px;
-  max-width: 1120px;
+  max-width: 1280px;
   margin-bottom: 34px;
 }
 
