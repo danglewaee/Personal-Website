@@ -127,6 +127,11 @@ button {
   color: var(--muted);
 }
 
+.site-nav a.is-active,
+.footer-link-item.is-active {
+  color: var(--text);
+}
+
 .site-nav a:hover,
 .hero-link:hover,
 .footer-column a:hover,
@@ -208,6 +213,7 @@ button {
   text-transform: uppercase;
 }
 
+h1,
 h2,
 h3,
 .cover-title,
@@ -216,6 +222,14 @@ h3,
 .detail-title {
   font-family: "Space Grotesk", sans-serif;
   letter-spacing: -0.06em;
+}
+
+h1 {
+  max-width: 16ch;
+  margin-bottom: 0;
+  font-size: clamp(2.7rem, 6vw, 5.8rem);
+  line-height: 0.94;
+  text-wrap: balance;
 }
 
 h2 {
@@ -306,6 +320,38 @@ h2 {
 
 .section {
   padding: 58px 0 26px;
+}
+
+.page-intro {
+  padding: 72px 0 26px;
+}
+
+.page-intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 42px;
+  align-items: start;
+}
+
+.page-intro-copy,
+.page-intro-side {
+  display: grid;
+  gap: 18px;
+}
+
+.page-intro-side p,
+.contact-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.page-intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-top: 4px;
 }
 
 .section-header {
@@ -1007,6 +1053,117 @@ h3 {
   font-weight: 600;
 }
 
+.resume-grid,
+.contact-page-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.resume-column,
+.resume-list,
+.contact-copy,
+.contact-method-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.resume-subsection {
+  margin-top: 14px;
+}
+
+.resume-entry {
+  display: grid;
+  gap: 14px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+  box-shadow: var(--shadow);
+}
+
+.resume-entry-top {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.resume-entry-top h3,
+.resume-entry-top p,
+.resume-entry-copy,
+.resume-entry-meta {
+  margin: 0;
+}
+
+.resume-entry-top p,
+.resume-entry-meta {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.resume-entry-copy {
+  color: var(--text);
+  line-height: 1.75;
+}
+
+.contact-method-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.contact-card {
+  display: grid;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+  box-shadow: var(--shadow);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+
+.contact-card:hover,
+.contact-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: var(--line-strong);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 34px 88px rgba(0, 0, 0, 0.42);
+  outline: none;
+}
+
+.contact-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: var(--text);
+}
+
+.contact-card-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.contact-card-label {
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.contact-card-value {
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.18rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
 .detail-modal {
   position: fixed;
   inset: 0;
@@ -1119,8 +1276,11 @@ h3 {
 
 @media (max-width: 1100px) {
   .hero-grid,
+  .page-intro-grid,
   .project-item,
   .site-footer,
+  .resume-grid,
+  .contact-page-grid,
   .about-layout,
   .foundations-layout,
   .beyond-layout,
@@ -1149,6 +1309,10 @@ h3 {
   }
 
   .hero {
+    padding-top: 42px;
+  }
+
+  .page-intro {
     padding-top: 42px;
   }
 
@@ -1189,10 +1353,15 @@ h3 {
   .project-meta,
   .compact-project-meta,
   .experience-card-top,
+  .resume-entry-top,
   .footer-grid,
   .footer-nav-links {
     display: grid;
     justify-content: start;
+  }
+
+  .contact-method-grid {
+    grid-template-columns: 1fr;
   }
 
   .detail-panel {

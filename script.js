@@ -5,10 +5,10 @@ const siteConfig = {
 };
 
 const heroLinks = [
-  { label: "GitHub", href: siteConfig.githubProfile, icon: "github" },
-  { label: "LinkedIn", href: siteConfig.linkedinProfile, icon: "linkedin" },
-  { label: "Email", href: "mailto:dangle@umass.edu", icon: "mail" },
-  { label: "Phone", href: "tel:4134721116", icon: "phone" },
+  { label: "GitHub", href: siteConfig.githubProfile, icon: "github", value: "github.com/danglewaee" },
+  { label: "LinkedIn", href: siteConfig.linkedinProfile, icon: "linkedin", value: "linkedin.com/in/dang-le-121abb2b4" },
+  { label: "Email", href: "mailto:dangle@umass.edu", icon: "mail", value: "dangle@umass.edu" },
+  { label: "Phone", href: "tel:4134721116", icon: "phone", value: "(413) 472-1116" },
 ];
 
 const footerSocialLinks = [
@@ -17,11 +17,11 @@ const footerSocialLinks = [
 ];
 
 const footerNavLinks = [
-  { label: "About", href: "#about", icon: "profile" },
-  { label: "Work", href: "#work", icon: "grid" },
-  { label: "Experience", href: "#experience", icon: "briefcase" },
-  { label: "Beyond", href: "#beyond", icon: "spark" },
-  { label: "Contact", href: "#contact", icon: "mail" },
+  { label: "About", href: "about.html", icon: "profile", page: "about" },
+  { label: "Work", href: "work.html", icon: "grid", page: "work" },
+  { label: "Experience", href: "experience.html", icon: "briefcase", page: "experience" },
+  { label: "Resume", href: "resume.html", icon: "resume", page: "resume" },
+  { label: "Contact", href: "contact.html", icon: "mail", page: "contact" },
 ];
 
 const iconMap = {
@@ -58,6 +58,11 @@ const iconMap = {
   briefcase: `
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path fill="currentColor" d="M9 4.5A2.5 2.5 0 0 1 11.5 2h1A2.5 2.5 0 0 1 15 4.5V6h3.75A2.25 2.25 0 0 1 21 8.25v9.5A2.25 2.25 0 0 1 18.75 20h-13.5A2.25 2.25 0 0 1 3 17.75v-9.5A2.25 2.25 0 0 1 5.25 6H9V4.5Zm1.5 0V6h3V4.5a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1Z"/>
+    </svg>
+  `,
+  resume: `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M7 3.5A2.5 2.5 0 0 1 9.5 1h7A2.5 2.5 0 0 1 19 3.5v17a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 7 20.5v-17Zm2.5-1a1 1 0 0 0-1 1v17a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1v-17a1 1 0 0 0-1-1h-7ZM10 7h6v1.5h-6V7Zm0 4h6v1.5h-6V11Zm0 4h4v1.5h-4V15Z"/>
     </svg>
   `,
   spark: `
@@ -505,13 +510,15 @@ function renderProjectPreview(project) {
   return previewMap[project.previewType] || "";
 }
 
-function renderLinkSet(links, className) {
+function renderLinkSet(links, className, options = {}) {
+  const currentPage = document.body.dataset.page || "home";
   return links
     .map((link) => {
-      const external = link.href.startsWith("http");
-      const target = external ? ' target="_blank" rel="noreferrer"' : "";
+      const external = link.href.startsWith("http") || link.href.startsWith("mailto:") || link.href.startsWith("tel:");
+      const target = link.href.startsWith("http") ? ' target="_blank" rel="noreferrer"' : "";
+      const activeClass = options.highlightCurrent && link.page === currentPage ? " is-active" : "";
       return `
-        <a class="${className}" href="${link.href}"${target}>
+        <a class="${className}${activeClass}" href="${link.href}"${target}>
           <span class="link-icon" aria-hidden="true">${iconMap[link.icon] || ""}</span>
           <span>${link.label}</span>
         </a>
@@ -520,48 +527,122 @@ function renderLinkSet(links, className) {
     .join("");
 }
 
+function setActiveNav() {
+  const currentPage = document.body.dataset.page || "home";
+  document.querySelectorAll(".site-nav a[data-nav-page]").forEach((link) => {
+    if (link.dataset.navPage === currentPage) {
+      link.classList.add("is-active");
+    }
+  });
+}
+
 function renderLinks() {
   const heroContainer = document.getElementById("hero-links");
   const footerContainer = document.getElementById("footer-links");
   const footerEmailContainer = document.getElementById("footer-email");
   const footerNavContainer = document.getElementById("footer-nav-links");
+  const contactContainer = document.getElementById("contact-method-grid");
 
-  heroContainer.innerHTML = renderLinkSet(heroLinks, "hero-link");
-  footerContainer.innerHTML = renderLinkSet(footerSocialLinks, "footer-link-item");
-  footerEmailContainer.innerHTML = renderLinkSet(
-    [{ label: "dangle@umass.edu", href: "mailto:dangle@umass.edu", icon: "mail" }],
-    "footer-link-item footer-email-link"
-  );
-  footerNavContainer.innerHTML = renderLinkSet(footerNavLinks, "footer-link-item");
+  if (heroContainer) {
+    heroContainer.innerHTML = renderLinkSet(heroLinks, "hero-link");
+  }
+
+  if (footerContainer) {
+    footerContainer.innerHTML = renderLinkSet(footerSocialLinks, "footer-link-item");
+  }
+
+  if (footerEmailContainer) {
+    footerEmailContainer.innerHTML = renderLinkSet(
+      [{ label: "dangle@umass.edu", href: "mailto:dangle@umass.edu", icon: "mail" }],
+      "footer-link-item footer-email-link"
+    );
+  }
+
+  if (footerNavContainer) {
+    footerNavContainer.innerHTML = renderLinkSet(footerNavLinks, "footer-link-item", { highlightCurrent: true });
+  }
+
+  if (contactContainer) {
+    contactContainer.innerHTML = heroLinks
+      .map(
+        (link) => `
+          <a class="contact-card reveal" href="${link.href}"${link.href.startsWith("http") ? ' target="_blank" rel="noreferrer"' : ""}>
+            <span class="contact-card-icon" aria-hidden="true">${iconMap[link.icon] || ""}</span>
+            <span class="contact-card-label">${link.label}</span>
+            <span class="contact-card-value">${link.value || link.label}</span>
+          </a>
+        `
+      )
+      .join("");
+  }
 }
 
-function renderEducation() {
-  const container = document.getElementById("education-grid");
-  container.innerHTML = education
-    .map(
-      (item) => {
-        const content = item.items
-          ? `
-            <ul class="education-list">
-              ${item.items.map((entry) => `<li>${entry}</li>`).join("")}
-            </ul>
-          `
-          : `<p class="education-copy">${item.copy}</p>`;
+function renderEducationCards(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) {
+    return;
+  }
 
-        return `
+  container.innerHTML = education
+    .map((item) => {
+      const content = item.items
+        ? `
+          <ul class="education-list">
+            ${item.items.map((entry) => `<li>${entry}</li>`).join("")}
+          </ul>
+        `
+        : `<p class="education-copy">${item.copy}</p>`;
+
+      return `
         <article class="education-card reveal">
           <p class="education-label">${item.label}</p>
           <h3>${item.title}</h3>
           ${content}
         </article>
       `;
-      }
+    })
+    .join("");
+}
+
+function renderSkillGroups(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = skills
+    .map(
+      (group) => `
+        <article class="skill-group reveal">
+          <p class="skill-label">${group.label}</p>
+          <div class="skill-logo-grid">
+            ${group.items
+              .map((item) => {
+                const iconMarkup = item.iconClass
+                  ? `<i class="skill-tile-icon ${item.iconClass} colored" aria-hidden="true"></i>`
+                  : `<span class="skill-fallback" aria-hidden="true">${item.short || item.name.slice(0, 2)}</span>`;
+
+                return `
+                  <div class="skill-tile" aria-label="${item.name}">
+                    <div class="skill-glyph">${iconMarkup}</div>
+                    <span>${item.name}</span>
+                  </div>
+                `;
+              })
+              .join("")}
+          </div>
+        </article>
+      `
     )
     .join("");
 }
 
 function renderDetailCards(containerId, items, groupLabel) {
   const container = document.getElementById(containerId);
+  if (!container) {
+    return;
+  }
+
   container.innerHTML = items
     .map(
       (item, index) => `
@@ -587,9 +668,13 @@ function renderDetailCards(containerId, items, groupLabel) {
   });
 }
 
-function renderProjects() {
-  const container = document.getElementById("project-list");
-  container.innerHTML = featuredProjects
+function renderProjects(containerId, projects) {
+  const container = document.getElementById(containerId);
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = projects
     .map(
       (project) => `
         <article class="project-item reveal">
@@ -623,9 +708,13 @@ function renderProjects() {
     .join("");
 }
 
-function renderCompactProjects() {
-  const container = document.getElementById("compact-project-grid");
-  container.innerHTML = additionalProjects
+function renderCompactProjects(containerId, projects) {
+  const container = document.getElementById(containerId);
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = projects
     .map(
       (project) => `
         <article class="compact-project reveal">
@@ -643,26 +732,12 @@ function renderCompactProjects() {
     .join("");
 }
 
-function openDetailModal(item) {
-  const modal = document.getElementById("detail-modal");
-  document.getElementById("detail-kicker").textContent = item.kicker;
-  document.getElementById("detail-title").textContent = item.company ? `${item.company} / ${item.title}` : item.title;
-  document.getElementById("detail-meta").textContent = item.meta || "";
-  document.getElementById("detail-copy").textContent = item.copy;
-  modal.classList.add("is-open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("modal-open");
-}
-
-function closeDetailModal() {
-  const modal = document.getElementById("detail-modal");
-  modal.classList.remove("is-open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("modal-open");
-}
-
 function renderExperienceCards(containerId, items) {
   const container = document.getElementById(containerId);
+  if (!container) {
+    return;
+  }
+
   container.innerHTML = items
     .map(
       (item, index) => `
@@ -689,36 +764,81 @@ function renderExperienceCards(containerId, items) {
   });
 }
 
-function renderSkills() {
-  const container = document.getElementById("skill-groups");
-  container.innerHTML = skills
-    .map(
-      (group) => `
-        <article class="skill-group reveal">
-          <p class="skill-label">${group.label}</p>
-          <div class="skill-logo-grid">
-            ${group.items
-              .map((item) => {
-                const iconMarkup = item.iconClass
-                  ? `<i class="skill-tile-icon ${item.iconClass} colored" aria-hidden="true"></i>`
-                  : `<span class="skill-fallback" aria-hidden="true">${item.short || item.name.slice(0, 2)}</span>`;
+function renderResumeEntries(containerId, items) {
+  const container = document.getElementById(containerId);
+  if (!container) {
+    return;
+  }
 
-                return `
-                  <div class="skill-tile" aria-label="${item.name}">
-                    <div class="skill-glyph">${iconMarkup}</div>
-                    <span>${item.name}</span>
-                  </div>
-                `;
-              })
-              .join("")}
+  container.innerHTML = items
+    .map(
+      (item) => `
+        <article class="resume-entry reveal">
+          <div class="resume-entry-top">
+            <h3>${item.title}</h3>
+            <p>${item.meta}</p>
           </div>
+          <p class="resume-entry-copy">${item.copy}</p>
         </article>
       `
     )
     .join("");
 }
 
+function renderResumeProjects(containerId, items) {
+  const container = document.getElementById(containerId);
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = items
+    .map(
+      (item) => `
+        <article class="resume-entry reveal">
+          <div class="resume-entry-top">
+            <h3>${item.name}</h3>
+            <p>${item.year}</p>
+          </div>
+          <p class="resume-entry-copy">${item.summary}</p>
+          <p class="resume-entry-meta">${item.stack}</p>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function openDetailModal(item) {
+  const modal = document.getElementById("detail-modal");
+  if (!modal) {
+    return;
+  }
+
+  document.getElementById("detail-kicker").textContent = item.kicker;
+  document.getElementById("detail-title").textContent = item.company ? `${item.company} / ${item.title}` : item.title;
+  document.getElementById("detail-meta").textContent = item.meta || "";
+  document.getElementById("detail-copy").textContent = item.copy;
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeDetailModal() {
+  const modal = document.getElementById("detail-modal");
+  if (!modal) {
+    return;
+  }
+
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
 function attachReveal() {
+  const revealElements = document.querySelectorAll(".reveal");
+  if (!revealElements.length) {
+    return;
+  }
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -731,10 +851,14 @@ function attachReveal() {
     { threshold: 0.12 }
   );
 
-  document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+  revealElements.forEach((element) => observer.observe(element));
 }
 
 function attachModalControls() {
+  if (!document.getElementById("detail-modal")) {
+    return;
+  }
+
   document.querySelectorAll("[data-detail-key='story-intro']").forEach((element) => {
     element.addEventListener("click", () => openDetailModal(storyIntro));
   });
@@ -753,6 +877,9 @@ function attachModalControls() {
 function attachArchiveToggle() {
   const button = document.getElementById("archive-toggle");
   const archive = document.getElementById("compact-project-grid");
+  if (!button || !archive) {
+    return;
+  }
 
   button.addEventListener("click", () => {
     const expanded = button.getAttribute("aria-expanded") === "true";
@@ -762,14 +889,71 @@ function attachArchiveToggle() {
   });
 }
 
-renderLinks();
-renderDetailCards("story-card-grid", storyCards, "story");
-renderDetailCards("foundations-grid", foundationsCards, "foundations");
-renderDetailCards("beyond-grid", beyondCards, "beyond");
-renderProjects();
-renderCompactProjects();
-renderExperienceCards("experience-list", experiences);
-renderExperienceCards("leadership-list", leadership);
-attachReveal();
-attachModalControls();
-attachArchiveToggle();
+function renderHomePage() {
+  renderProjects("home-project-list", featuredProjects.slice(0, 3));
+}
+
+function renderAboutPage() {
+  renderDetailCards("story-card-grid", storyCards, "story");
+  renderDetailCards("foundations-grid", foundationsCards, "foundations");
+  renderDetailCards("beyond-grid", beyondCards, "beyond");
+}
+
+function renderWorkPage() {
+  renderProjects("project-list", featuredProjects);
+  renderCompactProjects("compact-project-grid", additionalProjects);
+}
+
+function renderExperiencePage() {
+  renderExperienceCards("experience-list", experiences);
+  renderExperienceCards("leadership-list", leadership);
+}
+
+function renderResumePage() {
+  renderEducationCards("resume-education");
+  renderSkillGroups("resume-skills");
+  renderResumeEntries(
+    "resume-experience",
+    experiences.map((item) => ({
+      title: `${item.company} / ${item.title}`,
+      meta: item.meta,
+      copy: item.teaser,
+    }))
+  );
+  renderResumeProjects("resume-projects", featuredProjects.slice(0, 4));
+}
+
+function renderContactPage() {}
+
+function renderPage() {
+  const page = document.body.dataset.page || "home";
+  renderLinks();
+  setActiveNav();
+
+  switch (page) {
+    case "about":
+      renderAboutPage();
+      break;
+    case "work":
+      renderWorkPage();
+      break;
+    case "experience":
+      renderExperiencePage();
+      break;
+    case "resume":
+      renderResumePage();
+      break;
+    case "contact":
+      renderContactPage();
+      break;
+    default:
+      renderHomePage();
+      break;
+  }
+
+  attachArchiveToggle();
+  attachModalControls();
+  attachReveal();
+}
+
+renderPage();
