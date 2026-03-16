@@ -251,12 +251,18 @@ h2 {
   font-size: 1.05rem;
 }
 
-.hero-actions,
-.footer-links {
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
   margin-top: 22px;
+}
+
+.footer-links {
+  display: grid;
+  gap: 12px;
+  margin-top: 0;
+  justify-items: start;
 }
 
 .hero-link,
@@ -996,11 +1002,6 @@ h3 {
   display: grid;
   align-content: start;
   gap: 10px;
-}
-
-.footer-single-link,
-.footer-nav-links {
-  margin-top: 0;
 }
 
 .footer-nav-links {

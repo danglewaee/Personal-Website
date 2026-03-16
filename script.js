@@ -11,6 +11,11 @@ const heroLinks = [
   { label: "Phone", href: "tel:4134721116", icon: "phone" },
 ];
 
+const footerSocialLinks = [
+  { label: "GitHub", href: siteConfig.githubProfile, icon: "github" },
+  { label: "LinkedIn", href: siteConfig.linkedinProfile, icon: "linkedin" },
+];
+
 const footerNavLinks = [
   { label: "About", href: "#about", icon: "profile" },
   { label: "Work", href: "#work", icon: "grid" },
@@ -436,7 +441,7 @@ function renderLinks() {
   const footerNavContainer = document.getElementById("footer-nav-links");
 
   heroContainer.innerHTML = renderLinkSet(heroLinks, "hero-link");
-  footerContainer.innerHTML = renderLinkSet(heroLinks, "footer-link-item");
+  footerContainer.innerHTML = renderLinkSet(footerSocialLinks, "footer-link-item");
   footerEmailContainer.innerHTML = renderLinkSet(
     [{ label: "dangle@umass.edu", href: "mailto:dangle@umass.edu", icon: "mail" }],
     "footer-link-item footer-email-link"
