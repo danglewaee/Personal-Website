@@ -18,7 +18,7 @@ const footerSocialLinks = [
 
 const footerNavLinks = [
   { label: "About", href: "about.html", icon: "profile", page: "about" },
-  { label: "Work", href: "work.html", icon: "grid", page: "work" },
+  { label: "Projects", href: "work.html", icon: "grid", page: "work" },
   { label: "Experience", href: "experience.html", icon: "briefcase", page: "experience" },
   { label: "Contact", href: "contact.html", icon: "mail", page: "contact" },
 ];
