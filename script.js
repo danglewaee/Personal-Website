@@ -25,7 +25,17 @@ const education = [
   {
     label: "Coursework",
     title: "Relevant coursework",
-    copy: "Algorithms, Data Structures, ML, AI, OOP, Stats and Reasoning, Methodology Programming, Computer Principles, Computation",
+    items: [
+      "Algorithms",
+      "Data Structures",
+      "Machine Learning",
+      "Artificial Intelligence",
+      "Object-Oriented Programming",
+      "Stats and Reasoning",
+      "Methodology Programming",
+      "Computer Principles",
+      "Computation",
+    ],
   },
   {
     label: "Focus",
@@ -378,13 +388,23 @@ function renderEducation() {
   const container = document.getElementById("education-grid");
   container.innerHTML = education
     .map(
-      (item) => `
+      (item) => {
+        const content = item.items
+          ? `
+            <ul class="education-list">
+              ${item.items.map((entry) => `<li>${entry}</li>`).join("")}
+            </ul>
+          `
+          : `<p class="education-copy">${item.copy}</p>`;
+
+        return `
         <article class="education-card reveal">
           <p class="education-label">${item.label}</p>
           <h3>${item.title}</h3>
-          <p class="education-copy">${item.copy}</p>
+          ${content}
         </article>
-      `
+      `;
+      }
     )
     .join("");
 }
