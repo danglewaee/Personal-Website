@@ -1,0 +1,389 @@
+﻿:root {
+  --bg: #f7f4ef;
+  --surface: rgba(255, 255, 255, 0.86);
+  --surface-strong: #ffffff;
+  --text: #121212;
+  --muted: #6a655f;
+  --line: rgba(18, 18, 18, 0.12);
+  --line-strong: rgba(18, 18, 18, 0.22);
+  --accent: #1b5c49;
+  --accent-soft: #e8f1ed;
+  --shadow: 0 20px 52px rgba(16, 16, 14, 0.06);
+  --max-width: 1160px;
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(27, 92, 73, 0.08), transparent 22%),
+    linear-gradient(180deg, #faf8f4 0%, #f5f1eb 100%);
+  color: var(--text);
+  font-family: "Manrope", sans-serif;
+}
+
+.site-shell {
+  width: min(calc(100% - 40px), var(--max-width));
+  margin: 0 auto;
+  padding-bottom: 92px;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 0 18px;
+  background: linear-gradient(to bottom, rgba(250, 248, 244, 0.95), rgba(250, 248, 244, 0.72), rgba(250, 248, 244, 0));
+  backdrop-filter: blur(10px);
+}
+
+.brand,
+.site-nav a,
+.button,
+.social-link,
+.project-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand {
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.site-nav a {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.site-nav a:hover {
+  color: var(--text);
+}
+
+.section {
+  padding: 58px 0 8px;
+}
+
+.kicker {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  max-width: 11ch;
+  margin-bottom: 18px;
+  font-size: clamp(3.3rem, 6vw, 5.8rem);
+  line-height: 1;
+}
+
+h2 {
+  max-width: 15ch;
+  margin-bottom: 0;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 1.04;
+}
+
+h3 {
+  margin-bottom: 10px;
+  font-size: 1.18rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) 310px;
+  gap: 42px;
+  align-items: end;
+  min-height: calc(100vh - 120px);
+}
+
+.hero-copy,
+.body-column p,
+.work-summary,
+.experience-copy,
+.contact-copy,
+.project-side p,
+.rail-card p,
+.social-link,
+.project-stack,
+.project-result {
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.hero-main {
+  max-width: 780px;
+}
+
+.hero-rail {
+  display: grid;
+  gap: 14px;
+}
+
+.rail-card,
+.project-card,
+.experience-item,
+.skills-cloud span,
+.social-link {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.rail-card {
+  padding: 16px;
+  border-radius: var(--radius-lg);
+}
+
+.rail-label {
+  margin-bottom: 8px;
+  color: var(--text) !important;
+  font-weight: 800;
+}
+
+.social-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.social-link {
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: var(--muted);
+}
+
+.section-intro,
+.editorial-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 24px;
+}
+
+.body-column {
+  max-width: 60ch;
+}
+
+.featured-work,
+.experience-list {
+  display: grid;
+  gap: 18px;
+}
+
+.project-card,
+.experience-item {
+  padding: 24px;
+  border-radius: var(--radius-xl);
+}
+
+.project-card {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) 260px;
+  gap: 22px;
+  align-items: start;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.86)),
+    var(--surface-strong);
+}
+
+.project-index {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+}
+
+.project-main {
+  min-width: 0;
+}
+
+.project-result {
+  margin-bottom: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.project-side {
+  display: grid;
+  gap: 14px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag-row span,
+.skills-cloud span {
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--surface-strong);
+}
+
+.project-actions,
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.button,
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 11px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.button:hover,
+.project-link:hover {
+  border-color: var(--line-strong);
+}
+
+.button.primary,
+.project-link.primary {
+  background: var(--text);
+  border-color: var(--text);
+  color: #fbfaf7;
+}
+
+.button.secondary,
+.project-link.secondary {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.experience-item {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 22px;
+}
+
+.experience-meta p,
+.experience-meta span {
+  margin: 0;
+}
+
+.experience-meta p {
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.experience-meta span {
+  color: var(--muted);
+}
+
+.skills-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contact-section {
+  text-align: center;
+}
+
+.contact-section h2,
+.contact-copy {
+  margin-inline: auto;
+}
+
+.contact-copy {
+  max-width: 52ch;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1040px) {
+  .hero,
+  .section-intro,
+  .editorial-row,
+  .project-card,
+  .experience-item {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+    gap: 28px;
+  }
+
+  h2 {
+    max-width: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-shell {
+    width: min(calc(100% - 20px), var(--max-width));
+  }
+
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .site-nav {
+    gap: 12px;
+  }
+
+  h1 {
+    max-width: none;
+  }
+}
