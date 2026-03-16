@@ -20,6 +20,7 @@ const footerNavLinks = [
   { label: "About", href: "#about", icon: "profile" },
   { label: "Work", href: "#work", icon: "grid" },
   { label: "Experience", href: "#experience", icon: "briefcase" },
+  { label: "Beyond", href: "#beyond", icon: "spark" },
   { label: "Contact", href: "#contact", icon: "mail" },
 ];
 
@@ -57,6 +58,11 @@ const iconMap = {
   briefcase: `
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path fill="currentColor" d="M9 4.5A2.5 2.5 0 0 1 11.5 2h1A2.5 2.5 0 0 1 15 4.5V6h3.75A2.25 2.25 0 0 1 21 8.25v9.5A2.25 2.25 0 0 1 18.75 20h-13.5A2.25 2.25 0 0 1 3 17.75v-9.5A2.25 2.25 0 0 1 5.25 6H9V4.5Zm1.5 0V6h3V4.5a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1Z"/>
+    </svg>
+  `,
+  spark: `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="m12 2 1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8L12 2Zm-6.5 13 1 2.9L9.5 19l-2.9 1-1.1 3-1-3-2.9-1 2.9-1.1L5.5 15Zm13 0 1 2.9 2.9 1.1-2.9 1-1 3-1.1-3-2.9-1 2.9-1.1 1.1-2.9Z"/>
     </svg>
   `,
 };
@@ -114,6 +120,24 @@ const storyCards = [
     label: "What changed me",
     title: "Detection is not prevention",
     copy: "Building a small water-monitoring system taught me that useful technology has to earn trust. Data, rigor, and resilience matter as much as technical ambition.",
+  },
+];
+
+const beyondCards = [
+  {
+    label: "Football",
+    title: "I love playing and watching the game",
+    copy: "Football keeps reminding me that trust is not abstract. Good teams move well because people read space, commit to each other, and act before the whole picture is obvious. I grew up loving Manchester United, and I still come back to that mix of rhythm, pressure, and shared belief.",
+  },
+  {
+    label: "Books",
+    title: "Detective and spy novels stay with me",
+    copy: "I am drawn to stories where the truth is buried in fragments. Good detective and intelligence fiction makes pattern recognition feel human: people working with incomplete signals, imperfect judgment, and consequences that only become clear if they reason carefully.",
+  },
+  {
+    label: "Codebreaking",
+    title: "Why the Bombe story matters to me",
+    copy: "I keep thinking about Turing, wartime codebreaking at Bletchley Park, and the Bombe countering Enigma. That story sits right at the intersection I care about: intelligence, engineering, uncertainty, and building systems strong enough for other people to trust.",
   },
 ];
 
@@ -512,6 +536,21 @@ function renderStoryCards() {
     .join("");
 }
 
+function renderBeyondCards() {
+  const container = document.getElementById("beyond-grid");
+  container.innerHTML = beyondCards
+    .map(
+      (item) => `
+        <article class="story-card reveal">
+          <p class="education-label">${item.label}</p>
+          <h3>${item.title}</h3>
+          <p class="story-card-copy">${item.copy}</p>
+        </article>
+      `
+    )
+    .join("");
+}
+
 function renderProjects() {
   const container = document.getElementById("project-list");
   container.innerHTML = featuredProjects
@@ -673,6 +712,7 @@ function attachModalControls() {
 
 renderLinks();
 renderStoryCards();
+renderBeyondCards();
 renderEducation();
 renderProjects();
 renderCompactProjects();

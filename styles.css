@@ -312,8 +312,16 @@ h2 {
   align-items: start;
 }
 
+.beyond-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  gap: 32px;
+  align-items: start;
+}
+
 .about-copy-block,
 .foundations-copy-block,
+.beyond-copy-block,
 .about-side {
   display: grid;
   gap: 18px;
@@ -324,6 +332,7 @@ h2 {
 }
 
 .story-card-grid,
+.beyond-grid,
 .education-grid,
 .skill-groups,
 .compact-project-grid,
@@ -1058,8 +1067,10 @@ h3 {
   .site-footer,
   .about-layout,
   .foundations-layout,
+  .beyond-layout,
   .education-grid,
   .story-card-grid,
+  .beyond-grid,
   .skill-groups,
   .compact-project-grid,
   .experience-card-grid {
