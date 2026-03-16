@@ -134,30 +134,6 @@ const storyCards = [
   },
 ];
 
-const foundationsCards = [
-  {
-    label: "Training",
-    title: "UMass Amherst",
-    teaser: "BS in Computer Science / Spring 2028",
-    copy:
-      "BS in Computer Science at the University of Massachusetts Amherst.\n\nHonors: Dean's List, Chancellor's Award, SASMO Bronze Medal.\n\nCoursework: Algorithms, Data Structures, Machine Learning, Artificial Intelligence, Object-Oriented Programming, Stats and Reasoning, Methodology Programming, Computer Principles, Computation.",
-  },
-  {
-    label: "Direction",
-    title: "What I am building toward",
-    teaser: "Trustworthy AI systems for forecasting, planning, and decision-support.",
-    copy:
-      "Current direction: trustworthy AI systems for forecasting, planning, decision-support, and infrastructure people can actually rely on.",
-  },
-  {
-    label: "Toolkit",
-    title: "How I usually build",
-    teaser: "Python, FastAPI, Postgres, React, PyTorch, Redis, Docker, and more.",
-    copy:
-      "Languages: Python, Java, C++, JavaScript/TypeScript, C#, HTML/CSS.\n\nDatabases and Infra: PostgreSQL, Redis, MongoDB, Kafka, Neo4j.\n\nFrameworks and Tools: FastAPI, Flask, React, Node.js, Docker, Kubernetes, Git, REST API, PyTorch, TensorFlow, NumPy, Pandas.",
-  },
-];
-
 const beyondCards = [
   {
     label: "Football",
@@ -399,6 +375,66 @@ const skills = [
     ],
   },
 ];
+
+function renderEducationCards(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = education
+    .map((item) => {
+      const content = item.items
+        ? `
+          <ul class="education-list">
+            ${item.items.map((entry) => `<li>${entry}</li>`).join("")}
+          </ul>
+        `
+        : `<p class="education-copy">${item.copy}</p>`;
+
+      return `
+        <article class="education-card reveal">
+          <p class="education-label">${item.label}</p>
+          <h3>${item.title}</h3>
+          ${content}
+        </article>
+      `;
+    })
+    .join("");
+}
+
+function renderSkillGroups(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = skills
+    .map(
+      (group) => `
+        <article class="skill-group reveal">
+          <p class="skill-label">${group.label}</p>
+          <div class="skill-logo-grid">
+            ${group.items
+              .map((item) => {
+                const iconMarkup = item.iconClass
+                  ? `<i class="skill-tile-icon ${item.iconClass} colored" aria-hidden="true"></i>`
+                  : `<span class="skill-fallback" aria-hidden="true">${item.short || item.name.slice(0, 2)}</span>`;
+
+                return `
+                  <div class="skill-tile" aria-label="${item.name}">
+                    <div class="skill-glyph">${iconMarkup}</div>
+                    <span>${item.name}</span>
+                  </div>
+                `;
+              })
+              .join("")}
+          </div>
+        </article>
+      `
+    )
+    .join("");
+}
 
 function renderProjectPreview(project) {
   const previewMap = {
@@ -786,11 +822,12 @@ function renderHomePage() {
 
 function renderAboutPage() {
   renderDetailCards("story-card-grid", storyCards, "story");
-  renderDetailCards("foundations-grid", foundationsCards, "foundations");
+  renderEducationCards("about-background-grid");
   renderDetailCards("beyond-grid", beyondCards, "beyond");
 }
 
 function renderWorkPage() {
+  renderSkillGroups("work-skills");
   renderProjects("project-list", featuredProjects);
   renderCompactProjects("compact-project-grid", additionalProjects);
 }
