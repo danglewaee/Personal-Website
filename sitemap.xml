@@ -21,11 +21,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://personal-website-bal2qm9cv-danglewaees-projects.vercel.app/resume.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://personal-website-bal2qm9cv-danglewaees-projects.vercel.app/contact.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

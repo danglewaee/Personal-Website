@@ -20,7 +20,6 @@ const footerNavLinks = [
   { label: "About", href: "about.html", icon: "profile", page: "about" },
   { label: "Work", href: "work.html", icon: "grid", page: "work" },
   { label: "Experience", href: "experience.html", icon: "briefcase", page: "experience" },
-  { label: "Resume", href: "resume.html", icon: "resume", page: "resume" },
   { label: "Contact", href: "contact.html", icon: "mail", page: "contact" },
 ];
 
@@ -58,11 +57,6 @@ const iconMap = {
   briefcase: `
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path fill="currentColor" d="M9 4.5A2.5 2.5 0 0 1 11.5 2h1A2.5 2.5 0 0 1 15 4.5V6h3.75A2.25 2.25 0 0 1 21 8.25v9.5A2.25 2.25 0 0 1 18.75 20h-13.5A2.25 2.25 0 0 1 3 17.75v-9.5A2.25 2.25 0 0 1 5.25 6H9V4.5Zm1.5 0V6h3V4.5a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1Z"/>
-    </svg>
-  `,
-  resume: `
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path fill="currentColor" d="M7 3.5A2.5 2.5 0 0 1 9.5 1h7A2.5 2.5 0 0 1 19 3.5v17a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 7 20.5v-17Zm2.5-1a1 1 0 0 0-1 1v17a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1v-17a1 1 0 0 0-1-1h-7ZM10 7h6v1.5h-6V7Zm0 4h6v1.5h-6V11Zm0 4h4v1.5h-4V15Z"/>
     </svg>
   `,
   spark: `
@@ -577,66 +571,6 @@ function renderLinks() {
   }
 }
 
-function renderEducationCards(containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) {
-    return;
-  }
-
-  container.innerHTML = education
-    .map((item) => {
-      const content = item.items
-        ? `
-          <ul class="education-list">
-            ${item.items.map((entry) => `<li>${entry}</li>`).join("")}
-          </ul>
-        `
-        : `<p class="education-copy">${item.copy}</p>`;
-
-      return `
-        <article class="education-card reveal">
-          <p class="education-label">${item.label}</p>
-          <h3>${item.title}</h3>
-          ${content}
-        </article>
-      `;
-    })
-    .join("");
-}
-
-function renderSkillGroups(containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) {
-    return;
-  }
-
-  container.innerHTML = skills
-    .map(
-      (group) => `
-        <article class="skill-group reveal">
-          <p class="skill-label">${group.label}</p>
-          <div class="skill-logo-grid">
-            ${group.items
-              .map((item) => {
-                const iconMarkup = item.iconClass
-                  ? `<i class="skill-tile-icon ${item.iconClass} colored" aria-hidden="true"></i>`
-                  : `<span class="skill-fallback" aria-hidden="true">${item.short || item.name.slice(0, 2)}</span>`;
-
-                return `
-                  <div class="skill-tile" aria-label="${item.name}">
-                    <div class="skill-glyph">${iconMarkup}</div>
-                    <span>${item.name}</span>
-                  </div>
-                `;
-              })
-              .join("")}
-          </div>
-        </article>
-      `
-    )
-    .join("");
-}
-
 function renderDetailCards(containerId, items, groupLabel) {
   const container = document.getElementById(containerId);
   if (!container) {
@@ -764,49 +698,6 @@ function renderExperienceCards(containerId, items) {
   });
 }
 
-function renderResumeEntries(containerId, items) {
-  const container = document.getElementById(containerId);
-  if (!container) {
-    return;
-  }
-
-  container.innerHTML = items
-    .map(
-      (item) => `
-        <article class="resume-entry reveal">
-          <div class="resume-entry-top">
-            <h3>${item.title}</h3>
-            <p>${item.meta}</p>
-          </div>
-          <p class="resume-entry-copy">${item.copy}</p>
-        </article>
-      `
-    )
-    .join("");
-}
-
-function renderResumeProjects(containerId, items) {
-  const container = document.getElementById(containerId);
-  if (!container) {
-    return;
-  }
-
-  container.innerHTML = items
-    .map(
-      (item) => `
-        <article class="resume-entry reveal">
-          <div class="resume-entry-top">
-            <h3>${item.name}</h3>
-            <p>${item.year}</p>
-          </div>
-          <p class="resume-entry-copy">${item.summary}</p>
-          <p class="resume-entry-meta">${item.stack}</p>
-        </article>
-      `
-    )
-    .join("");
-}
-
 function openDetailModal(item) {
   const modal = document.getElementById("detail-modal");
   if (!modal) {
@@ -909,20 +800,6 @@ function renderExperiencePage() {
   renderExperienceCards("leadership-list", leadership);
 }
 
-function renderResumePage() {
-  renderEducationCards("resume-education");
-  renderSkillGroups("resume-skills");
-  renderResumeEntries(
-    "resume-experience",
-    experiences.map((item) => ({
-      title: `${item.company} / ${item.title}`,
-      meta: item.meta,
-      copy: item.teaser,
-    }))
-  );
-  renderResumeProjects("resume-projects", featuredProjects.slice(0, 4));
-}
-
 function renderContactPage() {}
 
 function renderPage() {
@@ -939,9 +816,6 @@ function renderPage() {
       break;
     case "experience":
       renderExperiencePage();
-      break;
-    case "resume":
-      renderResumePage();
       break;
     case "contact":
       renderContactPage();
