@@ -215,15 +215,43 @@ const leadership = [
 const skills = [
   {
     label: "Languages",
-    items: ["Python", "Java", "C++", "JavaScript/TypeScript", "C#", "HTML/CSS"],
+    items: [
+      { name: "Python", iconClass: "devicon-python-plain" },
+      { name: "Java", iconClass: "devicon-java-plain" },
+      { name: "C++", iconClass: "devicon-cplusplus-plain" },
+      { name: "JavaScript", iconClass: "devicon-javascript-plain" },
+      { name: "TypeScript", iconClass: "devicon-typescript-plain" },
+      { name: "C#", iconClass: "devicon-csharp-plain" },
+      { name: "HTML5", iconClass: "devicon-html5-plain" },
+      { name: "CSS3", iconClass: "devicon-css3-plain" },
+    ],
   },
   {
     label: "Databases and Infra",
-    items: ["PostgreSQL", "Redis", "MongoDB", "Kafka", "Neo4j"],
+    items: [
+      { name: "PostgreSQL", iconClass: "devicon-postgresql-plain" },
+      { name: "Redis", iconClass: "devicon-redis-plain" },
+      { name: "MongoDB", iconClass: "devicon-mongodb-plain" },
+      { name: "Kafka", iconClass: "devicon-apachekafka-original" },
+      { name: "Neo4j", iconClass: "devicon-neo4j-plain" },
+    ],
   },
   {
     label: "Frameworks and Tools",
-    items: ["FastAPI", "Flask", "React", "Node.js", "Docker", "Kubernetes", "Git", "REST API", "PyTorch", "TensorFlow", "NumPy", "Pandas"],
+    items: [
+      { name: "FastAPI", iconClass: "devicon-fastapi-plain" },
+      { name: "Flask", iconClass: "devicon-flask-original" },
+      { name: "React", iconClass: "devicon-react-original" },
+      { name: "Node.js", iconClass: "devicon-nodejs-plain" },
+      { name: "Docker", iconClass: "devicon-docker-plain" },
+      { name: "Kubernetes", iconClass: "devicon-kubernetes-plain" },
+      { name: "Git", iconClass: "devicon-git-plain" },
+      { name: "REST API", short: "API" },
+      { name: "PyTorch", iconClass: "devicon-pytorch-original" },
+      { name: "TensorFlow", iconClass: "devicon-tensorflow-original" },
+      { name: "NumPy", iconClass: "devicon-numpy-original" },
+      { name: "Pandas", iconClass: "devicon-pandas-original" },
+    ],
   },
 ];
 
@@ -470,8 +498,21 @@ function renderSkills() {
       (group) => `
         <article class="skill-group reveal">
           <p class="skill-label">${group.label}</p>
-          <div class="skill-chip-row">
-            ${group.items.map((item) => `<span>${item}</span>`).join("")}
+          <div class="skill-logo-grid">
+            ${group.items
+              .map((item) => {
+                const iconMarkup = item.iconClass
+                  ? `<i class="skill-tile-icon ${item.iconClass} colored" aria-hidden="true"></i>`
+                  : `<span class="skill-fallback" aria-hidden="true">${item.short || item.name.slice(0, 2)}</span>`;
+
+                return `
+                  <div class="skill-tile" aria-label="${item.name}">
+                    <div class="skill-glyph">${iconMarkup}</div>
+                    <span>${item.name}</span>
+                  </div>
+                `;
+              })
+              .join("")}
           </div>
         </article>
       `
