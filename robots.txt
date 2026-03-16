@@ -1,4 +1,4 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 
-Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://personal-website-bal2qm9cv-danglewaees-projects.vercel.app/sitemap.xml

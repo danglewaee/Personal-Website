@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,113 +6,126 @@
     <title>Dang Le | Software Engineer</title>
     <meta
       name="description"
-      content="Dang Le is a software engineer building AI systems, backend infrastructure, and research-driven products."
+      content="Dang Le is a software engineer building AI systems, backend infrastructure, and product-minded software with real technical depth."
     />
     <meta property="og:title" content="Dang Le | Software Engineer" />
-    <meta property="og:description" content="Portfolio of Dang Le, focused on AI systems, backend infrastructure, and research-driven products." />
+    <meta
+      property="og:description"
+      content="Portfolio of Dang Le, focused on AI systems, reliability tooling, and product-minded engineering."
+    />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://your-domain.com/" />
+    <meta property="og:url" content="https://personal-website-bal2qm9cv-danglewaees-projects.vercel.app/" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Dang Le | Software Engineer" />
-    <meta name="twitter:description" content="Portfolio of Dang Le, focused on AI systems, backend infrastructure, and research-driven products." />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Dang Le, focused on AI systems, reliability tooling, and product-minded engineering."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div class="noise" aria-hidden="true"></div>
     <div class="site-shell">
       <header class="site-header">
         <a class="brand" href="#top">DANG LE</a>
         <nav class="site-nav">
           <a href="#work">Work</a>
           <a href="#about">About</a>
-          <a href="#experience">Experience</a>
           <a href="#contact">Contact</a>
+          <a href="https://github.com/danglewaee" target="_blank" rel="noreferrer">GitHub</a>
         </nav>
       </header>
 
       <main id="top">
-        <section class="hero section reveal">
-          <div class="hero-main">
-            <p class="kicker">Software Engineer · UMass Amherst</p>
-            <h1>Building product-minded systems with real technical depth.</h1>
-            <p class="hero-copy">
-              I build software where the product story is clear and the engineering underneath is serious. My strongest work
-              lives around AI systems, backend infrastructure, planning tools, and reliability.
-            </p>
+        <section class="hero reveal">
+          <div class="hero-grid">
+            <div class="hero-copy-block">
+              <p class="eyebrow">Software Engineer / Amherst, MA</p>
+              <h1>
+                Building systems with
+                <span>product clarity</span>
+                and real depth.
+              </h1>
+            </div>
+            <div class="hero-side">
+              <p class="hero-copy">
+                I build software that is easy to explain from the outside and technically serious underneath. Most of my work sits across AI systems, backend infrastructure, planning tools, and reliability.
+              </p>
+              <div class="hero-note">
+                <p class="hero-note-label">Previously / currently across</p>
+                <p>AriesView, UMass research labs, HCMUT, and student-led engineering teams.</p>
+              </div>
+              <div class="hero-actions" id="hero-links"></div>
+            </div>
           </div>
-          <aside class="hero-rail">
-            <div class="rail-card">
-              <p class="rail-label">Based in</p>
-              <p>Amherst, MA</p>
-            </div>
-            <div class="rail-card">
-              <p class="rail-label">Currently focused on</p>
-              <p>Backend, AI systems, and product clarity.</p>
-            </div>
-            <div class="rail-card social-list" id="social-links"></div>
-          </aside>
         </section>
 
-        <section class="section work-section reveal" id="work">
-          <div class="section-intro">
-            <p class="kicker">Selected Work</p>
-            <h2>Projects that solve something clear and still hold up technically.</h2>
+        <section class="section reveal" id="work">
+          <div class="section-header">
+            <p class="eyebrow">Selected Work</p>
+            <h2>Projects with a clear problem, a sharp point of view, and a serious technical backbone.</h2>
           </div>
-          <div id="featured-work" class="featured-work"></div>
+          <div class="project-list" id="project-list"></div>
         </section>
 
-        <section class="section reveal" id="about">
-          <div class="editorial-row">
-            <div>
-              <p class="kicker">About</p>
-              <h2>I like products that feel obvious to users and difficult to build well.</h2>
-            </div>
-            <div class="body-column">
+        <section class="section split-section reveal" id="about">
+          <div class="section-header sticky-block">
+            <p class="eyebrow">About</p>
+            <h2>I care about products that feel obvious to users and difficult to build well.</h2>
+          </div>
+          <div class="split-content">
+            <div class="about-copy">
               <p>
-                The kind of work I enjoy most starts with a concrete problem, not a vague technology demo. I try to build products that make immediate sense on the surface and reveal stronger systems thinking underneath.
+                I am a Computer Science student at UMass Amherst interested in backend engineering, AI systems, and products where the user story is concrete from the first sentence.
               </p>
               <p>
-                That usually means clean user-facing flows, disciplined scope, and a backend or ML layer rigorous enough to be defended in technical conversation.
+                The work I enjoy most starts with a real problem, then uses strong infrastructure, thoughtful modeling, or product discipline to make the solution hold up under technical scrutiny.
               </p>
             </div>
+            <div class="focus-grid" id="focus-grid"></div>
           </div>
         </section>
 
         <section class="section reveal" id="experience">
-          <div class="section-intro split-head">
-            <div>
-              <p class="kicker">Experience</p>
-              <h2>Work that shaped how I think about systems, research, and product execution.</h2>
-            </div>
+          <div class="section-header">
+            <p class="eyebrow">Experience</p>
+            <h2>Places where I learned to make systems useful, not just impressive.</h2>
           </div>
-          <div id="experience-list" class="experience-list"></div>
-        </section>
-
-        <section class="section reveal capabilities-section">
-          <div class="section-intro split-head">
-            <div>
-              <p class="kicker">Capabilities</p>
-              <h2>Languages, frameworks, and infrastructure I use to ship serious work.</h2>
-            </div>
-          </div>
-          <div id="skills-cloud" class="skills-cloud"></div>
-        </section>
-
-        <section class="section reveal contact-section" id="contact">
-          <p class="kicker">Contact</p>
-          <h2>If you are building thoughtful products or technically ambitious systems, let’s talk.</h2>
-          <p class="contact-copy">
-            I am especially interested in internships, research, and product engineering work with a high technical bar.
-          </p>
-          <div class="contact-actions">
-            <a class="button primary" href="mailto:dangle@umass.edu">Email</a>
-            <a class="button secondary" href="https://github.com/danglewaee" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="button secondary" href="https://www.linkedin.com/in/dang-le-121abb2b4/" target="_blank" rel="noreferrer">LinkedIn</a>
-          </div>
+          <div class="experience-list" id="experience-list"></div>
         </section>
       </main>
+
+      <footer class="site-footer reveal" id="contact">
+        <div class="footer-copy">
+          <p class="eyebrow">Contact</p>
+          <h2>Glad we crossed paths.</h2>
+          <p>
+            I am most interested in internships, research, and product engineering teams that care about both technical rigor and useful software.
+          </p>
+        </div>
+        <div class="footer-grid">
+          <div class="footer-column">
+            <p class="footer-label">Email</p>
+            <a href="mailto:dangle@umass.edu">dangle@umass.edu</a>
+          </div>
+          <div class="footer-column">
+            <p class="footer-label">Elsewhere</p>
+            <div class="footer-links" id="footer-links"></div>
+          </div>
+          <div class="footer-column">
+            <p class="footer-label">Navigation</p>
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </footer>
     </div>
 
     <script src="script.js"></script>
