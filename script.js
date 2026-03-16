@@ -8,97 +8,140 @@ const heroLinks = [
   { label: "GitHub", href: siteConfig.githubProfile },
   { label: "LinkedIn", href: siteConfig.linkedinProfile },
   { label: "Email", href: "mailto:dangle@umass.edu" },
+  { label: "Phone", href: "tel:4134721116" },
+];
+
+const education = [
+  {
+    label: "University",
+    title: "University of Massachusetts Amherst",
+    copy: "BS in Computer Science / Amherst, MA / Expected Graduation: Spring 2028",
+  },
+  {
+    label: "Honors",
+    title: "Awards and distinctions",
+    copy: "Dean's List, Chancellor's Award, SASMO Bronze Medal",
+  },
+  {
+    label: "Coursework",
+    title: "Relevant coursework",
+    copy: "Algorithms, Data Structures, ML, AI, OOP, Stats and Reasoning, Methodology Programming, Computer Principles, Computation",
+  },
+  {
+    label: "Focus",
+    title: "Current direction",
+    copy: "Backend systems, AI-assisted products, planning engines, and applied ML tooling grounded in real operational problems.",
+  },
 ];
 
 const projects = [
   {
-    name: "BalanceOS",
-    type: "Planning Systems",
-    year: "2026",
-    summary: "Turns student task lists, deadlines, and fixed commitments into realistic weekly schedules designed to reduce overload and improve consistency.",
-    detail:
-      "Built as a focused product instead of a vague productivity app: multi-objective planning on the front, simulation and RL benchmarking behind the scenes.",
-    stack: "Python, FastAPI, JavaScript, Simulation, Reinforcement Learning",
-    href: "https://github.com/danglewaee/balance_os",
-    coverClass: "cover-balanceos",
-    coverLabel: "Student planning",
-    coverCaption: "Realistic weekly planning under deadline, workload, and recovery constraints.",
-  },
-  {
     name: "Incident-Intelligence Platform",
-    type: "Reliability Tooling",
+    type: "Distributed Systems",
     year: "2025",
-    summary: "Clusters noisy telemetry into incidents and ranks probable root causes across distributed services.",
+    summary: "Built a platform for distributed systems that ingests telemetry, detects anomalies, and clusters correlated failures into incidents.",
     detail:
-      "Designed to make regressions easier to explain and triage, combining event-driven ingestion, anomaly detection, and dependency-aware ranking.",
+      "Designed a ranking engine using temporal precedence, anomaly intensity, upstream weighting, and deployment proximity, achieving 100 percent top-2 root-cause identification across 4 failure scenarios and reducing triage noise by 80.8 percent in a local benchmark.",
     stack: "FastAPI, Redis, PostgreSQL, Prometheus",
     href: siteConfig.githubProfile,
     coverClass: "cover-incident",
-    coverLabel: "Backend systems",
-    coverCaption: "Reducing triage noise while surfacing what changed and where it likely started.",
+    coverLabel: "Systems observability",
+    coverCaption: "Telemetry ingestion, anomaly detection, incident clustering, and root-cause ranking for distributed systems.",
   },
   {
     name: "AnomalyGuard",
     type: "Applied ML Platform",
     year: "2025",
-    summary: "Monitors water telemetry in real time with explainable anomaly alerts, secure ingestion, and live dashboards.",
+    summary: "Built a real-time water quality monitoring platform supporting live ingestion, alerting, and explainable anomaly detection.",
     detail:
-      "Built around a practical question: how do you make anomaly signals useful enough for operators to trust, not just accurate enough for a notebook?",
-    stack: "FastAPI, React, Kafka, TimescaleDB, Redis",
+      "Implemented a hybrid detection pipeline using Isolation Forest and SHAP to flag pollutants with root-cause signals, and optimized the system to reach 0.81 ms p50 search latency during 5,000 concurrent upsert benchmarks.",
+    stack: "FastAPI, React, PostgreSQL/TimescaleDB, Redis/Celery, Kafka, Docker Compose",
     href: siteConfig.githubProfile,
     coverClass: "cover-anomaly",
     coverLabel: "Operational ML",
-    coverCaption: "Real-time anomaly monitoring with explainability, ingestion, and live visibility.",
+    coverCaption: "Real-time telemetry monitoring with explainable anomaly alerts and live operational visibility.",
   },
   {
-    name: "Water Monitoring System",
-    type: "IoT + Community Systems",
-    year: "2024",
-    summary: "An ESP32-based monitoring system for tracking water quality in households dealing with contamination and limited infrastructure.",
+    name: "Cloud-Optimizer",
+    type: "Infrastructure Optimization",
+    year: "2025",
+    summary: "Built a cloud infrastructure optimizer combining multi-horizon workload forecasting, MILP scheduling, and latency simulation across 960 scenarios spanning 3 cluster profiles and 40 services.",
     detail:
-      "Combined low-cost sensing hardware, backend monitoring, and a notification dashboard to turn environmental data into something a community could actually use.",
-    stack: "ESP32, React, Node.js, Flask, Sensor Telemetry",
+      "Developed baseline-vs-optimizer benchmarking and shadow-mode rollout backtesting, reducing simulated infrastructure cost by 13.5 percent versus reactive autoscaling with p95 optimization latency under 1 ms.",
+    stack: "Python, Kubernetes, MILP, TensorFlow",
     href: siteConfig.githubProfile,
-    coverClass: "cover-water",
-    coverLabel: "Human-centered systems",
-    coverCaption: "Environmental sensing built around a direct, everyday problem rather than a demo scenario.",
-  },
-];
-
-const focusAreas = [
-  {
-    label: "Backend",
-    copy: "APIs, data flows, and service architecture that keep product ideas honest once they hit real usage and complexity.",
+    coverClass: "cover-cloud",
+    coverLabel: "Cloud systems",
+    coverCaption: "Forecasting, scheduling, and rollout planning for safer and cheaper infrastructure changes.",
   },
   {
-    label: "AI systems",
-    copy: "RAG, planning, forecasting, and applied ML systems that are tied to a concrete product or operational problem.",
-  },
-  {
-    label: "Product sense",
-    copy: "I care a lot about reducing scope until the user value is obvious, then building the technical depth underneath it.",
-  },
-  {
-    label: "Execution",
-    copy: "Fast prototyping, strong iteration loops, and enough systems rigor to defend design choices in technical conversation.",
+    name: "UMass-Study-Partner",
+    type: "Planning Engine",
+    year: "2026",
+    summary: "Built a weekly planning engine that generates study schedules under deadline, workload, sleep, and recovery constraints.",
+    detail:
+      "Reduced missed deadlines by 62.9 percent versus an earliest-deadline-first baseline across 50 simulated scenarios, then added stability-aware replanning and an RL selector to improve recovery after disruptions.",
+    stack: "Python, FastAPI, JavaScript, HTML/CSS, Pydantic, Uvicorn, Reinforcement Learning",
+    href: "https://github.com/danglewaee/balance_os",
+    coverClass: "cover-study",
+    coverLabel: "Scheduling + RL",
+    coverCaption: "Study scheduling, bounded replanning, and RL-guided strategy selection under changing workload conditions.",
   },
 ];
 
 const experiences = [
   {
     company: "AriesView",
-    role: "Software Engineer Intern / Boston, USA / Aug 2025 to Dec 2025",
-    copy: "Built RAG, OCR, and LLM-based workflows over real-estate data, improving retrieval quality and reducing analyst lookup friction through natural-language interfaces.",
+    role: "Software Engineer Intern / Boston, USA (hybrid) / September 2025 to December 2025",
+    copy: "Built RAG pipelines and integrated Neo4j graph databases to improve semantic search precision on client insights by about 42 percent, then developed OCR pipelines and an LLM chatbot over real-estate datasets for natural-language lookup.",
+  },
+  {
+    company: "Institute for Science and Technology Innovation",
+    role: "Software Engineer Intern / HCMC, Vietnam (on-site) / June 2023 to July 2023",
+    copy: "Collected and synthesized documents on water resource quality assessment for the Dong Nai and Sai Gon river basin system, then processed 4 years of hydro-met data for MIKE 11 and NAM flow simulations with water-level RMSE around 1.55 m.",
   },
   {
     company: "Ho Chi Minh University of Technology",
-    role: "Research Volunteer / HCMC, Vietnam / May 2025 to Present",
-    copy: "Reproduced radar nowcasting architectures in PyTorch and improved MAE through preprocessing experiments and tighter evaluation loops.",
+    role: "Research Volunteer / HCMC, Vietnam (on-site) / May 2025 to Aug 2025",
+    copy: "Collaborated on radar nowcasting research using deep learning and Axial Attention, reproduced a ConvLSTM in PyTorch for sequence-to-one CAPPI reflectivity prediction, and improved MAE through preprocessing ablation studies and stronger training validation loops.",
   },
   {
+    company: "UMASS CICS PLASMA Lab",
+    role: "Undergraduate Research Volunteer / Amherst, MA / September 2025 to Present",
+    copy: "Contributed to RightTyper, a Python type inference and static analysis tool, by implementing inference logic across core modules and validating performance against tools such as mypy and MonkeyType.",
+  },
+  {
+    company: "UMASS CICS ml4ed Lab",
+    role: "Undergraduate Research Volunteer / Amherst, MA / September 2025 to Present",
+    copy: "Developed an AI-powered advising chatbot using RAG to help students navigate degree requirements and academic policies, integrating course prerequisites and roadmaps into a searchable vector database for retrieval.",
+  },
+];
+
+const leadership = [
+  {
     company: "MassAI",
-    role: "Project Lead / Events Coordinator / Amherst, MA / Jan 2025 to Present",
-    copy: "Led a 6-member team building a sea-level forecasting system, translating an environmental problem into a machine learning product with fast inference.",
+    role: "Project Lead / Events Coordinator / Amherst, MA / January 2025 to Present",
+    copy: "Led a 6-member team to deliver a sea rising level prediction model inspired by direct observations of high-tide flooding in Vietnam, achieving about 24 ms inference latency and 2.3 percent RMSE improvement over polynomial baselines.",
+  },
+  {
+    company: "League of Coders",
+    role: "Vice President",
+    copy: "Self-funded and organized a summer camp for underprivileged children and implemented a water monitoring system for the community.",
+  },
+];
+
+const skills = [
+  {
+    label: "Languages",
+    items: ["Python", "Java", "C++", "JavaScript/TypeScript", "C#", "HTML/CSS"],
+  },
+  {
+    label: "Databases and Infra",
+    items: ["PostgreSQL", "Redis", "MongoDB", "Kafka", "Neo4j"],
+  },
+  {
+    label: "Frameworks and Tools",
+    items: ["FastAPI", "Flask", "React", "Node.js", "Docker", "Kubernetes", "Git", "REST API", "PyTorch", "TensorFlow", "NumPy", "Pandas"],
   },
 ];
 
@@ -106,11 +149,30 @@ function renderLinks() {
   const heroContainer = document.getElementById("hero-links");
   const footerContainer = document.getElementById("footer-links");
   const linkMarkup = heroLinks
-    .map((link) => `<a class="hero-link" href="${link.href}" target="_blank" rel="noreferrer">${link.label}</a>`)
+    .map((link) => {
+      const external = link.href.startsWith("http");
+      const target = external ? ' target="_blank" rel="noreferrer"' : "";
+      return `<a class="hero-link" href="${link.href}"${target}>${link.label}</a>`;
+    })
     .join("");
 
   heroContainer.innerHTML = linkMarkup;
   footerContainer.innerHTML = linkMarkup;
+}
+
+function renderEducation() {
+  const container = document.getElementById("education-grid");
+  container.innerHTML = education
+    .map(
+      (item) => `
+        <article class="education-card reveal">
+          <p class="education-label">${item.label}</p>
+          <h3>${item.title}</h3>
+          <p class="education-copy">${item.copy}</p>
+        </article>
+      `
+    )
+    .join("");
 }
 
 function renderProjects() {
@@ -148,23 +210,9 @@ function renderProjects() {
     .join("");
 }
 
-function renderFocusAreas() {
-  const container = document.getElementById("focus-grid");
-  container.innerHTML = focusAreas
-    .map(
-      (item) => `
-        <article class="focus-item">
-          <p class="focus-item-label">${item.label}</p>
-          <p class="focus-item-copy">${item.copy}</p>
-        </article>
-      `
-    )
-    .join("");
-}
-
-function renderExperience() {
-  const container = document.getElementById("experience-list");
-  container.innerHTML = experiences
+function renderTimeline(containerId, items) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = items
     .map(
       (item) => `
         <article class="experience-item reveal">
@@ -173,6 +221,22 @@ function renderExperience() {
             <p class="experience-role">${item.role}</p>
           </div>
           <p class="experience-copy">${item.copy}</p>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function renderSkills() {
+  const container = document.getElementById("skill-groups");
+  container.innerHTML = skills
+    .map(
+      (group) => `
+        <article class="skill-group reveal">
+          <p class="skill-label">${group.label}</p>
+          <div class="skill-chip-row">
+            ${group.items.map((item) => `<span>${item}</span>`).join("")}
+          </div>
         </article>
       `
     )
@@ -196,7 +260,9 @@ function attachReveal() {
 }
 
 renderLinks();
+renderEducation();
 renderProjects();
-renderFocusAreas();
-renderExperience();
+renderTimeline("experience-list", experiences);
+renderTimeline("leadership-list", leadership);
+renderSkills();
 attachReveal();
