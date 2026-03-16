@@ -289,7 +289,7 @@ h2 {
 
 .project-list {
   display: grid;
-  gap: 72px;
+  gap: 56px;
 }
 
 .project-item {
@@ -304,7 +304,7 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: 420px;
+  min-height: 360px;
   padding: 22px;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -379,6 +379,65 @@ h2 {
 
 .cover-study::after {
   background: rgba(177, 132, 255, 0.32);
+}
+.cover-rag {
+  background:
+    radial-gradient(circle at 22% 24%, rgba(255, 178, 110, 0.22), transparent 30%),
+    linear-gradient(145deg, #16110b 0%, #110d0a 46%, #090706 100%);
+}
+
+.cover-rag::after {
+  background: rgba(255, 174, 107, 0.3);
+}
+
+.cover-control {
+  background:
+    radial-gradient(circle at 78% 22%, rgba(112, 224, 255, 0.2), transparent 30%),
+    linear-gradient(145deg, #0a1418 0%, #081014 46%, #05080a 100%);
+}
+
+.cover-control::after {
+  background: rgba(94, 213, 255, 0.3);
+}
+
+.cover-bitcoin {
+  background:
+    radial-gradient(circle at 24% 22%, rgba(255, 171, 71, 0.24), transparent 30%),
+    linear-gradient(145deg, #181007 0%, #120c08 46%, #080604 100%);
+}
+
+.cover-bitcoin::after {
+  background: rgba(255, 165, 56, 0.32);
+}
+
+.cover-water {
+  background:
+    radial-gradient(circle at 74% 24%, rgba(110, 201, 214, 0.24), transparent 30%),
+    linear-gradient(145deg, #0b1618 0%, #0a1112 46%, #06090a 100%);
+}
+
+.cover-water::after {
+  background: rgba(88, 191, 205, 0.3);
+}
+
+.cover-smart {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 118, 176, 0.2), transparent 28%),
+    linear-gradient(145deg, #17101a 0%, #110d14 46%, #08070b 100%);
+}
+
+.cover-smart::after {
+  background: rgba(247, 108, 172, 0.3);
+}
+
+.cover-career {
+  background:
+    radial-gradient(circle at 76% 18%, rgba(169, 206, 98, 0.22), transparent 28%),
+    linear-gradient(145deg, #11150c 0%, #0d100a 46%, #070905 100%);
+}
+
+.cover-career::after {
+  background: rgba(167, 214, 88, 0.28);
 }
 
 .cover-top {
