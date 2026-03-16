@@ -627,7 +627,8 @@ function renderFeaturedProjectLinks(containerId, projects) {
           <span class="featured-project-index">0${index + 1}</span>
           <span class="featured-project-copy">
             <span class="featured-project-title">${project.name}</span>
-            <span class="featured-project-meta">${project.type} / ${project.year}</span>
+            <span class="featured-project-meta">${project.summary}</span>
+            <span class="featured-project-submeta">${project.type} / ${project.year}</span>
           </span>
           <span class="featured-project-arrow">Open</span>
         </a>

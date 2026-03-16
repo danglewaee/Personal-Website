@@ -27,7 +27,7 @@ body {
     radial-gradient(circle at 12% 18%, rgba(90, 108, 255, 0.08), transparent 18%),
     var(--bg);
   color: var(--text);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Manrope", sans-serif;
 }
 
 body.modal-open {
@@ -103,7 +103,7 @@ button {
 }
 
 .brand {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Syne", sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -174,7 +174,7 @@ button {
 
 .hero-name {
   margin: 0 0 10px;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Syne", sans-serif;
   font-size: clamp(2.6rem, 5vw, 4.4rem);
   font-weight: 700;
   letter-spacing: -0.06em;
@@ -207,7 +207,7 @@ button {
 .section-kicker {
   margin: 0;
   color: var(--text);
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Syne", sans-serif;
   font-size: 0.96rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -221,7 +221,7 @@ h3,
 .compact-project-title,
 .experience-card-title,
 .detail-title {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Syne", sans-serif;
   letter-spacing: -0.06em;
 }
 
@@ -287,7 +287,7 @@ h2 {
   color: var(--text);
   background: transparent;
   cursor: pointer;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Syne", sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -568,7 +568,7 @@ h2 {
 
 .skill-fallback {
   color: var(--text);
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Syne", sans-serif;
   font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -684,7 +684,7 @@ h2 {
 .featured-project-index,
 .featured-project-arrow {
   color: rgba(255, 255, 255, 0.48);
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Syne", sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -697,7 +697,7 @@ h2 {
 }
 
 .featured-project-title {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Syne", sans-serif;
   font-size: clamp(1.55rem, 2.2vw, 2.2rem);
   font-weight: 700;
   letter-spacing: -0.05em;
@@ -736,7 +736,7 @@ h2 {
 }
 
 .archive-project-title {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Syne", sans-serif;
   font-size: 1.08rem;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -752,7 +752,7 @@ h2 {
 .archive-project-meta,
 .archive-project-arrow {
   color: rgba(255, 255, 255, 0.48);
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Syne", sans-serif;
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -1537,6 +1537,414 @@ h3 {
   .detail-panel {
     width: min(calc(100% - 24px), 760px);
     padding: 22px;
+  }
+}
+/* Editorial art direction pass */
+:root {
+  --max-width: 1480px;
+  --shadow: 0 40px 120px rgba(0, 0, 0, 0.32);
+}
+
+body {
+  background:
+    radial-gradient(circle at 84% 16%, rgba(231, 181, 78, 0.08), transparent 20%),
+    radial-gradient(circle at 12% 88%, rgba(76, 98, 255, 0.06), transparent 20%),
+    #040404;
+}
+
+.noise {
+  opacity: 0.02;
+  background-size: 220px 220px;
+  mask-image: linear-gradient(180deg, black 0%, transparent 100%);
+}
+
+.site-shell {
+  width: min(calc(100% - 56px), var(--max-width));
+}
+
+.site-header {
+  padding: 26px 0 18px;
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+  background: linear-gradient(180deg, rgba(4, 4, 4, 0.92), rgba(4, 4, 4, 0.72));
+}
+
+.brand {
+  font-size: 1.02rem;
+  letter-spacing: 0.14em;
+}
+
+.site-nav {
+  gap: 24px;
+}
+
+.site-nav a {
+  font-size: 1.02rem;
+}
+
+.hero {
+  padding: 92px 0 84px;
+}
+
+.hero-grid {
+  grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
+  gap: 88px;
+  align-items: start;
+  min-height: auto;
+}
+
+.hero-copy-block {
+  gap: 18px;
+  padding-top: 14px;
+}
+
+.hero-portrait-wrap {
+  width: min(220px, 24vw);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: none;
+}
+
+.hero-identity {
+  max-width: 320px;
+}
+
+.hero-name {
+  margin: 0 0 8px;
+  font-size: clamp(2.6rem, 4vw, 3.8rem);
+}
+
+.hero-tagline {
+  max-width: 24ch;
+  font-size: 1rem;
+}
+
+.hero-side {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+}
+
+.hero-intro {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.hero-lede {
+  max-width: 10.5ch;
+  margin: 0;
+  color: var(--text);
+  font-family: "Syne", sans-serif;
+  font-size: clamp(3.8rem, 8.8vw, 8rem);
+  font-weight: 700;
+  letter-spacing: -0.09em;
+  line-height: 0.9;
+  text-wrap: balance;
+}
+
+.hero-copy {
+  max-width: 40ch;
+  font-size: 1.08rem;
+}
+
+.hero-actions {
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.hero-link {
+  width: fit-content;
+}
+
+.page-intro {
+  padding: 92px 0 28px;
+}
+
+.page-intro h1 {
+  max-width: none;
+  font-size: clamp(4.2rem, 10vw, 8.8rem);
+  line-height: 0.9;
+}
+
+.page-intro-description {
+  max-width: 38ch;
+  font-size: 1.05rem;
+}
+
+body[data-page="home"] .section {
+  padding: 18px 0 14px;
+}
+
+body[data-page="home"] .section-header {
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+body[data-page="home"] .section-header h2 {
+  font-size: 0.98rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+body[data-page="home"] .subsection-copy {
+  display: none;
+}
+
+body[data-page="home"] .featured-project-link {
+  min-height: 120px;
+  padding: 26px 0;
+}
+
+body[data-page="home"] .featured-project-title {
+  font-size: clamp(2.8rem, 5.4vw, 5.4rem);
+  line-height: 0.88;
+}
+
+body[data-page="home"] .featured-project-meta {
+  display: none;
+}
+
+body[data-page="home"] .featured-project-submeta {
+  color: var(--muted);
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+}
+
+body[data-page="work"] .section,
+body[data-page="about"] .section,
+body[data-page="experience"] .section,
+body[data-page="project-detail"] .section {
+  padding: 34px 0 12px;
+}
+
+body[data-page="work"] .page-intro,
+body[data-page="about"] .page-intro,
+body[data-page="experience"] .page-intro,
+body[data-page="project-detail"] .page-intro {
+  padding-top: 96px;
+}
+
+.featured-link-list {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+.featured-project-link {
+  gap: 28px;
+  align-items: end;
+  padding: 30px 0;
+}
+
+.featured-project-title {
+  font-size: clamp(2.5rem, 4.5vw, 4.8rem);
+  line-height: 0.9;
+}
+
+.featured-project-meta {
+  max-width: 44ch;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.featured-project-submeta {
+  color: rgba(255, 255, 255, 0.46);
+  font-family: "Syne", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+
+.archive-project-link {
+  grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.35fr) auto auto;
+  gap: 22px;
+  padding: 22px 0;
+}
+
+.archive-project-title {
+  font-size: 1.32rem;
+  line-height: 1.18;
+}
+
+.archive-project-summary {
+  max-width: 56ch;
+}
+
+body[data-page="work"] .skill-groups {
+  gap: 42px;
+}
+
+body[data-page="work"] .skill-group {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
+body[data-page="work"] .skill-logo-grid {
+  grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+  gap: 18px;
+}
+
+body[data-page="work"] .skill-tile {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  justify-items: start;
+  text-align: left;
+}
+
+body[data-page="work"] .skill-tile:hover {
+  transform: none;
+  border-color: transparent;
+  background: none;
+}
+
+body[data-page="work"] .skill-glyph {
+  width: 34px;
+  height: 34px;
+  border-radius: 0;
+  background: none;
+}
+
+body[data-page="about"] .essay-stack {
+  gap: 68px;
+}
+
+body[data-page="about"] .essay-block:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+body[data-page="about"] .essay-block {
+  grid-template-columns: minmax(170px, 0.25fr) minmax(0, 1fr);
+  gap: 36px;
+}
+
+body[data-page="about"] .essay-title {
+  font-size: clamp(2.2rem, 3.6vw, 3.6rem);
+}
+
+body[data-page="about"] .education-grid {
+  gap: 0;
+}
+
+body[data-page="about"] .education-card {
+  padding: 22px 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+body[data-page="project-detail"] .project-detail-intro {
+  padding-bottom: 6px;
+}
+
+body[data-page="project-detail"] h1 {
+  max-width: 11ch;
+}
+
+.project-detail-hero-grid {
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 56px;
+}
+
+.project-detail-lede {
+  max-width: 48ch;
+  color: var(--muted);
+}
+
+.case-study-stat {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+}
+
+.project-detail-visual .project-cover {
+  min-height: 520px;
+  border-radius: 40px;
+}
+
+@media (max-width: 1100px) {
+  .site-shell {
+    width: min(calc(100% - 36px), var(--max-width));
+  }
+
+  .hero-grid,
+  .project-detail-hero-grid,
+  body[data-page="about"] .essay-block {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .hero-portrait-wrap {
+    width: min(220px, 50vw);
+  }
+
+  .hero-lede {
+    max-width: 12ch;
+  }
+
+  body[data-page="work"] .skill-groups {
+    gap: 28px;
+  }
+}
+
+@media (max-width: 780px) {
+  .site-shell {
+    width: min(calc(100% - 24px), var(--max-width));
+  }
+
+  .site-nav {
+    gap: 14px;
+  }
+
+  .hero {
+    padding: 62px 0 52px;
+  }
+
+  .page-intro,
+  body[data-page="work"] .page-intro,
+  body[data-page="about"] .page-intro,
+  body[data-page="experience"] .page-intro,
+  body[data-page="project-detail"] .page-intro {
+    padding-top: 62px;
+  }
+
+  .hero-lede {
+    max-width: none;
+    font-size: clamp(2.9rem, 13vw, 5.2rem);
+  }
+
+  .featured-project-link {
+    gap: 14px;
+    align-items: start;
+    padding: 22px 0;
+  }
+
+  .featured-project-title {
+    font-size: clamp(2rem, 9vw, 3.2rem);
+  }
+
+  .archive-project-link {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .archive-project-arrow {
+    display: none;
+  }
+
+  .project-detail-visual .project-cover {
+    min-height: 360px;
+    border-radius: 28px;
   }
 }
 
