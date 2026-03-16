@@ -47,6 +47,7 @@ const featuredProjects = [
     coverClass: "cover-incident",
     coverLabel: "Systems observability",
     coverCaption: "Telemetry ingestion, anomaly detection, incident clustering, and root-cause ranking for distributed systems.",
+    previewType: "incident",
   },
   {
     name: "AnomalyGuard",
@@ -60,6 +61,7 @@ const featuredProjects = [
     coverClass: "cover-anomaly",
     coverLabel: "Operational ML",
     coverCaption: "Real-time telemetry monitoring with explainable anomaly alerts and live operational visibility.",
+    previewType: "anomaly",
   },
   {
     name: "Inference Control Plane",
@@ -73,6 +75,7 @@ const featuredProjects = [
     coverClass: "cover-control",
     coverLabel: "Inference routing",
     coverCaption: "Routing, admission control, and canary support across heterogeneous model backends.",
+    previewType: "control",
   },
   {
     name: "Cloud-Optimizer",
@@ -86,6 +89,7 @@ const featuredProjects = [
     coverClass: "cover-cloud",
     coverLabel: "Cloud systems",
     coverCaption: "Forecasting, scheduling, and rollout planning for safer and cheaper infrastructure changes.",
+    previewType: "cloud",
   },
   {
     name: "UMass-Study-Partner",
@@ -99,6 +103,7 @@ const featuredProjects = [
     coverClass: "cover-study",
     coverLabel: "Scheduling plus RL",
     coverCaption: "Study scheduling, bounded replanning, and RL-guided strategy selection under changing workload conditions.",
+    previewType: "study",
   },
 ];
 
@@ -201,6 +206,110 @@ const skills = [
   },
 ];
 
+function renderProjectPreview(project) {
+  const previewMap = {
+    incident: `
+      <div class="cover-surface preview-shell preview-incident-ui">
+        <div class="preview-topline">
+          <span class="preview-pill">80.8% less triage noise</span>
+          <span class="preview-pill preview-pill-muted">100% top-2</span>
+        </div>
+        <div class="preview-bar-stack">
+          <div class="preview-bar-row"><span>api</span><i><b style="width: 82%"></b></i></div>
+          <div class="preview-bar-row"><span>queue</span><i><b style="width: 58%"></b></i></div>
+          <div class="preview-bar-row"><span>deploy</span><i><b style="width: 70%"></b></i></div>
+        </div>
+        <div class="preview-node-map">
+          <span class="preview-node preview-node-hot">api</span>
+          <span class="preview-node">auth</span>
+          <span class="preview-node">worker</span>
+          <span class="preview-node preview-node-dim">db</span>
+        </div>
+      </div>
+    `,
+    anomaly: `
+      <div class="cover-surface preview-shell preview-anomaly-ui">
+        <div class="preview-topline">
+          <span class="preview-pill">live sensor feed</span>
+          <span class="preview-pill preview-pill-muted">0.81 ms p50</span>
+        </div>
+        <div class="preview-wave">
+          <span style="height: 28%"></span>
+          <span style="height: 42%"></span>
+          <span style="height: 36%"></span>
+          <span style="height: 58%"></span>
+          <span style="height: 72%"></span>
+          <span style="height: 44%"></span>
+          <span style="height: 84%"></span>
+          <span style="height: 38%"></span>
+        </div>
+        <div class="preview-alert-list">
+          <div class="preview-alert"><span>Turbidity spike</span><strong>SHAP +0.42</strong></div>
+          <div class="preview-alert"><span>pH drift</span><strong>watch</strong></div>
+        </div>
+      </div>
+    `,
+    control: `
+      <div class="cover-surface preview-shell preview-control-ui">
+        <div class="preview-topline">
+          <span class="preview-pill">SLO-aware dispatch</span>
+          <span class="preview-pill preview-pill-muted">289.8 ms p95</span>
+        </div>
+        <div class="preview-lanes">
+          <div class="preview-lane"><span>router</span><i><b style="width: 76%"></b></i></div>
+          <div class="preview-lane"><span>queue</span><i><b style="width: 54%"></b></i></div>
+          <div class="preview-lane"><span>fallback</span><i><b style="width: 32%"></b></i></div>
+        </div>
+        <div class="preview-model-grid">
+          <span>gpt-small</span>
+          <span>reranker</span>
+          <span>fallback</span>
+        </div>
+      </div>
+    `,
+    cloud: `
+      <div class="cover-surface preview-shell preview-cloud-ui">
+        <div class="preview-topline">
+          <span class="preview-pill">13.5% cost down</span>
+          <span class="preview-pill preview-pill-muted">p95 < 1 ms</span>
+        </div>
+        <div class="preview-cluster-grid">
+          <div class="preview-cluster-card"><span>a</span><i><b style="width: 62%"></b></i></div>
+          <div class="preview-cluster-card"><span>b</span><i><b style="width: 48%"></b></i></div>
+          <div class="preview-cluster-card"><span>c</span><i><b style="width: 71%"></b></i></div>
+        </div>
+        <div class="preview-rollout-steps">
+          <span class="preview-step preview-step-active">forecast</span>
+          <span class="preview-step">plan</span>
+          <span class="preview-step">canary</span>
+          <span class="preview-step">apply</span>
+        </div>
+      </div>
+    `,
+    study: `
+      <div class="cover-surface preview-shell preview-study-ui">
+        <div class="preview-topline">
+          <span class="preview-pill">62.9% fewer misses</span>
+          <span class="preview-pill preview-pill-muted">RL replan</span>
+        </div>
+        <div class="preview-calendar-grid">
+          <div class="preview-day"><span>M</span><i class="preview-block block-a"></i><i class="preview-block block-b"></i></div>
+          <div class="preview-day"><span>T</span><i class="preview-block block-b"></i></div>
+          <div class="preview-day"><span>W</span><i class="preview-block block-a"></i><i class="preview-block block-c"></i></div>
+          <div class="preview-day"><span>T</span><i class="preview-block block-c"></i></div>
+          <div class="preview-day"><span>F</span><i class="preview-block block-a"></i><i class="preview-block block-b"></i></div>
+        </div>
+        <div class="preview-study-footer">
+          <span>sleep protected</span>
+          <strong>89.7% blocks preserved</strong>
+        </div>
+      </div>
+    `,
+  };
+
+  return previewMap[project.previewType] || "";
+}
+
 function renderLinks() {
   const heroContainer = document.getElementById("hero-links");
   const footerContainer = document.getElementById("footer-links");
@@ -242,7 +351,8 @@ function renderProjects() {
               <span class="cover-chip">${project.coverLabel}</span>
               <span class="cover-year">${project.year}</span>
             </div>
-            <div>
+            ${renderProjectPreview(project)}
+            <div class="cover-bottom">
               <h3 class="cover-title">${project.name}</h3>
               <p class="cover-caption">${project.coverCaption}</p>
             </div>
