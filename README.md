@@ -7,7 +7,6 @@ Static portfolio site, ready for deployment.
 - `about.html`
 - `work.html`
 - `experience.html`
-- `contact.html`
 - `styles.css`
 - `script.js`
 - `vercel.json`

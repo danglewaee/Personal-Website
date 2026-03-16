@@ -11,18 +11,6 @@ const heroLinks = [
   { label: "Phone", href: "tel:4134721116", icon: "phone", value: "(413) 472-1116" },
 ];
 
-const footerSocialLinks = [
-  { label: "GitHub", href: siteConfig.githubProfile, icon: "github" },
-  { label: "LinkedIn", href: siteConfig.linkedinProfile, icon: "linkedin" },
-];
-
-const footerNavLinks = [
-  { label: "About", href: "about.html", icon: "profile", page: "about" },
-  { label: "Projects", href: "work.html", icon: "grid", page: "work" },
-  { label: "Experience", href: "experience.html", icon: "briefcase", page: "experience" },
-  { label: "Contact", href: "contact.html", icon: "mail", page: "contact" },
-];
-
 const iconMap = {
   github: `
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -568,42 +556,9 @@ function setActiveNav() {
 
 function renderLinks() {
   const heroContainer = document.getElementById("hero-links");
-  const footerContainer = document.getElementById("footer-links");
-  const footerEmailContainer = document.getElementById("footer-email");
-  const footerNavContainer = document.getElementById("footer-nav-links");
-  const contactContainer = document.getElementById("contact-method-grid");
 
   if (heroContainer) {
     heroContainer.innerHTML = renderLinkSet(heroLinks, "hero-link");
-  }
-
-  if (footerContainer) {
-    footerContainer.innerHTML = renderLinkSet(footerSocialLinks, "footer-link-item");
-  }
-
-  if (footerEmailContainer) {
-    footerEmailContainer.innerHTML = renderLinkSet(
-      [{ label: "dangle@umass.edu", href: "mailto:dangle@umass.edu", icon: "mail" }],
-      "footer-link-item footer-email-link"
-    );
-  }
-
-  if (footerNavContainer) {
-    footerNavContainer.innerHTML = renderLinkSet(footerNavLinks, "footer-link-item", { highlightCurrent: true });
-  }
-
-  if (contactContainer) {
-    contactContainer.innerHTML = heroLinks
-      .map(
-        (link) => `
-          <a class="contact-card reveal" href="${link.href}"${link.href.startsWith("http") ? ' target="_blank" rel="noreferrer"' : ""}>
-            <span class="contact-card-icon" aria-hidden="true">${iconMap[link.icon] || ""}</span>
-            <span class="contact-card-label">${link.label}</span>
-            <span class="contact-card-value">${link.value || link.label}</span>
-          </a>
-        `
-      )
-      .join("");
   }
 }
 
@@ -837,8 +792,6 @@ function renderExperiencePage() {
   renderExperienceCards("leadership-list", leadership);
 }
 
-function renderContactPage() {}
-
 function renderPage() {
   const page = document.body.dataset.page || "home";
   renderLinks();
@@ -853,9 +806,6 @@ function renderPage() {
       break;
     case "experience":
       renderExperiencePage();
-      break;
-    case "contact":
-      renderContactPage();
       break;
     default:
       renderHomePage();
