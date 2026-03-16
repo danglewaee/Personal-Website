@@ -34,14 +34,14 @@ const education = [
   },
 ];
 
-const projects = [
+const featuredProjects = [
   {
     name: "Incident-Intelligence Platform",
     type: "Distributed Systems",
     year: "2025",
-    summary: "Built a platform for distributed systems that ingests telemetry, detects anomalies, and clusters correlated failures into incidents.",
+    summary: "Telemetry ingestion, anomaly detection, and incident clustering for distributed systems.",
     detail:
-      "Designed a ranking engine using temporal precedence, anomaly intensity, upstream weighting, and deployment proximity, achieving 100 percent top-2 root-cause identification across 4 failure scenarios and reducing triage noise by 80.8 percent in a local benchmark.",
+      "Built a dependency-aware ranking engine that achieved 100 percent top-2 root-cause identification across 4 failure scenarios and reduced triage noise by 80.8 percent in a local benchmark.",
     stack: "FastAPI, Redis, PostgreSQL, Prometheus",
     href: siteConfig.githubProfile,
     coverClass: "cover-incident",
@@ -52,9 +52,9 @@ const projects = [
     name: "AnomalyGuard",
     type: "Applied ML Platform",
     year: "2025",
-    summary: "Built a real-time water quality monitoring platform supporting live ingestion, alerting, and explainable anomaly detection.",
+    summary: "Real-time water quality monitoring with alerting and explainable anomaly detection.",
     detail:
-      "Implemented a hybrid detection pipeline using Isolation Forest and SHAP to flag pollutants with root-cause signals, and optimized the system to reach 0.81 ms p50 search latency during 5,000 concurrent upsert benchmarks.",
+      "Combined Isolation Forest and SHAP for pollutant alerts, then pushed search performance to 0.81 ms p50 during 5,000 concurrent upsert benchmarks.",
     stack: "FastAPI, React, PostgreSQL/TimescaleDB, Redis/Celery, Kafka, Docker Compose",
     href: siteConfig.githubProfile,
     coverClass: "cover-anomaly",
@@ -65,9 +65,9 @@ const projects = [
     name: "Inference Control Plane",
     type: "Inference Infrastructure",
     year: "2025",
-    summary: "Built a control plane for multi-model inference with health-based routing, queue-aware admission control, fallback handling, and canary rollout support.",
+    summary: "Multi-model inference control plane with routing, admission control, fallback, and canary support.",
     detail:
-      "Implemented round-robin, cost-aware, latency-aware, and SLO-aware dispatch policies, then benchmarked mixed-priority traffic at 169.7 ms average latency and 289.8 ms p95 under the SLO-aware policy in the current MVP.",
+      "Benchmarked SLO-aware dispatch at 169.7 ms average latency and 289.8 ms p95 under mixed-priority traffic in the current MVP.",
     stack: "FastAPI, HTTPX, Prometheus, Docker Compose",
     href: siteConfig.githubProfile,
     coverClass: "cover-control",
@@ -78,9 +78,9 @@ const projects = [
     name: "Cloud-Optimizer",
     type: "Infrastructure Optimization",
     year: "2025",
-    summary: "Built a cloud infrastructure optimizer combining multi-horizon workload forecasting, MILP scheduling, and latency simulation across 960 scenarios spanning 3 cluster profiles and 40 services.",
+    summary: "Forecasting, MILP scheduling, and rollout planning for safer and cheaper infrastructure changes.",
     detail:
-      "Developed baseline-vs-optimizer benchmarking and shadow-mode rollout backtesting, reducing simulated infrastructure cost by 13.5 percent versus reactive autoscaling with p95 optimization latency under 1 ms.",
+      "Reduced simulated infrastructure cost by 13.5 percent versus reactive autoscaling while keeping p95 optimization latency under 1 ms.",
     stack: "Python, Kubernetes, MILP, TensorFlow",
     href: siteConfig.githubProfile,
     coverClass: "cover-cloud",
@@ -91,79 +91,57 @@ const projects = [
     name: "UMass-Study-Partner",
     type: "Planning Engine",
     year: "2026",
-    summary: "Built a weekly planning engine that generates study schedules under deadline, workload, sleep, and recovery constraints.",
+    summary: "Study schedule generation under deadline, workload, sleep, and recovery constraints.",
     detail:
-      "Reduced missed deadlines by 62.9 percent versus an earliest-deadline-first baseline across 50 simulated scenarios, then added stability-aware replanning and an RL selector to improve recovery after disruptions.",
+      "Reduced missed deadlines by 62.9 percent versus an earliest-deadline-first baseline, then added stability-aware replanning and an RL selector for disruption recovery.",
     stack: "Python, FastAPI, JavaScript, HTML/CSS, Pydantic, Uvicorn, Reinforcement Learning",
     href: "https://github.com/danglewaee/balance_os",
     coverClass: "cover-study",
     coverLabel: "Scheduling plus RL",
     coverCaption: "Study scheduling, bounded replanning, and RL-guided strategy selection under changing workload conditions.",
   },
+];
+
+const additionalProjects = [
   {
     name: "Rag-memory-service",
     type: "RAG Backend Service",
     year: "2025",
-    summary: "Engineered a production-oriented RAG memory service to manage persistent conversational context for LLM applications with hybrid retrieval scoring.",
-    detail:
-      "Built JWT-protected APIs, Redis query caching with deterministic invalidation, and Prometheus instrumentation for memory operations, cache hit rates, and search latency in a focused Dockerized backend.",
+    summary: "Persistent conversational memory service with hybrid retrieval, JWT APIs, Redis caching, and Prometheus metrics.",
     stack: "FastAPI, MongoDB, Redis",
     href: siteConfig.githubProfile,
-    coverClass: "cover-rag",
-    coverLabel: "LLM memory backend",
-    coverCaption: "Persistent conversational context, hybrid retrieval, caching, and observability for LLM applications.",
-  },
-  {
-    name: "Water Monitoring System",
-    type: "IoT and Community Systems",
-    year: "2024",
-    summary: "Engineered ESP32-based devices with TDS, pH, and temperature sensors for real-time pollution detection at a residential collection site.",
-    detail:
-      "Maintained 96.74 percent uptime over 6 months while collecting 5 readings per day, then built a notification dashboard in React and Node.js with a Flask backend.",
-    stack: "ESP32, React, Node.js, Flask",
-    href: siteConfig.githubProfile,
-    coverClass: "cover-water",
-    coverLabel: "Human-centered systems",
-    coverCaption: "Low-cost sensing, dashboard monitoring, and alerts built around a direct community need.",
   },
   {
     name: "Bitcoin-Node Cost Optimizer",
     type: "Infrastructure Cost Tooling",
     year: "2025",
-    summary: "Built a Bitcoin node cost optimizer to track node telemetry and projected cloud spend before infrastructure changes roll out.",
-    detail:
-      "Designed an action engine that converts optimization signals into prioritized execution plans with apply steps, rollback procedures, risk tiers, and verification checks for reproducible operational decisions.",
+    summary: "Node telemetry and spend projection tool with an action engine for apply steps, rollback plans, and risk-aware execution guidance.",
     stack: "FastAPI, SQLite/PostgreSQL",
     href: siteConfig.githubProfile,
-    coverClass: "cover-bitcoin",
-    coverLabel: "Cost analysis",
-    coverCaption: "Node telemetry, spend projection, and rollout planning before infrastructure changes are applied.",
+  },
+  {
+    name: "Water Monitoring System",
+    type: "IoT and Community Systems",
+    year: "2024",
+    summary: "ESP32-based pollution monitoring with 96.74 percent uptime over 6 months, plus a dashboard and backend for notifications.",
+    stack: "ESP32, React, Node.js, Flask",
+    href: siteConfig.githubProfile,
   },
   {
     name: "SMART Handcut",
     type: "Computer Vision",
     year: "2024",
-    summary: "Built a real-time gesture recognizer using MediaPipe and TensorFlow/LSTM to trigger 8 OS-level shortcuts.",
-    detail:
-      "Created a modular config pipeline for serial and HID adapters, trained on keypoint data, and reached 60 FPS with p95 latency around 40 ms.",
+    summary: "Gesture recognizer using MediaPipe and TensorFlow/LSTM that supports 8 OS-level shortcuts at 60 FPS and roughly 40 ms p95 latency.",
     stack: "MediaPipe, TensorFlow, LSTM",
     href: "https://github.com/danglewaee/SMART-Handcut",
-    coverClass: "cover-smart",
-    coverLabel: "Real-time CV",
-    coverCaption: "Gesture recognition and low-latency shortcut control with live keypoint inference.",
   },
   {
     name: "CS-Career-Mentor",
     type: "Frontend Product",
     year: "2024",
-    summary: "Engineered a React UI for a CS career roadmap platform with faster navigation and cleaner search workflows.",
-    detail:
-      "Reduced user search latency by 80 percent through more efficient data navigation and integrated Firebase for real-time data fetching and secure authentication.",
+    summary: "React career roadmap UI that cut user search latency by 80 percent and integrated Firebase for real-time data and auth.",
     stack: "React, Firebase",
     href: siteConfig.githubProfile,
-    coverClass: "cover-career",
-    coverLabel: "Career product",
-    coverCaption: "Roadmap navigation, faster search, and a more usable frontend for CS career exploration.",
   },
 ];
 
@@ -255,7 +233,7 @@ function renderEducation() {
 
 function renderProjects() {
   const container = document.getElementById("project-list");
-  container.innerHTML = projects
+  container.innerHTML = featuredProjects
     .map(
       (project) => `
         <article class="project-item reveal">
@@ -282,6 +260,26 @@ function renderProjects() {
               <a class="text-link" href="${project.href}" target="_blank" rel="noreferrer">View GitHub</a>
             </div>
           </div>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function renderCompactProjects() {
+  const container = document.getElementById("compact-project-grid");
+  container.innerHTML = additionalProjects
+    .map(
+      (project) => `
+        <article class="compact-project reveal">
+          <div class="compact-project-meta">
+            <p class="project-type">${project.type}</p>
+            <p class="project-year">${project.year}</p>
+          </div>
+          <h3 class="compact-project-title">${project.name}</h3>
+          <p class="compact-project-summary">${project.summary}</p>
+          <p class="compact-project-stack">${project.stack}</p>
+          <a class="text-link" href="${project.href}" target="_blank" rel="noreferrer">View GitHub</a>
         </article>
       `
     )
@@ -340,6 +338,7 @@ function attachReveal() {
 renderLinks();
 renderEducation();
 renderProjects();
+renderCompactProjects();
 renderTimeline("experience-list", experiences);
 renderTimeline("leadership-list", leadership);
 renderSkills();
