@@ -356,6 +356,38 @@ h2 {
   margin-bottom: 34px;
 }
 
+.essay-stack {
+  display: grid;
+  gap: 30px;
+}
+
+.essay-block {
+  display: grid;
+  grid-template-columns: minmax(160px, 0.25fr) minmax(0, 1fr);
+  gap: 30px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.essay-body {
+  display: grid;
+  gap: 14px;
+  max-width: 840px;
+}
+
+.essay-title {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.7vw, 2.5rem);
+  line-height: 1.02;
+}
+
+.essay-copy {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
 .about-layout {
   display: grid;
   grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
@@ -1129,6 +1161,7 @@ h3 {
   .hero-grid,
   .page-intro-grid,
   .project-item,
+  .essay-block,
   .about-layout,
   .foundations-layout,
   .beyond-layout,
