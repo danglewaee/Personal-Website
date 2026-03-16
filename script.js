@@ -5,11 +5,56 @@ const siteConfig = {
 };
 
 const heroLinks = [
-  { label: "GitHub", href: siteConfig.githubProfile },
-  { label: "LinkedIn", href: siteConfig.linkedinProfile },
-  { label: "Email", href: "mailto:dangle@umass.edu" },
-  { label: "Phone", href: "tel:4134721116" },
+  { label: "GitHub", href: siteConfig.githubProfile, icon: "github" },
+  { label: "LinkedIn", href: siteConfig.linkedinProfile, icon: "linkedin" },
+  { label: "Email", href: "mailto:dangle@umass.edu", icon: "mail" },
+  { label: "Phone", href: "tel:4134721116", icon: "phone" },
 ];
+
+const footerNavLinks = [
+  { label: "About", href: "#about", icon: "profile" },
+  { label: "Work", href: "#work", icon: "grid" },
+  { label: "Experience", href: "#experience", icon: "briefcase" },
+  { label: "Contact", href: "#contact", icon: "mail" },
+];
+
+const iconMap = {
+  github: `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M12 2C6.48 2 2 6.58 2 12.23c0 4.51 2.87 8.34 6.84 9.69.5.1.68-.22.68-.49 0-.24-.01-1.05-.01-1.9-2.78.62-3.37-1.21-3.37-1.21-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.92c.85 0 1.71.12 2.51.36 1.9-1.33 2.74-1.05 2.74-1.05.56 1.42.21 2.47.11 2.73.64.72 1.03 1.63 1.03 2.75 0 3.95-2.35 4.81-4.58 5.07.36.32.68.95.68 1.91 0 1.38-.01 2.49-.01 2.83 0 .27.18.59.69.49A10.25 10.25 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z"/>
+    </svg>
+  `,
+  linkedin: `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M6.94 8.5H3.56V20h3.38V8.5Zm.22-3.55c0-1.05-.8-1.95-1.91-1.95-1.1 0-1.91.9-1.91 1.95 0 1.04.8 1.9 1.89 1.9h.02c1.12 0 1.91-.86 1.91-1.9ZM20.44 12.74c0-3.46-1.85-5.07-4.33-5.07-2 0-2.89 1.12-3.39 1.9V8.5H9.34c.04.71 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.68.13-.92.27-.68.9-1.39 1.96-1.39 1.38 0 1.94 1.07 1.94 2.64V20h3.38v-7.26Z"/>
+    </svg>
+  `,
+  mail: `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M3 6.75A2.75 2.75 0 0 1 5.75 4h12.5A2.75 2.75 0 0 1 21 6.75v10.5A2.75 2.75 0 0 1 18.25 20H5.75A2.75 2.75 0 0 1 3 17.25V6.75Zm2.04-.25 6.3 5.1a1.04 1.04 0 0 0 1.32 0l6.3-5.1H5.04Zm13.46 1.29-5.56 4.5a2.54 2.54 0 0 1-3.18 0L4.2 7.79v9.46c0 .86.69 1.55 1.55 1.55h12.5c.86 0 1.55-.69 1.55-1.55V7.79Z"/>
+    </svg>
+  `,
+  phone: `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M6.62 10.79a15.54 15.54 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.31.56 3.57.56.55 0 1 .45 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.5c.55 0 1 .45 1 1 0 1.26.19 2.45.56 3.57.12.35.03.75-.24 1.02l-2.2 2.2Z"/>
+    </svg>
+  `,
+  profile: `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2.25c-4.14 0-7.5 2.69-7.5 6v.75h15v-.75c0-3.31-3.36-6-7.5-6Z"/>
+    </svg>
+  `,
+  grid: `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z"/>
+    </svg>
+  `,
+  briefcase: `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M9 4.5A2.5 2.5 0 0 1 11.5 2h1A2.5 2.5 0 0 1 15 4.5V6h3.75A2.25 2.25 0 0 1 21 8.25v9.5A2.25 2.25 0 0 1 18.75 20h-13.5A2.25 2.25 0 0 1 3 17.75v-9.5A2.25 2.25 0 0 1 5.25 6H9V4.5Zm1.5 0V6h3V4.5a1 1 0 0 0-1-1h-1a1 1 0 0 0-1 1Z"/>
+    </svg>
+  `,
+};
 
 const education = [
   {
@@ -369,19 +414,34 @@ function renderProjectPreview(project) {
   return previewMap[project.previewType] || "";
 }
 
-function renderLinks() {
-  const heroContainer = document.getElementById("hero-links");
-  const footerContainer = document.getElementById("footer-links");
-  const linkMarkup = heroLinks
+function renderLinkSet(links, className) {
+  return links
     .map((link) => {
       const external = link.href.startsWith("http");
       const target = external ? ' target="_blank" rel="noreferrer"' : "";
-      return `<a class="hero-link" href="${link.href}"${target}>${link.label}</a>`;
+      return `
+        <a class="${className}" href="${link.href}"${target}>
+          <span class="link-icon" aria-hidden="true">${iconMap[link.icon] || ""}</span>
+          <span>${link.label}</span>
+        </a>
+      `;
     })
     .join("");
+}
 
-  heroContainer.innerHTML = linkMarkup;
-  footerContainer.innerHTML = linkMarkup;
+function renderLinks() {
+  const heroContainer = document.getElementById("hero-links");
+  const footerContainer = document.getElementById("footer-links");
+  const footerEmailContainer = document.getElementById("footer-email");
+  const footerNavContainer = document.getElementById("footer-nav-links");
+
+  heroContainer.innerHTML = renderLinkSet(heroLinks, "hero-link");
+  footerContainer.innerHTML = renderLinkSet(heroLinks, "footer-link-item");
+  footerEmailContainer.innerHTML = renderLinkSet(
+    [{ label: "dangle@umass.edu", href: "mailto:dangle@umass.edu", icon: "mail" }],
+    "footer-link-item footer-email-link"
+  );
+  footerNavContainer.innerHTML = renderLinkSet(footerNavLinks, "footer-link-item");
 }
 
 function renderEducation() {

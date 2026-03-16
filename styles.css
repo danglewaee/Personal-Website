@@ -100,7 +100,8 @@ button {
 .text-link,
 .footer-links a,
 .footer-column a,
-.hero-link {
+.hero-link,
+.footer-link-item {
   transition: color 180ms ease, opacity 180ms ease;
 }
 
@@ -121,7 +122,8 @@ button {
 .site-nav a,
 .hero-link,
 .footer-column a,
-.footer-links a {
+.footer-links a,
+.footer-link-item {
   color: var(--muted);
 }
 
@@ -129,6 +131,7 @@ button {
 .hero-link:hover,
 .footer-column a:hover,
 .footer-links a:hover,
+.footer-link-item:hover,
 .brand:hover,
 .text-link:hover {
   color: var(--text);
@@ -254,6 +257,28 @@ h2 {
   flex-wrap: wrap;
   gap: 18px;
   margin-top: 22px;
+}
+
+.hero-link,
+.footer-link-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: currentColor;
+}
+
+.link-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .section {
@@ -973,6 +998,20 @@ h3 {
   gap: 10px;
 }
 
+.footer-single-link,
+.footer-nav-links {
+  margin-top: 0;
+}
+
+.footer-nav-links {
+  display: grid;
+  gap: 12px;
+}
+
+.footer-email-link {
+  font-size: 1.05rem;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -1062,7 +1101,8 @@ h3 {
   .project-meta,
   .compact-project-meta,
   .experience-card-top,
-  .footer-grid {
+  .footer-grid,
+  .footer-nav-links {
     display: grid;
     justify-content: start;
   }
