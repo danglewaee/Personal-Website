@@ -209,6 +209,15 @@ const additionalProjects = [
 const caseStudyProjects = featuredProjects.slice(0, 2);
 const archiveProjects = [...featuredProjects.slice(2), ...additionalProjects];
 
+const caseStudyPages = {
+  "Incident-Intelligence Platform": "project-incident.html",
+  "AnomalyGuard": "project-anomalyguard.html",
+};
+
+const projectDetailLookup = {
+  incident: "Incident-Intelligence Platform",
+  anomalyguard: "AnomalyGuard",
+};
 const caseStudyContent = {
   "Incident-Intelligence Platform": {
     stats: ["80.8% less triage noise", "100% top-2 over 4 failures"],
@@ -515,6 +524,18 @@ function renderProjectPreview(project) {
   return previewMap[project.previewType] || "";
 }
 
+function getProjectHref(project) {
+  return caseStudyPages[project.name] || project.href;
+}
+
+function getProjectLinkAttrs(project) {
+  const href = getProjectHref(project);
+  const external = href.startsWith("http");
+  return {
+    href,
+    attrs: external ? ' target="_blank" rel="noreferrer"' : "",
+  };
+}
 function renderLinkSet(links, className, options = {}) {
   const currentPage = document.body.dataset.page || "home";
   return links
@@ -556,10 +577,12 @@ function renderProjects(containerId, projects) {
   }
 
   container.innerHTML = projects
-    .map(
-      (project) => `
+    .map((project) => {
+      const link = getProjectLinkAttrs(project);
+      const ctaLabel = caseStudyPages[project.name] ? "Open project" : "View GitHub";
+      return `
         <article class="project-item reveal">
-          <a class="project-cover ${project.coverClass}" href="${project.href}" target="_blank" rel="noreferrer" aria-label="View ${project.name} on GitHub">
+          <a class="project-cover ${project.coverClass}" href="${link.href}"${link.attrs} aria-label="Open ${project.name}">
             <div class="cover-top">
               <span class="cover-chip">${project.coverLabel}</span>
               <span class="cover-year">${project.year}</span>
@@ -580,115 +603,36 @@ function renderProjects(containerId, projects) {
             <p class="project-detail">${project.detail}</p>
             <p class="project-stack">${project.stack}</p>
             <div class="project-links">
-              <a class="text-link" href="${project.href}" target="_blank" rel="noreferrer">View GitHub</a>
+              <a class="text-link" href="${link.href}"${link.attrs}>${ctaLabel}</a>
             </div>
           </div>
         </article>
-      `
-    )
+      `;
+    })
     .join("");
 }
 
-function buildCaseStudyMarkup(project) {
-  const caseStudy = caseStudyContent[project.name] || { stats: [], blocks: [] };
-  const statsMarkup = caseStudy.stats.length
-    ? `
-      <div class="case-study-stats">
-        ${caseStudy.stats.map((stat) => `<span class="case-study-stat">${stat}</span>`).join("")}
-      </div>
-    `
-    : "";
-  const blocksMarkup = caseStudy.blocks.length
-    ? `
-      <div class="case-study-grid">
-        ${caseStudy.blocks
-          .map(
-            (block) => `
-              <article class="case-study-block">
-                <p class="case-study-label">${block.label}</p>
-                <p class="case-study-text">${block.copy}</p>
-              </article>
-            `
-          )
-          .join("")}
-      </div>
-    `
-    : "";
-
-  return `
-    <article class="case-study">
-      <a class="project-cover ${project.coverClass}" href="${project.href}" target="_blank" rel="noreferrer" aria-label="View ${project.name} on GitHub">
-        <div class="cover-top">
-          <span class="cover-chip">${project.coverLabel}</span>
-          <span class="cover-year">${project.year}</span>
-        </div>
-        ${renderProjectPreview(project)}
-        <div class="cover-bottom">
-          <h3 class="cover-title">${project.name}</h3>
-          <p class="cover-caption">${project.coverCaption}</p>
-        </div>
-      </a>
-      <div class="case-study-copy">
-        <div class="project-meta">
-          <p class="project-type">${project.type}</p>
-          <p class="project-year">${project.year}</p>
-        </div>
-        <div class="case-study-heading">
-          <h3>${project.name}</h3>
-          <p class="project-summary">${project.summary}</p>
-        </div>
-        ${statsMarkup}
-        ${blocksMarkup}
-        <p class="project-stack">${project.stack}</p>
-        <div class="project-links">
-          <a class="text-link" href="${project.href}" target="_blank" rel="noreferrer">View GitHub</a>
-        </div>
-      </div>
-    </article>
-  `;
-}
-
-function renderProjectSelector(listId, panelId, projects) {
-  const list = document.getElementById(listId);
-  const panel = document.getElementById(panelId);
-  if (!list || !panel) {
+function renderFeaturedProjectLinks(containerId, projects) {
+  const container = document.getElementById(containerId);
+  if (!container) {
     return;
   }
 
-  const placeholder = '<p class="project-reveal-placeholder">Open a project to see the system, the tradeoffs, and the proof.</p>';
-
-  list.innerHTML = projects
-    .map(
-      (project, index) => `
-        <button class="project-selector reveal" type="button" data-project-index="${index}">
-          <span class="project-selector-index">0${index + 1}</span>
-          <span class="project-selector-copy">
-            <span class="project-selector-title">${project.name}</span>
-            <span class="project-selector-meta">${project.type} / ${project.year}</span>
+  container.innerHTML = projects
+    .map((project, index) => {
+      const link = getProjectLinkAttrs(project);
+      return `
+        <a class="featured-project-link reveal" href="${link.href}">
+          <span class="featured-project-index">0${index + 1}</span>
+          <span class="featured-project-copy">
+            <span class="featured-project-title">${project.name}</span>
+            <span class="featured-project-meta">${project.type} / ${project.year}</span>
           </span>
-          <span class="project-selector-arrow">Open</span>
-        </button>
-      `
-    )
+          <span class="featured-project-arrow">Open</span>
+        </a>
+      `;
+    })
     .join("");
-
-  panel.innerHTML = placeholder;
-
-  list.querySelectorAll(".project-selector").forEach((button) => {
-    button.addEventListener("click", () => {
-      const isActive = button.classList.contains("is-active");
-      list.querySelectorAll(".project-selector").forEach((entry) => entry.classList.remove("is-active"));
-
-      if (isActive) {
-        panel.innerHTML = placeholder;
-        return;
-      }
-
-      button.classList.add("is-active");
-      const project = projects[Number(button.dataset.projectIndex)];
-      panel.innerHTML = buildCaseStudyMarkup(project);
-    });
-  });
 }
 
 function renderCompactProjects(containerId, projects) {
@@ -698,8 +642,10 @@ function renderCompactProjects(containerId, projects) {
   }
 
   container.innerHTML = projects
-    .map(
-      (project) => `
+    .map((project) => {
+      const link = getProjectLinkAttrs(project);
+      const ctaLabel = caseStudyPages[project.name] ? "Open project" : "View GitHub";
+      return `
         <article class="compact-project reveal">
           <div class="compact-project-meta">
             <p class="project-type">${project.type}</p>
@@ -708,10 +654,10 @@ function renderCompactProjects(containerId, projects) {
           <h3 class="compact-project-title">${project.name}</h3>
           <p class="compact-project-summary">${project.summary}</p>
           <p class="compact-project-stack">${project.stack}</p>
-          <a class="text-link" href="${project.href}" target="_blank" rel="noreferrer">View GitHub</a>
+          <a class="text-link" href="${link.href}"${link.attrs}>${ctaLabel}</a>
         </article>
-      `
-    )
+      `;
+    })
     .join("");
 }
 
@@ -829,6 +775,89 @@ function attachArchiveToggle() {
   });
 }
 
+function renderProjectDetailPage() {
+  const hero = document.getElementById("project-detail-hero");
+  const artifact = document.getElementById("project-detail-artifact");
+  const story = document.getElementById("project-detail-story");
+  if (!hero || !artifact || !story) {
+    return;
+  }
+
+  const projectKey = document.body.dataset.projectKey || "";
+  const projectName = projectDetailLookup[projectKey];
+  const project = featuredProjects.find((entry) => entry.name === projectName);
+  if (!project) {
+    return;
+  }
+
+  const caseStudy = caseStudyContent[project.name] || { stats: [], blocks: [] };
+
+  hero.innerHTML = `
+    <a class="story-trigger project-back-link" href="work.html">Back to projects</a>
+    <div class="page-intro-grid project-detail-hero-grid">
+      <div class="page-intro-copy">
+        <p class="section-kicker">${project.type}</p>
+        <h1>${project.name}</h1>
+        <p class="subsection-copy page-intro-description">${project.summary}</p>
+        <p class="project-detail-lede">${project.detail}</p>
+      </div>
+      <div class="project-detail-meta-grid">
+        <article class="project-detail-meta-card">
+          <p class="project-detail-meta-label">Year</p>
+          <p class="project-detail-meta-value">${project.year}</p>
+        </article>
+        <article class="project-detail-meta-card">
+          <p class="project-detail-meta-label">Focus</p>
+          <p class="project-detail-meta-value">${project.type}</p>
+        </article>
+        <article class="project-detail-meta-card">
+          <p class="project-detail-meta-label">Stack</p>
+          <p class="project-detail-meta-value">${project.stack}</p>
+        </article>
+      </div>
+    </div>
+  `;
+
+  artifact.innerHTML = `
+    <div class="project-detail-visual reveal">
+      <a class="project-cover ${project.coverClass}" href="${project.href}" target="_blank" rel="noreferrer" aria-label="View ${project.name} on GitHub">
+        <div class="cover-top">
+          <span class="cover-chip">${project.coverLabel}</span>
+          <span class="cover-year">${project.year}</span>
+        </div>
+        ${renderProjectPreview(project)}
+        <div class="cover-bottom">
+          <h3 class="cover-title">${project.name}</h3>
+          <p class="cover-caption">${project.coverCaption}</p>
+        </div>
+      </a>
+    </div>
+  `;
+
+  story.innerHTML = `
+    <div class="project-detail-story-grid">
+      <div class="case-study-stats">
+        ${caseStudy.stats.map((stat) => `<span class="case-study-stat">${stat}</span>`).join("")}
+      </div>
+      <div class="case-study-grid">
+        ${caseStudy.blocks
+          .map(
+            (block) => `
+              <article class="case-study-block">
+                <p class="case-study-label">${block.label}</p>
+                <p class="case-study-text">${block.copy}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
+      <div class="project-links project-detail-links">
+        <a class="text-link" href="${project.href}" target="_blank" rel="noreferrer">View GitHub</a>
+        <a class="text-link" href="work.html">Back to projects</a>
+      </div>
+    </div>
+  `;
+}
 function renderHomePage() {
   renderProjects("home-project-list", caseStudyProjects);
 }
@@ -838,7 +867,7 @@ function renderAboutPage() {
 }
 
 function renderWorkPage() {
-  renderProjectSelector("featured-project-index", "featured-project-reveal", caseStudyProjects);
+  renderFeaturedProjectLinks("featured-project-links", caseStudyProjects);
   renderCompactProjects("compact-project-grid", archiveProjects);
   renderSkillGroups("work-skills");
 }
@@ -862,6 +891,9 @@ function renderPage() {
       break;
     case "experience":
       renderExperiencePage();
+      break;
+    case "project-detail":
+      renderProjectDetailPage();
       break;
     default:
       renderHomePage();
