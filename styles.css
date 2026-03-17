@@ -1841,6 +1841,10 @@ body[data-page="project-detail"] .page-intro {
   padding-top: 96px;
 }
 
+body[data-page="work"] .page-intro-description {
+  max-width: none;
+}
+
 .featured-link-list {
   border-top-color: rgba(255, 255, 255, 0.08);
 }
