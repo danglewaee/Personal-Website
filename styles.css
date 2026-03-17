@@ -1674,8 +1674,10 @@ body {
 }
 
 .hero-grid {
-  grid-template-columns: minmax(0, 0.9fr) minmax(300px, 0.48fr);
-  gap: clamp(36px, 5vw, 84px);
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  grid-template-columns: minmax(430px, 560px) minmax(320px, 380px);
+  gap: clamp(28px, 4vw, 56px);
   align-items: center;
   justify-content: center;
   min-height: auto;
@@ -1721,9 +1723,9 @@ body {
   display: grid;
   gap: 18px;
   align-content: start;
-  justify-self: start;
-  max-width: 760px;
-  padding-left: clamp(18px, 3vw, 54px);
+  justify-self: end;
+  max-width: 560px;
+  padding-left: 0;
 }
 
 .hero-intro {
