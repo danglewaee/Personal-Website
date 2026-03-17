@@ -234,7 +234,14 @@ const homeFeaturedProjects = [
   featuredProjects[1],
   featuredProjects[2],
 ].filter(Boolean);
-const caseStudyProjects = featuredProjects;
+const caseStudyProjects = [
+  featuredProjects[0],
+  inferenceControlPlaneProject,
+  featuredProjects[1],
+  featuredProjects[2],
+  featuredProjects[3],
+  featuredProjects[4],
+].filter(Boolean);
 const archiveProjects = additionalProjects.filter(
   (project) => project.name !== "Inference Control Plane"
 );
@@ -844,9 +851,7 @@ function renderProjectGallery(containerId, projects) {
       const ctaLabel = caseStudyPages[project.name] ? "Open case study" : "View GitHub";
       const layoutClass = isHomeGallery
         ? "gallery-card-home"
-        : index === 0
-          ? "gallery-card-featured"
-          : "gallery-card-standard";
+        : "gallery-card-standard";
       if (isHomeGallery) {
         return `
           <a class="gallery-card ${layoutClass} reveal" href="${link.href}"${link.attrs}>
