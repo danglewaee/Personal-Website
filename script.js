@@ -172,9 +172,15 @@ const additionalProjects = [
     type: "Inference Infrastructure",
     year: "2025",
     summary: "Routes requests across self-hosted models so one slow or unhealthy model does not break the whole application.",
+    detail:
+      "Built a control plane for multi-model inference with health-based routing, queue-aware admission control, fallback handling, and canary rollout support.",
     stack: "FastAPI, HTTPX, Prometheus, Docker Compose",
     href: siteConfig.githubProfile,
+    coverClass: "cover-control",
+    coverLabel: "Inference infrastructure",
+    coverCaption: "A control layer for routing, fallback, and safe model rollout across self-hosted LLM backends.",
     imageSrc: "assets/project-covers/inference-control-plane.png",
+    previewType: "control",
   },
   {
     name: "Rag-memory-service",
@@ -218,9 +224,20 @@ const additionalProjects = [
   },
 ];
 
-const homeFeaturedProjects = featuredProjects.slice(0, 3);
+const inferenceControlPlaneProject = additionalProjects.find(
+  (project) => project.name === "Inference Control Plane"
+);
+
+const homeFeaturedProjects = [
+  featuredProjects[0],
+  inferenceControlPlaneProject,
+  featuredProjects[1],
+  featuredProjects[2],
+].filter(Boolean);
 const caseStudyProjects = featuredProjects;
-const archiveProjects = additionalProjects;
+const archiveProjects = additionalProjects.filter(
+  (project) => project.name !== "Inference Control Plane"
+);
 
 const caseStudyPages = {
   "Sea Rising Level Prediction": "project-sea-rising-level.html",

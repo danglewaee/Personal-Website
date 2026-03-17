@@ -788,8 +788,8 @@ h2 {
 }
 
 .project-gallery-home {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 28px;
   grid-auto-rows: auto;
 }
 
@@ -827,7 +827,7 @@ h2 {
 }
 
 .gallery-card-home .gallery-card-cover {
-  min-height: 290px;
+  min-height: 320px;
 }
 
 .gallery-card-featured .gallery-card-cover {
@@ -845,6 +845,8 @@ h2 {
 
 .gallery-card-body-home {
   align-content: start;
+  min-height: 160px;
+  grid-template-rows: auto auto 1fr auto;
 }
 
 .gallery-cover-copy {
