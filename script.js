@@ -92,18 +92,18 @@ const storyIntro = {
 
 const featuredProjects = [
   {
-    name: "Incident-Intelligence Platform",
-    type: "Distributed Systems",
+    name: "Sea Rising Level Prediction",
+    type: "Applied Forecasting",
     year: "2025",
-    summary: "Helps on-call teams move from alert storms to likely root cause faster.",
+    summary: "Uses forecasting to surface earlier signals of worsening water risk.",
     detail:
-      "Built a dependency-aware ranking engine that achieved 100 percent top-2 root-cause identification across 4 failure scenarios and reduced triage noise by 80.8 percent in a local benchmark.",
-    stack: "FastAPI, Redis, PostgreSQL, Prometheus",
-    href: siteConfig.githubProfile,
-    coverClass: "cover-incident",
-    coverLabel: "Systems observability",
-    coverCaption: "Telemetry ingestion, anomaly detection, incident clustering, and root-cause ranking for distributed systems.",
-    previewType: "incident",
+      "Built a global sea-level forecasting model that improved over polynomial baselines by 2.3 percent RMSE while keeping inference around 24 ms.",
+    stack: "Python, TensorFlow, LSTM",
+    href: "https://github.com/danglewaee/Sea-Rising-Level",
+    coverClass: "cover-sea",
+    coverLabel: "Forecasting",
+    coverCaption: "A global sea-level forecasting model motivated by a much more local question about trust, risk, and preparation.",
+    previewType: "sea",
   },
   {
     name: "AnomalyGuard",
@@ -120,24 +120,24 @@ const featuredProjects = [
     previewType: "anomaly",
   },
   {
-    name: "Inference Control Plane",
-    type: "Inference Infrastructure",
+    name: "Incident-Intelligence Platform",
+    type: "Distributed Systems",
     year: "2025",
-    summary: "Multi-model inference control plane with routing, admission control, fallback, and canary support.",
+    summary: "Helps on-call teams move from alert storms to likely root cause faster.",
     detail:
-      "Benchmarked SLO-aware dispatch at 169.7 ms average latency and 289.8 ms p95 under mixed-priority traffic in the current MVP.",
-    stack: "FastAPI, HTTPX, Prometheus, Docker Compose",
+      "Built a dependency-aware ranking engine that achieved 100 percent top-2 root-cause identification across 4 failure scenarios and reduced triage noise by 80.8 percent in a local benchmark.",
+    stack: "FastAPI, Redis, PostgreSQL, Prometheus",
     href: siteConfig.githubProfile,
-    coverClass: "cover-control",
-    coverLabel: "Inference routing",
-    coverCaption: "Routing, admission control, and canary support across heterogeneous model backends.",
-    previewType: "control",
+    coverClass: "cover-incident",
+    coverLabel: "Systems observability",
+    coverCaption: "Telemetry ingestion, anomaly detection, incident clustering, and root-cause ranking for distributed systems.",
+    previewType: "incident",
   },
   {
     name: "Cloud-Optimizer",
     type: "Infrastructure Optimization",
     year: "2025",
-    summary: "Forecasting, MILP scheduling, and rollout planning for safer and cheaper infrastructure changes.",
+    summary: "Helps platform teams reduce wasted cloud spend without taking reckless risks on reliability.",
     detail:
       "Reduced simulated infrastructure cost by 13.5 percent versus reactive autoscaling while keeping p95 optimization latency under 1 ms.",
     stack: "Python, Kubernetes, MILP, TensorFlow",
@@ -151,7 +151,7 @@ const featuredProjects = [
     name: "UMass-Study-Partner",
     type: "Planning Engine",
     year: "2026",
-    summary: "Study schedule generation under deadline, workload, sleep, and recovery constraints.",
+    summary: "Helps students turn overloaded weeks into plans they can actually follow.",
     detail:
       "Reduced missed deadlines by 62.9 percent versus an earliest-deadline-first baseline, then added stability-aware replanning and an RL selector for disruption recovery.",
     stack: "Python, FastAPI, JavaScript, HTML/CSS, Pydantic, Uvicorn, Reinforcement Learning",
@@ -164,6 +164,14 @@ const featuredProjects = [
 ];
 
 const additionalProjects = [
+  {
+    name: "Inference Control Plane",
+    type: "Inference Infrastructure",
+    year: "2025",
+    summary: "Routes requests across self-hosted models so one slow or unhealthy model does not break the whole application.",
+    stack: "FastAPI, HTTPX, Prometheus, Docker Compose",
+    href: siteConfig.githubProfile,
+  },
   {
     name: "Rag-memory-service",
     type: "RAG Backend Service",
@@ -206,19 +214,51 @@ const additionalProjects = [
   },
 ];
 
-const caseStudyProjects = featuredProjects.slice(0, 2);
-const archiveProjects = [...featuredProjects.slice(2), ...additionalProjects];
+const homeFeaturedProjects = featuredProjects.slice(0, 3);
+const caseStudyProjects = featuredProjects;
+const archiveProjects = additionalProjects;
 
 const caseStudyPages = {
+  "Sea Rising Level Prediction": "project-sea-rising-level.html",
   "Incident-Intelligence Platform": "project-incident.html",
   "AnomalyGuard": "project-anomalyguard.html",
+  "Cloud-Optimizer": "project-cloud-optimizer.html",
+  "UMass-Study-Partner": "project-study-partner.html",
 };
 
 const projectDetailLookup = {
+  sea: "Sea Rising Level Prediction",
   incident: "Incident-Intelligence Platform",
   anomalyguard: "AnomalyGuard",
+  cloud: "Cloud-Optimizer",
+  study: "UMass-Study-Partner",
 };
 const caseStudyContent = {
+  "Sea Rising Level Prediction": {
+    stats: ["2.3% RMSE improvement", "~24 ms inference"],
+    blocks: [
+      {
+        label: "Who it helps",
+        copy: "Built as a global sea-level forecasting model, but motivated by a much more local question for me: how forecasting can become more trustworthy for communities that live with water risk.",
+      },
+      {
+        label: "What makes the moment hard",
+        copy: "Rising risk often becomes obvious only after visible damage, while weaker baselines make it hard to plan from the signal early enough. Without stronger forecasting, people are left with delayed observation and simpler estimates that are easier to trust only after the danger is already clear.",
+      },
+      {
+        label: "What the system changes",
+        copy: "The model is meant to provide an earlier view of worsening sea-level trends, so planning and preparedness can begin from forecasted movement instead of only from visible impact.",
+      },
+      {
+        label: "Why it earns trust",
+        copy: "It earns trust by improving over polynomial baselines while keeping inference fast enough for practical use, showing that better forecasting can also remain operationally usable.",
+      },
+      {
+        label: "Why it belongs here",
+        copy: "This project stays close to the reason I started: building forecasting systems strong enough that people in vulnerable places do not have to wait for damage before they believe the signal.",
+      },
+    ],
+  },
   "Incident-Intelligence Platform": {
     stats: ["80.8% less triage noise", "100% top-2 over 4 failures"],
     blocks: [
@@ -262,6 +302,56 @@ const caseStudyContent = {
       {
         label: "Why it belongs here",
         copy: "This is one of the clearest expressions of my mission: building systems people can act on before visible damage is the only thing left to trust.",
+      },
+    ],
+  },
+  "Cloud-Optimizer": {
+    stats: ["13.5% cost reduction", "p95 < 1 ms"],
+    blocks: [
+      {
+        label: "Who it helps",
+        copy: "Built for infrastructure and platform teams that manage many services in the cloud, where wasted capacity is expensive but risky changes can hurt reliability.",
+      },
+      {
+        label: "What makes the moment hard",
+        copy: "The hard part is not seeing wasted cloud spend. It is knowing how to reduce it without making the system less reliable for users.",
+      },
+      {
+        label: "What the system changes",
+        copy: "The system combines workload forecasting, optimization, and rollout guardrails to produce safer scaling plans, helping teams cut waste without treating reliability as an afterthought.",
+      },
+      {
+        label: "Why it earns trust",
+        copy: "Trust comes from the fact that it does not just recommend cheaper plans. It also compares against reactive baselines, tests decisions in shadow mode, and wraps changes in canary and rollback logic before they are applied.",
+      },
+      {
+        label: "Why it belongs here",
+        copy: "It carries the same mission into cloud infrastructure: turning uncertain tradeoffs into decisions teams can trust enough to act on.",
+      },
+    ],
+  },
+  "UMass-Study-Partner": {
+    stats: ["62.9% fewer misses", "89.7% blocks preserved"],
+    blocks: [
+      {
+        label: "Who it helps",
+        copy: "Built for students whose weeks are packed with classes, deadlines, and overlapping tasks, but who still need a plan they can realistically follow.",
+      },
+      {
+        label: "What makes the moment hard",
+        copy: "The hard part is not knowing that the workload is heavy. It is knowing what to do first, how much to take on, and how to avoid building a schedule that collapses halfway through the week.",
+      },
+      {
+        label: "What the system changes",
+        copy: "The system turns messy task dumps into more realistic weekly plans by accounting for deadlines, workload, sleep, and recovery, then replanning when disruptions happen.",
+      },
+      {
+        label: "Why it earns trust",
+        copy: "Trust comes from the fact that it does not just produce an optimized schedule. It is designed to keep plans realistic, preserve as much of the schedule as possible when things change, and benchmark against simpler baselines instead of assuming the first plan is always good enough.",
+      },
+      {
+        label: "Why it belongs here",
+        copy: "It brings the same mission down to human scale: turning messy constraints into decisions people can trust enough to act on every day.",
       },
     ],
   },
@@ -483,6 +573,28 @@ function renderSkillGroups(containerId) {
 
 function renderProjectPreview(project) {
   const previewMap = {
+    sea: `
+      <div class="cover-surface preview-shell preview-sea-ui">
+        <div class="preview-topline">
+          <span class="preview-pill">forecasting trend</span>
+          <span class="preview-pill preview-pill-muted">~24 ms inference</span>
+        </div>
+        <div class="preview-wave">
+          <span style="height: 24%"></span>
+          <span style="height: 32%"></span>
+          <span style="height: 36%"></span>
+          <span style="height: 44%"></span>
+          <span style="height: 52%"></span>
+          <span style="height: 64%"></span>
+          <span style="height: 72%"></span>
+          <span style="height: 82%"></span>
+        </div>
+        <div class="preview-alert-list">
+          <div class="preview-alert"><span>Trend strength</span><strong>rising</strong></div>
+          <div class="preview-alert"><span>Baseline</span><strong>poly -2.3% RMSE</strong></div>
+        </div>
+      </div>
+    `,
     incident: `
       <div class="cover-surface preview-shell preview-incident-ui">
         <div class="preview-topline">
@@ -832,7 +944,7 @@ function renderProjectDetailPage() {
 
   const projectKey = document.body.dataset.projectKey || "";
   const projectName = projectDetailLookup[projectKey];
-  const project = featuredProjects.find((entry) => entry.name === projectName);
+  const project = [...featuredProjects, ...additionalProjects].find((entry) => entry.name === projectName);
   if (!project) {
     return;
   }
@@ -906,7 +1018,7 @@ function renderProjectDetailPage() {
   `;
 }
 function renderHomePage() {
-  renderFeaturedProjectLinks("home-project-links", caseStudyProjects);
+  renderFeaturedProjectLinks("home-project-links", homeFeaturedProjects);
 }
 
 function renderAboutPage() {

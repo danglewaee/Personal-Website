@@ -912,6 +912,16 @@ h2 {
   background: rgba(68, 153, 255, 0.3);
 }
 
+.cover-sea {
+  background:
+    radial-gradient(circle at 24% 22%, rgba(87, 182, 255, 0.22), transparent 30%),
+    linear-gradient(145deg, #0b1218 0%, #0a0f14 48%, #06080c 100%);
+}
+
+.cover-sea::after {
+  background: rgba(87, 182, 255, 0.3);
+}
+
 .cover-cloud {
   background:
     radial-gradient(circle at 25% 22%, rgba(115, 224, 212, 0.2), transparent 30%),
