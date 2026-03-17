@@ -1676,8 +1676,8 @@ body {
 .hero-grid {
   width: min(100%, 1180px);
   margin: 0 auto;
-  grid-template-columns: minmax(430px, 560px) minmax(320px, 380px);
-  gap: clamp(28px, 4vw, 56px);
+  grid-template-columns: minmax(460px, 600px) minmax(320px, 390px);
+  gap: clamp(40px, 4.8vw, 72px);
   align-items: center;
   justify-content: center;
   min-height: auto;
@@ -1724,7 +1724,7 @@ body {
   gap: 18px;
   align-content: start;
   justify-self: end;
-  max-width: 560px;
+  max-width: 590px;
   padding-left: 0;
 }
 
