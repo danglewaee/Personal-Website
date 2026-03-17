@@ -192,7 +192,7 @@ const additionalProjects = [
     href: siteConfig.githubProfile,
   },
   {
-    name: "Bitcoin-Node Cost Optimizer",
+    name: "Bitcoin trend",
     type: "Infrastructure Cost Tooling",
     year: "2025",
     summary: "Node telemetry and spend projection tool with an action engine for apply steps, rollback plans, and risk-aware execution guidance.",
