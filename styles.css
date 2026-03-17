@@ -1769,6 +1769,11 @@ body {
   padding-top: 0;
 }
 
+body[data-page="home"] .hero-profile-block {
+  justify-items: center;
+  text-align: center;
+}
+
 .hero-portrait-wrap {
   width: min(356px, 33vw);
   border-color: rgba(255, 255, 255, 0.12);
@@ -1778,6 +1783,10 @@ body {
 
 .hero-identity {
   max-width: 340px;
+}
+
+body[data-page="home"] .hero-identity {
+  justify-items: center;
 }
 
 .hero-name {
@@ -1790,6 +1799,14 @@ body {
   margin: 0;
   font-size: 1rem;
   line-height: 1.6;
+}
+
+body[data-page="home"] .hero-tagline {
+  margin-inline: auto;
+}
+
+body[data-page="home"] .hero-actions {
+  justify-content: center;
 }
 
 .hero-side {
