@@ -95,7 +95,7 @@ const featuredProjects = [
     name: "Incident-Intelligence Platform",
     type: "Distributed Systems",
     year: "2025",
-    summary: "Telemetry ingestion, anomaly detection, and incident clustering for distributed systems.",
+    summary: "Helps on-call teams move from alert storms to likely root cause faster.",
     detail:
       "Built a dependency-aware ranking engine that achieved 100 percent top-2 root-cause identification across 4 failure scenarios and reduced triage noise by 80.8 percent in a local benchmark.",
     stack: "FastAPI, Redis, PostgreSQL, Prometheus",
@@ -109,7 +109,7 @@ const featuredProjects = [
     name: "AnomalyGuard",
     type: "Applied ML Platform",
     year: "2025",
-    summary: "Real-time water quality monitoring with alerting and explainable anomaly detection.",
+    summary: "Helps under-resourced water teams catch abnormal changes earlier and act with more confidence.",
     detail:
       "Combined Isolation Forest and SHAP for pollutant alerts, then pushed search performance to 0.81 ms p50 during 5,000 concurrent upsert benchmarks.",
     stack: "FastAPI, React, PostgreSQL/TimescaleDB, Redis/Celery, Kafka, Docker Compose",
@@ -223,16 +223,20 @@ const caseStudyContent = {
     stats: ["80.8% less triage noise", "100% top-2 over 4 failures"],
     blocks: [
       {
-        label: "Problem",
-        copy: "Distributed telemetry can tell you something is wrong without showing what actually broke or what deserves attention first.",
+        label: "Who it helps",
+        copy: "Built for on-call engineers and reliability owners working in distributed systems, where incidents often surface as a flood of noisy telemetry across many dependent services.",
       },
       {
-        label: "System",
-        copy: "I built event-driven ingestion, anomaly clustering, and dependency-aware ranking over temporal signals, service topology, and deployment context.",
+        label: "What makes the moment hard",
+        copy: "Without better structure, teams have to jump across dashboards, logs, and deployment history to guess which failures matter first and which are only downstream symptoms.",
       },
       {
-        label: "Outcome",
-        copy: "The system surfaced the true source within the top two candidates across 4 injected failures while cutting triage noise by 80.8 percent.",
+        label: "What the system changes",
+        copy: "The platform ingests telemetry, detects anomalies, clusters correlated failures into incidents, and ranks likely root causes using temporal precedence, anomaly intensity, service topology, and deployment proximity. That gives responders a more defensible starting point for investigation instead of pure guesswork.",
+      },
+      {
+        label: "Why it belongs here",
+        copy: "It is the infrastructure version of the same question I keep returning to: how do we turn messy signals into decisions people can trust under pressure?",
       },
     ],
   },
@@ -240,16 +244,24 @@ const caseStudyContent = {
     stats: ["0.81 ms p50 search", "5,000 concurrent upserts"],
     blocks: [
       {
-        label: "Problem",
-        copy: "Water telemetry only matters if unusual conditions are caught early and explained clearly enough for someone to trust the alert.",
+        label: "Who it helps",
+        copy: "Built for rural water operators and local environmental offices in under-resourced areas, where limited staffing and infrastructure make close, continuous monitoring difficult.",
       },
       {
-        label: "System",
-        copy: "I combined FastAPI ingestion, TimescaleDB, Kafka, and an Isolation Forest plus SHAP pipeline to turn raw readings into explainable pollutant warnings.",
+        label: "What makes the moment hard",
+        copy: "The hardest moment is when a water source may be turning unsafe, but the team does not have enough people, time, or inspection coverage to know early and respond with confidence. Without continuous signals, it becomes easier to miss abnormal change until it is harder to ignore.",
       },
       {
-        label: "Outcome",
-        copy: "The platform delivered live monitoring and alerting with sub-millisecond p50 search latency during a 5,000-upsert benchmark.",
+        label: "What the system changes",
+        copy: "The system turns telemetry into earlier, more interpretable alerts by combining live ingestion, anomaly detection, and explainability. Instead of a black-box warning, teams get a clearer signal about what deserves attention first and why it may matter.",
+      },
+      {
+        label: "Why it earns trust",
+        copy: "Trust matters here because these teams cannot afford to inspect everything manually. The system helps them use scarce staff and infrastructure more intelligently by surfacing earlier, interpretable signals that show where to investigate, what to prioritize, and when to escalate.",
+      },
+      {
+        label: "Why it belongs here",
+        copy: "This is one of the clearest expressions of my mission: building systems people can act on before visible damage is the only thing left to trust.",
       },
     ],
   },
