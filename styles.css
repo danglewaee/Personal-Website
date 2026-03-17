@@ -1674,9 +1674,9 @@ body {
 }
 
 .hero-grid {
-  width: min(100%, 1270px);
+  width: min(100%, 1240px);
   margin: 0 auto;
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 410px);
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 430px);
   gap: clamp(56px, 6vw, 96px);
   align-items: center;
   justify-content: center;
@@ -1692,24 +1692,24 @@ body {
 
 .hero-profile-block {
   justify-self: end;
-  max-width: 380px;
+  max-width: 400px;
   padding-top: 0;
 }
 
 .hero-portrait-wrap {
-  width: min(340px, 32vw);
+  width: min(356px, 33vw);
   border-color: rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.02);
   box-shadow: none;
 }
 
 .hero-identity {
-  max-width: 320px;
+  max-width: 340px;
 }
 
 .hero-name {
   margin: 0 0 8px;
-  font-size: clamp(3rem, 4vw, 4.4rem);
+  font-size: clamp(3.15rem, 4.2vw, 4.7rem);
 }
 
 .hero-tagline {
@@ -1724,7 +1724,7 @@ body {
   gap: 18px;
   align-content: start;
   justify-self: start;
-  max-width: 620px;
+  max-width: 650px;
   padding-left: 0;
 }
 
@@ -1741,7 +1741,7 @@ body {
   margin: 0;
   color: var(--text);
   font-family: "Inter Tight", sans-serif;
-  font-size: clamp(3rem, 5.6vw, 5rem);
+  font-size: clamp(3.15rem, 5.9vw, 5.2rem);
   font-weight: 700;
   letter-spacing: -0.08em;
   line-height: 0.94;
