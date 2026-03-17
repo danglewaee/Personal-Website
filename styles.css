@@ -1674,10 +1674,10 @@ body {
 }
 
 .hero-grid {
-  width: min(100%, 1180px);
+  width: min(100%, 1320px);
   margin: 0 auto;
-  grid-template-columns: minmax(460px, 600px) minmax(320px, 390px);
-  gap: clamp(40px, 4.8vw, 72px);
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 410px);
+  gap: clamp(56px, 6vw, 96px);
   align-items: center;
   justify-content: center;
   min-height: auto;
@@ -1691,7 +1691,7 @@ body {
 }
 
 .hero-profile-block {
-  justify-self: start;
+  justify-self: end;
   max-width: 380px;
   padding-top: 0;
 }
@@ -1723,8 +1723,8 @@ body {
   display: grid;
   gap: 18px;
   align-content: start;
-  justify-self: end;
-  max-width: 590px;
+  justify-self: start;
+  max-width: 620px;
   padding-left: 0;
 }
 
