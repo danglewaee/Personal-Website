@@ -1594,15 +1594,17 @@ body {
 }
 
 .hero-grid {
-  grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
-  gap: 88px;
+  grid-template-columns: minmax(260px, 0.42fr) minmax(620px, 0.96fr);
+  gap: clamp(72px, 8vw, 136px);
   align-items: start;
+  justify-content: center;
   min-height: auto;
 }
 
 .hero-copy-block {
   gap: 18px;
   padding-top: 14px;
+  justify-self: end;
 }
 
 .hero-portrait-wrap {
@@ -1630,6 +1632,8 @@ body {
   display: grid;
   gap: 18px;
   align-content: start;
+  justify-self: end;
+  max-width: 880px;
 }
 
 .hero-intro {
@@ -1637,6 +1641,7 @@ body {
   color: var(--muted);
   font-size: 1rem;
   line-height: 1.6;
+  max-width: 32ch;
 }
 
 .hero-lede {
@@ -1652,7 +1657,7 @@ body {
 }
 
 .hero-copy {
-  max-width: 40ch;
+  max-width: 34ch;
   font-size: 1.08rem;
 }
 
@@ -1846,6 +1851,12 @@ body[data-page="about"] .education-card {
   box-shadow: none;
 }
 
+body[data-page="about"] .education-card:nth-child(2) .education-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 40px;
+  max-width: 760px;
+}
+
 body[data-page="project-detail"] .project-detail-intro {
   padding-bottom: 6px;
 }
@@ -1896,6 +1907,12 @@ body[data-page="project-detail"] h1 {
     width: min(220px, 50vw);
   }
 
+  .hero-copy-block,
+  .hero-side {
+    justify-self: start;
+    max-width: none;
+  }
+
   .hero-lede {
     max-width: none;
     font-size: clamp(2.8rem, 12vw, 5rem);
@@ -1904,6 +1921,13 @@ body[data-page="project-detail"] h1 {
 
   body[data-page="work"] .skill-groups {
     gap: 28px;
+  }
+}
+
+@media (max-width: 900px) {
+  body[data-page="about"] .education-card:nth-child(2) .education-list {
+    grid-template-columns: 1fr;
+    gap: 8px 18px;
   }
 }
 
