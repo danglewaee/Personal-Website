@@ -198,6 +198,7 @@ const additionalProjects = [
     summary: "Node telemetry and spend projection tool with an action engine for apply steps, rollback plans, and risk-aware execution guidance.",
     stack: "FastAPI, SQLite/PostgreSQL",
     href: siteConfig.githubProfile,
+    imageSrc: "assets/project-covers/Bitcoin-trend.png",
   },
   {
     name: "Water Monitoring System",
