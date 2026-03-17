@@ -792,31 +792,39 @@ function renderProjectGallery(containerId, projects) {
     return;
   }
 
+  const isHomeGallery = containerId === "home-project-gallery";
+
   container.innerHTML = projects
-    .map((project) => {
+    .map((project, index) => {
       const link = getProjectLinkAttrs(project);
       const ctaLabel = caseStudyPages[project.name] ? "Open case study" : "View GitHub";
+      const layoutClass = isHomeGallery
+        ? index === 0
+          ? "gallery-card-primary"
+          : "gallery-card-secondary"
+        : index === 0
+          ? "gallery-card-featured"
+          : "gallery-card-standard";
+      const summaryMarkup = isHomeGallery ? "" : `<p class="gallery-card-summary">${project.summary}</p>`;
 
       return `
-        <a class="gallery-card reveal" href="${link.href}"${link.attrs}>
+        <a class="gallery-card ${layoutClass} reveal" href="${link.href}"${link.attrs}>
           <div class="project-cover gallery-card-cover ${project.coverClass}">
             <div class="cover-top">
               <span class="cover-chip">${project.coverLabel}</span>
               <span class="cover-year">${project.year}</span>
             </div>
             ${renderProjectPreview(project)}
-            <div class="cover-bottom">
-              <h3 class="cover-title">${project.name}</h3>
-              <p class="cover-caption">${project.coverCaption}</p>
+            <div class="gallery-cover-copy">
+              <div class="gallery-cover-meta">
+                <span class="gallery-card-type">${project.type}</span>
+                <span class="gallery-card-year">${project.year}</span>
+              </div>
+              <h3 class="gallery-card-title">${project.name}</h3>
             </div>
           </div>
           <div class="gallery-card-body">
-            <div class="gallery-card-meta">
-              <span class="gallery-card-type">${project.type}</span>
-              <span class="gallery-card-year">${project.year}</span>
-            </div>
-            <h3 class="gallery-card-title">${project.name}</h3>
-            <p class="gallery-card-summary">${project.summary}</p>
+            ${summaryMarkup}
             <span class="gallery-card-cta">${ctaLabel}</span>
           </div>
         </a>
