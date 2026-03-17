@@ -103,6 +103,7 @@ const featuredProjects = [
     coverClass: "cover-sea",
     coverLabel: "Forecasting",
     coverCaption: "A global sea-level forecasting model motivated by a much more local question about trust, risk, and preparation.",
+    imageSrc: "assets/project-covers/sea-rising-level.png",
     previewType: "sea",
   },
   {
@@ -131,6 +132,7 @@ const featuredProjects = [
     coverClass: "cover-incident",
     coverLabel: "Systems observability",
     coverCaption: "Telemetry ingestion, anomaly detection, incident clustering, and root-cause ranking for distributed systems.",
+    imageSrc: "assets/project-covers/incident-intelligence.png",
     previewType: "incident",
   },
   {
@@ -171,6 +173,7 @@ const additionalProjects = [
     summary: "Routes requests across self-hosted models so one slow or unhealthy model does not break the whole application.",
     stack: "FastAPI, HTTPX, Prometheus, Docker Compose",
     href: siteConfig.githubProfile,
+    imageSrc: "assets/project-covers/inference-control-plane.png",
   },
   {
     name: "Rag-memory-service",
@@ -697,6 +700,29 @@ function renderProjectPreview(project) {
   return previewMap[project.previewType] || "";
 }
 
+function renderProjectCoverMedia(project) {
+  const fallback = renderProjectPreview(project);
+
+  if (!project.imageSrc) {
+    return fallback;
+  }
+
+  return `
+    <div class="cover-media">
+      <img
+        class="cover-image"
+        src="${project.imageSrc}"
+        alt="${project.name} interface preview"
+        loading="lazy"
+        onerror="this.parentElement.classList.add('image-failed')"
+      />
+      <div class="cover-fallback">
+        ${fallback}
+      </div>
+    </div>
+  `;
+}
+
 function getProjectHref(project) {
   return caseStudyPages[project.name] || project.href;
 }
@@ -756,12 +782,12 @@ function renderProjects(containerId, projects) {
       const ctaLabel = caseStudyPages[project.name] ? "Open project" : "View GitHub";
       return `
         <article class="project-item reveal">
-          <a class="project-cover ${project.coverClass}" href="${link.href}"${link.attrs} aria-label="Open ${project.name}">
+          <a class="project-cover ${project.coverClass}${project.imageSrc ? " has-image" : ""}" href="${link.href}"${link.attrs} aria-label="Open ${project.name}">
             <div class="cover-top">
               <span class="cover-chip">${project.coverLabel}</span>
               <span class="cover-year">${project.year}</span>
             </div>
-            ${renderProjectPreview(project)}
+            ${renderProjectCoverMedia(project)}
             <div class="cover-bottom">
               <h3 class="cover-title">${project.name}</h3>
               <p class="cover-caption">${project.coverCaption}</p>
@@ -809,12 +835,12 @@ function renderProjectGallery(containerId, projects) {
 
       return `
         <a class="gallery-card ${layoutClass} reveal" href="${link.href}"${link.attrs}>
-          <div class="project-cover gallery-card-cover ${project.coverClass}">
+          <div class="project-cover gallery-card-cover ${project.coverClass}${project.imageSrc ? " has-image" : ""}">
             <div class="cover-top">
               <span class="cover-chip">${project.coverLabel}</span>
               <span class="cover-year">${project.year}</span>
             </div>
-            ${renderProjectPreview(project)}
+            ${renderProjectCoverMedia(project)}
             <div class="gallery-cover-copy">
               <div class="gallery-cover-meta">
                 <span class="gallery-card-type">${project.type}</span>

@@ -1114,6 +1114,46 @@ h2 {
   backdrop-filter: blur(18px);
 }
 
+.cover-media {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  flex: 1;
+  min-height: 160px;
+}
+
+.cover-image,
+.cover-fallback {
+  grid-area: 1 / 1;
+}
+
+.cover-image {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 22px;
+  object-fit: cover;
+  object-position: center top;
+  background: rgba(8, 8, 10, 0.42);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.cover-fallback {
+  display: none;
+}
+
+.cover-media.image-failed .cover-image {
+  display: none;
+}
+
+.cover-media.image-failed .cover-fallback {
+  display: block;
+}
+
+.project-cover.has-image::before {
+  opacity: 0.08;
+}
+
 .preview-topline,
 .preview-study-footer {
   display: flex;
