@@ -1674,7 +1674,7 @@ body {
 }
 
 .hero-grid {
-  width: min(100%, 1320px);
+  width: min(100%, 1270px);
   margin: 0 auto;
   grid-template-columns: minmax(0, 1fr) minmax(340px, 410px);
   gap: clamp(56px, 6vw, 96px);
