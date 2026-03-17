@@ -773,8 +773,8 @@ h2 {
 }
 
 .project-gallery-work {
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 28px 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 24px;
 }
 
 .gallery-card {
@@ -802,16 +802,11 @@ h2 {
 }
 
 .gallery-card-featured {
-  grid-column: span 7;
+  grid-column: 1 / -1;
 }
 
 .gallery-card-standard {
-  grid-column: span 5;
-}
-
-.gallery-card:nth-child(3),
-.gallery-card:nth-child(5) {
-  align-self: start;
+  grid-column: span 1;
 }
 
 .gallery-card-primary .gallery-card-cover {
@@ -2031,18 +2026,15 @@ body[data-page="project-detail"] h1 {
     font-size: clamp(2.8rem, 12vw, 5rem);
   }
 
-  .project-gallery-home,
-  .project-gallery-work {
+  .project-gallery-home {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .gallery-card-primary,
-  .gallery-card-featured {
+  .gallery-card-primary {
     grid-column: span 2;
   }
 
-  .gallery-card-secondary,
-  .gallery-card-standard {
+  .gallery-card-secondary {
     grid-column: span 1;
   }
 }
