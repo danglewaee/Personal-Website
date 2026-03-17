@@ -826,23 +826,28 @@ function renderProjectGallery(containerId, projects) {
       const link = getProjectLinkAttrs(project);
       const ctaLabel = caseStudyPages[project.name] ? "Open case study" : "View GitHub";
       const layoutClass = isHomeGallery
-        ? index === 0
-          ? "gallery-card-home-primary"
-          : index === 1
-            ? "gallery-card-home-secondary-top"
-            : "gallery-card-home-secondary-bottom"
+        ? "gallery-card-home"
         : index === 0
           ? "gallery-card-featured"
           : "gallery-card-standard";
-      const summaryMarkup = isHomeGallery
-        ? ""
-        : `
-            <div class="gallery-card-footer">
+      if (isHomeGallery) {
+        return `
+          <a class="gallery-card ${layoutClass} reveal" href="${link.href}"${link.attrs}>
+            <div class="project-cover gallery-card-cover gallery-card-cover-home ${project.coverClass}${project.imageSrc ? " has-image" : ""}">
+              ${renderProjectCoverMedia(project)}
+            </div>
+            <div class="gallery-card-body gallery-card-body-home">
+              <div class="gallery-cover-meta">
+                <span class="gallery-card-type">${project.type}</span>
+                <span class="gallery-card-year">${project.year}</span>
+              </div>
+              <h3 class="gallery-card-title">${project.name}</h3>
               <p class="gallery-card-summary">${project.summary}</p>
               <span class="gallery-card-cta">${ctaLabel}</span>
             </div>
-          `;
-      const homeNoteMarkup = isHomeGallery ? `<p class="gallery-card-note">${project.summary}</p>` : "";
+          </a>
+        `;
+      }
 
       return `
         <a class="gallery-card ${layoutClass} reveal" href="${link.href}"${link.attrs}>
@@ -858,10 +863,14 @@ function renderProjectGallery(containerId, projects) {
                 <span class="gallery-card-year">${project.year}</span>
               </div>
               <h3 class="gallery-card-title">${project.name}</h3>
-              ${homeNoteMarkup}
             </div>
           </div>
-          ${isHomeGallery ? "" : `<div class="gallery-card-body">${summaryMarkup}</div>`}
+          <div class="gallery-card-body">
+            <div class="gallery-card-footer">
+              <p class="gallery-card-summary">${project.summary}</p>
+              <span class="gallery-card-cta">${ctaLabel}</span>
+            </div>
+          </div>
         </a>
       `;
     })
