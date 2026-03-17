@@ -118,6 +118,7 @@ const featuredProjects = [
     coverClass: "cover-anomaly",
     coverLabel: "Operational ML",
     coverCaption: "Real-time telemetry monitoring with explainable anomaly alerts and live operational visibility.",
+    imageSrc: "assets/project-covers/anomalyguard-cover.png",
     previewType: "anomaly",
   },
   {
@@ -826,12 +827,22 @@ function renderProjectGallery(containerId, projects) {
       const ctaLabel = caseStudyPages[project.name] ? "Open case study" : "View GitHub";
       const layoutClass = isHomeGallery
         ? index === 0
-          ? "gallery-card-primary"
-          : "gallery-card-secondary"
+          ? "gallery-card-home-primary"
+          : index === 1
+            ? "gallery-card-home-secondary-top"
+            : "gallery-card-home-secondary-bottom"
         : index === 0
           ? "gallery-card-featured"
           : "gallery-card-standard";
-      const summaryMarkup = isHomeGallery ? "" : `<p class="gallery-card-summary">${project.summary}</p>`;
+      const summaryMarkup = isHomeGallery
+        ? ""
+        : `
+            <div class="gallery-card-footer">
+              <p class="gallery-card-summary">${project.summary}</p>
+              <span class="gallery-card-cta">${ctaLabel}</span>
+            </div>
+          `;
+      const homeNoteMarkup = isHomeGallery ? `<p class="gallery-card-note">${project.summary}</p>` : "";
 
       return `
         <a class="gallery-card ${layoutClass} reveal" href="${link.href}"${link.attrs}>
@@ -847,12 +858,10 @@ function renderProjectGallery(containerId, projects) {
                 <span class="gallery-card-year">${project.year}</span>
               </div>
               <h3 class="gallery-card-title">${project.name}</h3>
+              ${homeNoteMarkup}
             </div>
           </div>
-          <div class="gallery-card-body">
-            ${summaryMarkup}
-            <span class="gallery-card-cta">${ctaLabel}</span>
-          </div>
+          ${isHomeGallery ? "" : `<div class="gallery-card-body">${summaryMarkup}</div>`}
         </a>
       `;
     })
