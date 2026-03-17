@@ -762,6 +762,86 @@ h2 {
   color: var(--text);
 }
 
+.project-gallery {
+  display: grid;
+  gap: 28px;
+}
+
+.project-gallery-home {
+  grid-template-columns: 1fr;
+}
+
+.project-gallery-work {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 26px;
+}
+
+.gallery-card {
+  display: grid;
+  gap: 16px;
+  color: inherit;
+  transition: transform 220ms ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px);
+}
+
+.gallery-card-cover {
+  min-height: 430px;
+  box-shadow: none;
+}
+
+.gallery-card .cover-bottom {
+  display: none;
+}
+
+.project-gallery-work .gallery-card-cover {
+  min-height: 360px;
+}
+
+.gallery-card-body {
+  display: grid;
+  gap: 10px;
+  max-width: 48ch;
+}
+
+.gallery-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.gallery-card-type,
+.gallery-card-year,
+.gallery-card-cta {
+  color: rgba(255, 255, 255, 0.56);
+  font-family: "Inter Tight", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.gallery-card-title {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+  line-height: 0.98;
+}
+
+.gallery-card-summary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+
+.gallery-card-cta {
+  color: var(--text);
+}
+
 .project-detail-intro {
   padding-bottom: 0;
 }
@@ -1594,17 +1674,24 @@ body {
 }
 
 .hero-grid {
-  grid-template-columns: minmax(260px, 0.42fr) minmax(620px, 0.96fr);
-  gap: clamp(72px, 8vw, 136px);
+  grid-template-columns: minmax(0, 1.08fr) minmax(260px, 0.46fr);
+  gap: clamp(56px, 7vw, 120px);
   align-items: start;
   justify-content: center;
   min-height: auto;
 }
 
 .hero-copy-block {
+  display: grid;
   gap: 18px;
-  padding-top: 14px;
+  align-content: start;
+  justify-items: start;
+}
+
+.hero-profile-block {
   justify-self: end;
+  max-width: 320px;
+  padding-top: 12px;
 }
 
 .hero-portrait-wrap {
@@ -1630,35 +1717,36 @@ body {
 
 .hero-side {
   display: grid;
-  gap: 18px;
+  gap: 22px;
   align-content: start;
-  justify-self: end;
-  max-width: 880px;
+  justify-self: start;
+  max-width: 900px;
 }
 
 .hero-intro {
   margin: 0;
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 1.02rem;
   line-height: 1.6;
   max-width: 32ch;
 }
 
 .hero-lede {
-  max-width: 8.8ch;
+  max-width: 10.2ch;
   margin: 0;
   color: var(--text);
   font-family: "Inter Tight", sans-serif;
-  font-size: clamp(3.6rem, 8vw, 7rem);
+  font-size: clamp(3.8rem, 7vw, 6.6rem);
   font-weight: 700;
   letter-spacing: -0.09em;
-  line-height: 0.9;
+  line-height: 0.92;
   text-wrap: balance;
 }
 
 .hero-copy {
-  max-width: 34ch;
-  font-size: 1.08rem;
+  max-width: 40ch;
+  margin: 0;
+  font-size: 1.04rem;
 }
 
 .hero-actions {
@@ -1686,42 +1774,18 @@ body {
 }
 
 body[data-page="home"] .section {
-  padding: 18px 0 14px;
+  padding: 34px 0 14px;
 }
 
 body[data-page="home"] .section-header {
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 10px;
+  margin-bottom: 26px;
 }
 
 body[data-page="home"] .section-header h2 {
-  font-size: 0.98rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-body[data-page="home"] .subsection-copy {
-  display: none;
-}
-
-body[data-page="home"] .featured-project-link {
-  min-height: 120px;
-  padding: 26px 0;
-}
-
-body[data-page="home"] .featured-project-title {
-  font-size: clamp(2.8rem, 5.4vw, 5.4rem);
-  line-height: 0.88;
-}
-
-body[data-page="home"] .featured-project-meta {
-  display: none;
-}
-
-body[data-page="home"] .featured-project-submeta {
-  color: var(--muted);
-  font-size: 0.88rem;
-  letter-spacing: 0.08em;
+  font-size: clamp(2rem, 3.3vw, 3rem);
+  letter-spacing: -0.05em;
+  text-transform: none;
 }
 
 body[data-page="work"] .section,
@@ -1913,14 +1977,18 @@ body[data-page="project-detail"] h1 {
     max-width: none;
   }
 
+  .hero-profile-block {
+    max-width: none;
+    padding-top: 0;
+  }
+
   .hero-lede {
     max-width: none;
     font-size: clamp(2.8rem, 12vw, 5rem);
   }
 
-
-  body[data-page="work"] .skill-groups {
-    gap: 28px;
+  .project-gallery-work {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1980,6 +2048,11 @@ body[data-page="project-detail"] h1 {
   .project-detail-visual .project-cover {
     min-height: 360px;
     border-radius: 28px;
+  }
+
+  .gallery-card-cover,
+  .project-gallery-work .gallery-card-cover {
+    min-height: 300px;
   }
 }
 .about-intro-grid {
