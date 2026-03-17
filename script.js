@@ -162,6 +162,7 @@ const featuredProjects = [
     coverClass: "cover-study",
     coverLabel: "Scheduling plus RL",
     coverCaption: "Study scheduling, bounded replanning, and RL-guided strategy selection under changing workload conditions.",
+    imageSrc: "assets/project-covers/umass-study-partner.png",
     previewType: "study",
   },
 ];
