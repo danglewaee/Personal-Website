@@ -8,7 +8,6 @@ const heroLinks = [
   { label: "GitHub", href: siteConfig.githubProfile, icon: "github", value: "github.com/danglewaee" },
   { label: "LinkedIn", href: siteConfig.linkedinProfile, icon: "linkedin", value: "linkedin.com/in/dang-le-121abb2b4" },
   { label: "Email", href: "mailto:dangle@umass.edu", icon: "mail", value: "dangle@umass.edu" },
-  { label: "Phone", href: "tel:4134721116", icon: "phone", value: "(413) 472-1116" },
 ];
 
 const iconMap = {
@@ -92,17 +91,17 @@ const storyIntro = {
 
 const featuredProjects = [
   {
-    name: "Sea Rising Level Prediction",
-    type: "Applied Forecasting",
+    name: "Coastal Flood Risk",
+    type: "Flood Risk System",
     year: "2025",
-    summary: "Uses forecasting to surface earlier signals of worsening water risk.",
+    summary: "Brings realtime water levels, short-term forecasts, and flood context into one operational view.",
     detail:
-      "Built a global sea-level forecasting model that improved over polynomial baselines by 2.3 percent RMSE while keeping inference around 24 ms.",
-    stack: "Python, TensorFlow, LSTM",
+      "Built a situational-awareness layer that combines realtime water data, short-term forecasting, and map-based context so coastal risk can be seen earlier and more clearly.",
+    stack: "Python, FastAPI, Leaflet, Forecasting",
     href: "https://github.com/danglewaee/Sea-Rising-Level",
     coverClass: "cover-sea",
-    coverLabel: "Forecasting",
-    coverCaption: "A global sea-level forecasting model motivated by a much more local question about trust, risk, and preparation.",
+    coverLabel: "Coastal risk",
+    coverCaption: "Realtime water levels, short-term forecasting, and flood mapping in one view for faster coastal situational awareness.",
     imageSrc: "assets/project-covers/sea-rising-level.png",
     previewType: "sea",
   },
@@ -125,9 +124,9 @@ const featuredProjects = [
     name: "Incident-Intelligence Platform",
     type: "Distributed Systems",
     year: "2025",
-    summary: "Helps on-call teams move from alert storms to likely root cause faster.",
+    summary: "Turns alert storms into a smaller, more actionable search space for on-call teams.",
     detail:
-      "Built a dependency-aware ranking engine that achieved 100 percent top-2 root-cause identification across 4 failure scenarios and reduced triage noise by 80.8 percent in a local benchmark.",
+      "Built an incident correlation and ranking layer that reduced triage noise by 80.8 percent and found the root cause in the top two candidates across four failure scenarios.",
     stack: "FastAPI, Redis, PostgreSQL, Prometheus",
     href: siteConfig.githubProfile,
     coverClass: "cover-incident",
@@ -140,14 +139,15 @@ const featuredProjects = [
     name: "Cloud-Optimizer",
     type: "Infrastructure Optimization",
     year: "2025",
-    summary: "Helps platform teams reduce wasted cloud spend without taking reckless risks on reliability.",
+    summary: "Helps platform teams plan capacity changes before growth turns into waste or instability.",
     detail:
-      "Reduced simulated infrastructure cost by 13.5 percent versus reactive autoscaling while keeping p95 optimization latency under 1 ms.",
+      "Reduced simulated infrastructure cost by 13.5 percent versus reactive autoscaling while keeping optimization fast enough for near-real-time planning.",
     stack: "Python, Kubernetes, MILP, TensorFlow",
     href: siteConfig.githubProfile,
     coverClass: "cover-cloud",
     coverLabel: "Cloud systems",
     coverCaption: "Forecasting, scheduling, and rollout planning for safer and cheaper infrastructure changes.",
+    imageSrc: "assets/project-covers/cloud-optimizer.png",
     previewType: "cloud",
   },
   {
@@ -172,9 +172,9 @@ const additionalProjects = [
     name: "Inference Control Plane",
     type: "Inference Infrastructure",
     year: "2025",
-    summary: "Routes requests across self-hosted models so one slow or unhealthy model does not break the whole application.",
+    summary: "Keeps self-hosted model serving stable when load, latency, and backend health keep changing.",
     detail:
-      "Built a control plane for multi-model inference with health-based routing, queue-aware admission control, fallback handling, and canary rollout support.",
+      "Built a control layer for routing, fallback, and safe rollout across self-hosted LLM backends using runtime health and load signals.",
     stack: "FastAPI, HTTPX, Prometheus, Docker Compose",
     href: siteConfig.githubProfile,
     coverClass: "cover-control",
@@ -232,9 +232,8 @@ const inferenceControlPlaneProject = additionalProjects.find(
 
 const homeFeaturedProjects = [
   featuredProjects[0],
-  inferenceControlPlaneProject,
-  featuredProjects[1],
   featuredProjects[2],
+  featuredProjects[3],
 ].filter(Boolean);
 const caseStudyProjects = [
   featuredProjects[0],
@@ -249,7 +248,8 @@ const archiveProjects = additionalProjects.filter(
 );
 
 const caseStudyPages = {
-  "Sea Rising Level Prediction": "project-sea-rising-level.html",
+  "Coastal Flood Risk": "project-coastal-flood-risk.html",
+  "Inference Control Plane": "project-inference-control-plane.html",
   "Incident-Intelligence Platform": "project-incident.html",
   "AnomalyGuard": "project-anomalyguard.html",
   "Cloud-Optimizer": "project-cloud-optimizer.html",
@@ -257,35 +257,69 @@ const caseStudyPages = {
 };
 
 const projectDetailLookup = {
-  sea: "Sea Rising Level Prediction",
+  coastal: "Coastal Flood Risk",
+  control: "Inference Control Plane",
   incident: "Incident-Intelligence Platform",
   anomalyguard: "AnomalyGuard",
   cloud: "Cloud-Optimizer",
   study: "UMass-Study-Partner",
 };
 const caseStudyContent = {
-  "Sea Rising Level Prediction": {
-    stats: ["2.3% RMSE improvement", "~24 ms inference"],
+  "Coastal Flood Risk": {
+    stats: ["Realtime station data", "Map-based risk context"],
     blocks: [
       {
-        label: "Who it helps",
-        copy: "Built as a global sea-level forecasting model, but motivated by a much more local question for me: how forecasting can become more trustworthy for communities that live with water risk.",
+        label: "Context",
+        copy: "I built this project around a problem that feels very familiar to me: water risk changes by the hour, but the information needed to make sense of it is often scattered across different tools. One place shows realtime levels, another shows a forecast, and another shows a map. By the time someone pieces them together, the moment for early action is already getting smaller.",
       },
       {
-        label: "What makes the moment hard",
-        copy: "Rising risk often becomes obvious only after visible damage, while weaker baselines make it hard to plan from the signal early enough. Without stronger forecasting, people are left with delayed observation and simpler estimates that are easier to trust only after the danger is already clear.",
+        label: "Why it gets hard",
+        copy: "Coastal and flood risk is hard because the signal moves faster than the workflow around it. Teams need a fast picture of what is happening now, what is likely to happen next, and where the first visible impact may show up, even when there is no time to run a heavier modeling workflow first.",
       },
       {
-        label: "What the system changes",
-        copy: "The model is meant to provide an earlier view of worsening sea-level trends, so planning and preparedness can begin from forecasted movement instead of only from visible impact.",
+        label: "What most systems still miss",
+        copy: "A lot of systems still treat data, forecast, and map context as separate views. That means operators can see pieces of the situation, but not the situation itself. The missing layer is situational awareness that is quick enough to support earlier judgment.",
       },
       {
-        label: "Why it earns trust",
-        copy: "It earns trust by improving over polynomial baselines while keeping inference fast enough for practical use, showing that better forecasting can also remain operationally usable.",
+        label: "What I built",
+        copy: "I built a coastal flood risk dashboard that combines realtime water-level data, short-term forecasting, and map-based flood context in one place. The goal is not to replace a full forecasting stack, but to give someone an operational picture quickly enough to decide where to pay attention first.",
       },
       {
-        label: "Why it belongs here",
-        copy: "This project stays close to the reason I started: building forecasting systems strong enough that people in vulnerable places do not have to wait for damage before they believe the signal.",
+        label: "Why trust matters",
+        copy: "The system earns trust by being legible and useful at the moment it is needed. Instead of asking someone to jump across feeds and maps, it puts the live signal, near-term forecast, and location context together so the first decision can happen faster and with less guesswork.",
+      },
+      {
+        label: "Mission link",
+        copy: "This project is close to the reason I started. It is the kind of system I want to keep building for forecasting work like my father's: something faster, clearer, and easier to act on before visible damage becomes the only thing left to trust.",
+      },
+    ],
+  },
+  "Inference Control Plane": {
+    stats: ["289.8 ms p95", "90-request mixed-priority benchmark"],
+    blocks: [
+      {
+        label: "Context",
+        copy: "This project comes from a simple operational pain: serving a model is not the same thing as serving the right model on the right capacity at the right moment. Once traffic, latency, and backend health start moving at the same time, static routing stops being enough.",
+      },
+      {
+        label: "Why it gets hard",
+        copy: "In multi-model inference, one backend can get hot while another stays idle, the first request to a colder model can be slower, and retries can make overload even worse if the system is already under stress.",
+      },
+      {
+        label: "What most systems still miss",
+        copy: "Basic routing assumes every request looks the same and every healthy backend is equally good. That falls apart once request lengths vary, model health changes, and a bad rollout can affect the whole application at once.",
+      },
+      {
+        label: "What I built",
+        copy: "I built a control plane for self-hosted LLM stacks that routes requests using runtime health and load signals, falls back when a backend becomes unhealthy, and gives operators safer rollout behavior through canary and rollback support.",
+      },
+      {
+        label: "Why teams can trust it",
+        copy: "The value is not just smarter routing. It is that the system exposes the operating state teams need to trust under pressure: health, queue depth, latency, request history, fallback behavior, and observability through Prometheus and Grafana.",
+      },
+      {
+        label: "Mission link",
+        copy: "It carries the same question into AI infrastructure: how do we keep a system reliable enough to trust when conditions change underneath it and someone still needs an answer?",
       },
     ],
   },
@@ -293,19 +327,27 @@ const caseStudyContent = {
     stats: ["80.8% less triage noise", "100% top-2 over 4 failures"],
     blocks: [
       {
-        label: "Who it helps",
-        copy: "Built for on-call engineers and reliability owners working in distributed systems, where incidents often surface as a flood of noisy telemetry across many dependent services.",
+        label: "Context",
+        copy: "Modern on-call engineers do not suffer from a lack of telemetry. They suffer from too much of it, arriving from the wrong places at the wrong time. In distributed systems, one upstream failure can look like many unrelated downstream incidents.",
       },
       {
-        label: "What makes the moment hard",
-        copy: "Without better structure, teams have to jump across dashboards, logs, and deployment history to guess which failures matter first and which are only downstream symptoms.",
+        label: "Why it gets hard",
+        copy: "When everything turns red at once, teams have to answer the hardest questions under pressure: is this one incident or many, which service is the cause, which ones are only victims, and what should be investigated first?",
       },
       {
-        label: "What the system changes",
-        copy: "The platform ingests telemetry, detects anomalies, clusters correlated failures into incidents, and ranks likely root causes using temporal precedence, anomaly intensity, service topology, and deployment proximity. That gives responders a more defensible starting point for investigation instead of pure guesswork.",
+        label: "What most systems still miss",
+        copy: "Raw dashboards, logs, and alerts still leave responders doing the same cognitive work themselves. The missing layer is not more telemetry. It is structure: what belongs together, what is symptom versus cause, and what changed nearby.",
       },
       {
-        label: "Why it belongs here",
+        label: "What I built",
+        copy: "I built a platform that ingests multi-service telemetry, detects anomalies, clusters related failures into incidents, and ranks likely root causes using temporal precedence, anomaly intensity, service topology, and deployment proximity.",
+      },
+      {
+        label: "Why teams can trust it",
+        copy: "The system earns trust by shrinking the search space without pretending to be magic. It reduced triage noise by 80.8 percent in local benchmarking and surfaced the true root cause in the top two candidates across four failure scenarios.",
+      },
+      {
+        label: "Mission link",
         copy: "It is the infrastructure version of the same question I keep returning to: how do we turn messy signals into decisions people can trust under pressure?",
       },
     ],
@@ -339,23 +381,27 @@ const caseStudyContent = {
     stats: ["13.5% cost reduction", "p95 < 1 ms"],
     blocks: [
       {
-        label: "Who it helps",
-        copy: "Built for infrastructure and platform teams that manage many services in the cloud, where wasted capacity is expensive but risky changes can hurt reliability.",
+        label: "Context",
+        copy: "This project is shaped by the kind of launch problem Meta faced with Threads: a product can grow faster than infrastructure teams can safely react. In that moment, the problem is not just scaling. It is deciding how much to change, how early, and where the real risk sits.",
       },
       {
-        label: "What makes the moment hard",
-        copy: "The hard part is not seeing wasted cloud spend. It is knowing how to reduce it without making the system less reliable for users.",
+        label: "Why it gets hard",
+        copy: "When growth arrives quickly, teams can neither wait until traffic is already spiking nor overreact by spraying excess capacity everywhere. The real difficulty is balancing speed, cost, and reliability at the same time.",
       },
       {
-        label: "What the system changes",
-        copy: "The system combines workload forecasting, optimization, and rollout guardrails to produce safer scaling plans, helping teams cut waste without treating reliability as an afterthought.",
+        label: "What most systems still miss",
+        copy: "Autoscaling alone reacts after the fact. It does not tell operators what is likely to happen next, what the safest capacity plan is, or how to roll out that change without turning one bad decision into a larger reliability event.",
       },
       {
-        label: "Why it earns trust",
-        copy: "Trust comes from the fact that it does not just recommend cheaper plans. It also compares against reactive baselines, tests decisions in shadow mode, and wraps changes in canary and rollback logic before they are applied.",
+        label: "What I built",
+        copy: "I built a decision layer for cloud infrastructure that combines workload forecasting, optimization, and rollout guardrails so teams can compare scenarios, choose a plan earlier, and scale more deliberately instead of reactively.",
       },
       {
-        label: "Why it belongs here",
+        label: "Why teams can trust it",
+        copy: "The system is built to be trusted before action, not after regret. It benchmarks against reactive baselines, tests decisions in shadow mode, and wraps changes in canary and rollback logic so optimization does not come at the cost of operational recklessness.",
+      },
+      {
+        label: "Mission link",
         copy: "It carries the same mission into cloud infrastructure: turning uncertain tradeoffs into decisions teams can trust enough to act on.",
       },
     ],
@@ -1099,7 +1145,7 @@ function renderProjectDetailPage() {
           <span class="cover-chip">${project.coverLabel}</span>
           <span class="cover-year">${project.year}</span>
         </div>
-        ${renderProjectPreview(project)}
+        ${renderProjectCoverMedia(project)}
         <div class="cover-bottom">
           <h3 class="cover-title">${project.name}</h3>
           <p class="cover-caption">${project.coverCaption}</p>
