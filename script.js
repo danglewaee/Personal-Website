@@ -952,16 +952,16 @@ function renderProjectGallery(containerId, projects) {
               <span class="cover-year">${project.year}</span>
             </div>
             ${renderProjectCoverMedia(project)}
-            <div class="gallery-cover-copy">
+            </div>
+            <div class="gallery-card-body gallery-card-body-standard">
               <div class="gallery-cover-meta">
                 <span class="gallery-card-type">${project.type}</span>
                 <span class="gallery-card-year">${project.year}</span>
               </div>
-              <h3 class="gallery-card-title">${project.name}</h3>
+              <div class="gallery-card-footer gallery-card-footer-standard">
+                <h3 class="gallery-card-title">${project.name}</h3>
+                <span class="gallery-card-cta">${ctaLabel}</span>
               </div>
-            </div>
-            <div class="gallery-card-body gallery-card-body-standard">
-              <span class="gallery-card-cta">${ctaLabel}</span>
             </div>
         </a>
       `;

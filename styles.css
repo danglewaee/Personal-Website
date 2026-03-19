@@ -2863,14 +2863,32 @@ body[data-page="work"] .gallery-card-title {
 }
 
 body[data-page="work"] .gallery-card-body-standard {
-  display: flex;
-  align-items: center;
+  display: grid;
+  gap: 10px;
   min-height: auto;
   padding-left: 2px;
 }
 
+body[data-page="work"] .gallery-card-footer-standard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: end;
+}
+
+body[data-page="work"] .gallery-card-body-standard .gallery-card-type,
+body[data-page="work"] .gallery-card-body-standard .gallery-card-year {
+  color: rgba(255, 255, 255, 0.46);
+}
+
+body[data-page="work"] .gallery-card-body-standard .gallery-card-title {
+  max-width: 11ch;
+  font-size: clamp(2rem, 2.65vw, 3rem);
+}
+
 body[data-page="work"] .gallery-card-body-standard .gallery-card-cta {
   color: rgba(255, 255, 255, 0.62);
+  align-self: center;
 }
 
 body[data-page="work"] .gallery-card:hover .gallery-card-cta {
