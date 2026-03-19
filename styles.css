@@ -3051,7 +3051,7 @@ body[data-page="experience"] .experience-card-company {
 }
 
 body[data-page="experience"] .experience-card-title {
-  max-width: 22ch;
+  max-width: none;
   margin: 0;
   font-size: clamp(1.78rem, 2.05vw, 2.3rem);
   line-height: 0.98;
