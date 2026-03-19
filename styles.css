@@ -2783,6 +2783,20 @@ body[data-page="home"] .gallery-card-home .gallery-card-cover {
   border-radius: 30px;
 }
 
+body[data-page="home"] .gallery-card-home .cover-media {
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(7, 9, 12, 0.52);
+  border-radius: inherit;
+}
+
+body[data-page="home"] .gallery-card-home .cover-image {
+  object-fit: contain;
+  object-position: center center;
+  border-radius: 20px;
+}
+
 body[data-page="home"] .gallery-card-body-home {
   gap: 6px;
 }
