@@ -3051,10 +3051,11 @@ body[data-page="experience"] .experience-card-company {
 }
 
 body[data-page="experience"] .experience-card-title {
-  max-width: 12ch;
+  max-width: 22ch;
   margin: 0;
-  font-size: clamp(1.9rem, 2.25vw, 2.45rem);
+  font-size: clamp(1.78rem, 2.05vw, 2.3rem);
   line-height: 0.98;
+  text-wrap: balance;
 }
 
 body[data-page="project-detail"] .page-intro {
