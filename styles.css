@@ -2833,7 +2833,7 @@ body[data-page="work"] .project-gallery-work {
 }
 
 body[data-page="work"] .gallery-card {
-  gap: 12px;
+  gap: 18px;
 }
 
 body[data-page="work"] .gallery-card-cover {
@@ -2876,8 +2876,7 @@ body[data-page="work"] .cover-year {
 }
 
 body[data-page="work"] .gallery-cover-copy {
-  gap: 10px;
-  padding-top: 108px;
+  display: none;
 }
 
 body[data-page="work"] .gallery-card-type,
@@ -2888,36 +2887,39 @@ body[data-page="work"] .gallery-card-year {
 }
 
 body[data-page="work"] .gallery-card-title {
-  max-width: 10ch;
-  font-size: clamp(2rem, 2.7vw, 3rem);
+  max-width: 12ch;
+  font-size: clamp(2rem, 2.45vw, 2.75rem);
   line-height: 0.94;
 }
 
-body[data-page="work"] .gallery-card-body-standard {
+body[data-page="work"] .gallery-card-meta-block {
   display: grid;
-  gap: 10px;
-  min-height: auto;
-  padding-left: 2px;
+  gap: 12px;
 }
 
-body[data-page="work"] .gallery-card-footer-standard {
+body[data-page="work"] .gallery-card-body {
+  display: grid;
+  gap: 16px;
+}
+
+body[data-page="work"] .gallery-card-footer {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 18px;
   align-items: end;
 }
 
-body[data-page="work"] .gallery-card-body-standard .gallery-card-type,
-body[data-page="work"] .gallery-card-body-standard .gallery-card-year {
+body[data-page="work"] .gallery-card-meta-block .gallery-card-type,
+body[data-page="work"] .gallery-card-meta-block .gallery-card-year {
   color: rgba(255, 255, 255, 0.46);
 }
 
-body[data-page="work"] .gallery-card-body-standard .gallery-card-title {
+body[data-page="work"] .gallery-card-meta-block .gallery-card-title {
   max-width: 11ch;
   font-size: clamp(2rem, 2.65vw, 3rem);
 }
 
-body[data-page="work"] .gallery-card-body-standard .gallery-card-cta {
+body[data-page="work"] .gallery-card-footer .gallery-card-cta {
   color: rgba(255, 255, 255, 0.62);
   align-self: center;
 }
