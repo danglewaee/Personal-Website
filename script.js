@@ -1027,10 +1027,7 @@ function renderExperienceCards(containerId, items) {
     .map(
       (item, index) => `
         <button class="experience-card reveal" type="button" data-source="${containerId}" data-index="${index}">
-          <div class="experience-card-top">
-            <p class="experience-card-company">${item.company}</p>
-            <span class="experience-card-arrow">Open</span>
-          </div>
+          <p class="experience-card-company">${item.company}</p>
           <p class="experience-card-title">${item.title}</p>
         </button>
       `
