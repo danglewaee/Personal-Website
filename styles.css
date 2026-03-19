@@ -898,51 +898,15 @@ h2 {
   line-height: 1.68;
 }
 
-.gallery-card-why {
-  margin: 0;
-  color: var(--text);
-  font-size: 1rem;
-  line-height: 1.75;
-}
-
-.gallery-inline-label {
-  color: rgba(255, 255, 255, 0.44);
-  font-family: "Inter Tight", sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  line-height: 1.5;
-  text-transform: uppercase;
-}
-
 .gallery-card-cta {
   color: var(--text);
 }
 
 .gallery-card-footer {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(240px, 0.9fr);
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 18px;
   align-items: start;
-}
-
-.gallery-card-impact-block,
-.gallery-card-proof {
-  display: grid;
-  gap: 8px;
-}
-
-.gallery-card-proof {
-  padding: 16px 18px;
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.gallery-card-proof-value {
-  color: var(--text);
-  font-size: 0.95rem;
-  line-height: 1.62;
 }
 
 .gallery-card-cover-home {

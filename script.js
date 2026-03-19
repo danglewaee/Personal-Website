@@ -919,7 +919,7 @@ function renderProjectGallery(containerId, projects) {
   const isHomeGallery = containerId === "home-project-gallery";
 
   container.innerHTML = projects
-    .map((project, index) => {
+    .map((project) => {
       const link = getProjectLinkAttrs(project);
       const ctaLabel = caseStudyPages[project.name] ? "Open case study" : "View GitHub";
       const layoutClass = isHomeGallery
@@ -945,8 +945,8 @@ function renderProjectGallery(containerId, projects) {
       }
 
       return `
-        <a class="gallery-card ${layoutClass} reveal" href="${link.href}"${link.attrs}>
-          <div class="project-cover gallery-card-cover ${project.coverClass}${project.imageSrc ? " has-image" : ""}">
+          <a class="gallery-card ${layoutClass} reveal" href="${link.href}"${link.attrs}>
+            <div class="project-cover gallery-card-cover ${project.coverClass}${project.imageSrc ? " has-image" : ""}">
             <div class="cover-top">
               <span class="cover-chip">${project.coverLabel}</span>
               <span class="cover-year">${project.year}</span>
@@ -958,25 +958,11 @@ function renderProjectGallery(containerId, projects) {
                 <span class="gallery-card-year">${project.year}</span>
               </div>
               <h3 class="gallery-card-title">${project.name}</h3>
-            </div>
-          </div>
-          <div class="gallery-card-body">
-            <div class="gallery-card-impact-block">
-              <span class="gallery-inline-label">Why it exists</span>
-              <p class="gallery-card-why">${project.why || project.summary}</p>
-            </div>
-            <div class="gallery-card-footer">
-              <div class="gallery-card-impact-block">
-                <span class="gallery-inline-label">Impact</span>
-                <p class="gallery-card-summary">${project.summary}</p>
-              </div>
-              <div class="gallery-card-proof">
-                <span class="gallery-inline-label">Proof</span>
-                <span class="gallery-card-proof-value">${project.proof || project.detail || project.stack}</span>
               </div>
             </div>
-            <span class="gallery-card-cta">${ctaLabel}</span>
-          </div>
+            <div class="gallery-card-body gallery-card-body-standard">
+              <span class="gallery-card-cta">${ctaLabel}</span>
+            </div>
         </a>
       `;
     })
