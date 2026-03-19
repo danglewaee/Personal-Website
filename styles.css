@@ -1543,14 +1543,14 @@ h3 {
 .compact-project,
 .experience-card {
   display: grid;
-  gap: 12px;
+  gap: 8px;
 }
 
 .compact-project-title,
 .experience-card-title {
   margin: 0;
   font-size: 1.4rem;
-  line-height: 1;
+  line-height: 1.05;
 }
 
 .compact-project-summary,
@@ -1594,6 +1594,10 @@ h3 {
   font-size: 0.76rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+.experience-card-top {
+  margin-bottom: 6px;
 }
 
 .experience-card-meta,

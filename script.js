@@ -1032,8 +1032,6 @@ function renderExperienceCards(containerId, items) {
             <span class="experience-card-arrow">Open</span>
           </div>
           <p class="experience-card-title">${item.title}</p>
-          <p class="experience-card-meta">${item.meta}</p>
-          <p class="experience-card-teaser">${item.teaser}</p>
         </button>
       `
     )
