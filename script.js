@@ -232,6 +232,7 @@ const inferenceControlPlaneProject = additionalProjects.find(
 
 const homeFeaturedProjects = [
   featuredProjects[0],
+  featuredProjects[1],
   featuredProjects[2],
   featuredProjects[3],
 ].filter(Boolean);
