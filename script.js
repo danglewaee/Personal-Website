@@ -94,9 +94,13 @@ const featuredProjects = [
     name: "Coastal Flood Risk",
     type: "Flood Risk System",
     year: "2025",
-    summary: "Brings realtime water levels, short-term forecasts, and flood context into one operational view.",
+    summary: "Gives operators one fast picture of live water levels, short-term forecasts, and local flood context.",
     detail:
-      "Built a situational-awareness layer that combines realtime water data, short-term forecasting, and map-based context so coastal risk can be seen earlier and more clearly.",
+      "Built a situational-awareness layer that combines realtime station data, short-term forecasting, and map-based flood context so the first decision can happen earlier.",
+    why:
+      "Water risk changes by the hour, but the signal is often split across dashboards, forecasts, and maps just when someone needs one clear picture.",
+    proof:
+      "Realtime station data, short-term forecast, and map context in one dashboard",
     stack: "Python, FastAPI, Leaflet, Forecasting",
     href: "https://github.com/danglewaee/Sea-Rising-Level",
     coverClass: "cover-sea",
@@ -109,9 +113,13 @@ const featuredProjects = [
     name: "AnomalyGuard",
     type: "Applied ML Platform",
     year: "2025",
-    summary: "Helps under-resourced water teams catch abnormal changes earlier and act with more confidence.",
+    summary: "Helps under-resourced water teams catch abnormal changes earlier and decide what deserves attention first.",
     detail:
       "Combined Isolation Forest and SHAP for pollutant alerts, then pushed search performance to 0.81 ms p50 during 5,000 concurrent upsert benchmarks.",
+    why:
+      "Rural water teams cannot inspect every source continuously, so early abnormal change is easy to miss until it becomes harder to ignore.",
+    proof:
+      "0.81 ms p50 search under 5,000 concurrent upserts",
     stack: "FastAPI, React, PostgreSQL/TimescaleDB, Redis/Celery, Kafka, Docker Compose",
     href: siteConfig.githubProfile,
     coverClass: "cover-anomaly",
@@ -124,9 +132,13 @@ const featuredProjects = [
     name: "Incident-Intelligence Platform",
     type: "Distributed Systems",
     year: "2025",
-    summary: "Turns alert storms into a smaller, more actionable search space for on-call teams.",
+    summary: "Helps on-call teams move from alert storms to a smaller, more actionable search space.",
     detail:
       "Built an incident correlation and ranking layer that reduced triage noise by 80.8 percent and found the root cause in the top two candidates across four failure scenarios.",
+    why:
+      "In distributed systems, one upstream failure can look like many unrelated incidents, so responders need structure before they need more telemetry.",
+    proof:
+      "80.8% less triage noise and 100% top-2 root-cause hits across 4 scenarios",
     stack: "FastAPI, Redis, PostgreSQL, Prometheus",
     href: siteConfig.githubProfile,
     coverClass: "cover-incident",
@@ -139,9 +151,13 @@ const featuredProjects = [
     name: "Cloud-Optimizer",
     type: "Infrastructure Optimization",
     year: "2025",
-    summary: "Helps platform teams plan capacity changes before growth turns into waste or instability.",
+    summary: "Helps platform teams choose safer capacity changes before growth turns into waste or instability.",
     detail:
       "Reduced simulated infrastructure cost by 13.5 percent versus reactive autoscaling while keeping optimization fast enough for near-real-time planning.",
+    why:
+      "When growth arrives quickly, teams need to decide earlier how much to scale without overreacting or taking reckless reliability risks.",
+    proof:
+      "13.5% simulated cost reduction versus reactive autoscaling with p95 optimization latency under 1 ms",
     stack: "Python, Kubernetes, MILP, TensorFlow",
     href: siteConfig.githubProfile,
     coverClass: "cover-cloud",
@@ -154,9 +170,13 @@ const featuredProjects = [
     name: "UMass-Study-Partner",
     type: "Planning Engine",
     year: "2026",
-    summary: "Helps students turn overloaded weeks into plans they can actually follow.",
+    summary: "Helps students turn overloaded weeks into plans they can keep following.",
     detail:
       "Reduced missed deadlines by 62.9 percent versus an earliest-deadline-first baseline, then added stability-aware replanning and an RL selector for disruption recovery.",
+    why:
+      "Students do not need ideal schedules on paper; they need plans that survive time slips, changing priorities, and disruption.",
+    proof:
+      "62.9% fewer misses and 89.7% of planned blocks preserved during replanning",
     stack: "Python, FastAPI, JavaScript, HTML/CSS, Pydantic, Uvicorn, Reinforcement Learning",
     href: "https://github.com/danglewaee/balance_os",
     coverClass: "cover-study",
@@ -174,7 +194,11 @@ const additionalProjects = [
     year: "2025",
     summary: "Keeps self-hosted model serving stable when load, latency, and backend health keep changing.",
     detail:
-      "Built a control layer for routing, fallback, and safe rollout across self-hosted LLM backends using runtime health and load signals.",
+      "Built a control layer for routing, fallback, and safe rollout across self-hosted LLM backends, then benchmarked SLO-aware dispatch at 289.8 ms p95 under mixed-priority load.",
+    why:
+      "Serving one model is easy; serving the right backend under changing traffic without cascading latency or bad rollouts is the harder problem.",
+    proof:
+      "289.8 ms p95 in mixed-priority benchmarking with fallback and rollout support",
     stack: "FastAPI, HTTPX, Prometheus, Docker Compose",
     href: siteConfig.githubProfile,
     coverClass: "cover-control",
@@ -937,10 +961,21 @@ function renderProjectGallery(containerId, projects) {
             </div>
           </div>
           <div class="gallery-card-body">
-            <div class="gallery-card-footer">
-              <p class="gallery-card-summary">${project.summary}</p>
-              <span class="gallery-card-cta">${ctaLabel}</span>
+            <div class="gallery-card-impact-block">
+              <span class="gallery-inline-label">Why it exists</span>
+              <p class="gallery-card-why">${project.why || project.summary}</p>
             </div>
+            <div class="gallery-card-footer">
+              <div class="gallery-card-impact-block">
+                <span class="gallery-inline-label">Impact</span>
+                <p class="gallery-card-summary">${project.summary}</p>
+              </div>
+              <div class="gallery-card-proof">
+                <span class="gallery-inline-label">Proof</span>
+                <span class="gallery-card-proof-value">${project.proof || project.detail || project.stack}</span>
+              </div>
+            </div>
+            <span class="gallery-card-cta">${ctaLabel}</span>
           </div>
         </a>
       `;
@@ -1112,9 +1147,14 @@ function renderProjectDetailPage() {
   }
 
   const caseStudy = caseStudyContent[project.name] || { stats: [], blocks: [] };
+  const highlightItems = [
+    { label: "Why it exists", value: project.why || project.summary },
+    { label: "What changes", value: project.summary },
+    { label: "Proof", value: project.proof || project.detail || project.stack },
+  ];
 
   hero.innerHTML = `
-    <a class="story-trigger project-back-link" href="work.html">Back to projects</a>
+      <a class="story-trigger project-back-link" href="work.html">Back to projects</a>
     <div class="page-intro-grid project-detail-hero-grid">
       <div class="page-intro-copy">
         <p class="section-kicker">${project.type}</p>
@@ -1122,9 +1162,9 @@ function renderProjectDetailPage() {
         <p class="subsection-copy page-intro-description">${project.summary}</p>
         <p class="project-detail-lede">${project.detail}</p>
       </div>
-      <div class="project-detail-meta-grid">
-        <article class="project-detail-meta-card">
-          <p class="project-detail-meta-label">Year</p>
+        <div class="project-detail-meta-grid">
+          <article class="project-detail-meta-card">
+            <p class="project-detail-meta-label">Year</p>
           <p class="project-detail-meta-value">${project.year}</p>
         </article>
         <article class="project-detail-meta-card">
@@ -1133,11 +1173,23 @@ function renderProjectDetailPage() {
         </article>
         <article class="project-detail-meta-card">
           <p class="project-detail-meta-label">Stack</p>
-          <p class="project-detail-meta-value">${project.stack}</p>
-        </article>
+            <p class="project-detail-meta-value">${project.stack}</p>
+          </article>
+        </div>
+        <div class="project-detail-highlights">
+          ${highlightItems
+            .map(
+              (item) => `
+                <article class="project-detail-highlight-card">
+                  <p class="project-detail-highlight-label">${item.label}</p>
+                  <p class="project-detail-highlight-value">${item.value}</p>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
       </div>
-    </div>
-  `;
+    `;
 
   artifact.innerHTML = `
     <div class="project-detail-visual reveal">
