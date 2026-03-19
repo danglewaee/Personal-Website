@@ -2218,6 +2218,10 @@ body[data-page="about"] .education-grid {
   gap: 0;
 }
 
+body[data-page="about"] .education-grid > :last-child {
+  grid-column: 1 / -1;
+}
+
 body[data-page="about"] .education-card {
   padding: 22px 0;
   border: 0;
@@ -2977,20 +2981,31 @@ body[data-page="about"] .about-essay-stack .essay-detail {
 
 body[data-page="about"] .education-card {
   display: grid;
-  grid-template-columns: minmax(170px, 0.24fr) minmax(0, 1fr);
-  gap: 30px;
+  grid-template-columns: minmax(132px, 0.2fr) minmax(0, 1fr);
+  gap: 22px 34px;
   align-items: start;
   padding: 28px 0;
+}
+
+body[data-page="about"] .education-card .education-label {
+  grid-column: 1;
+}
+
+body[data-page="about"] .education-card h3,
+body[data-page="about"] .education-card .education-copy,
+body[data-page="about"] .education-card .education-list {
+  grid-column: 2;
 }
 
 body[data-page="about"] .education-card h3 {
   margin: 0;
   font-size: clamp(1.9rem, 2.3vw, 2.6rem);
   line-height: 0.98;
+  max-width: none;
 }
 
 body[data-page="about"] .education-list {
-  max-width: 760px;
+  max-width: none;
 }
 
 body[data-page="experience"] .experience-card-grid {
@@ -3120,6 +3135,14 @@ body[data-page="project-detail"] .case-study-text {
   body[data-page="project-detail"] .project-detail-hero-grid {
     grid-template-columns: 1fr;
     gap: 24px;
+  }
+
+  body[data-page="about"] .education-grid > :last-child,
+  body[data-page="about"] .education-card .education-label,
+  body[data-page="about"] .education-card h3,
+  body[data-page="about"] .education-card .education-copy,
+  body[data-page="about"] .education-card .education-list {
+    grid-column: 1;
   }
 }
 
