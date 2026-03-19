@@ -2648,14 +2648,15 @@ body[data-page="project-detail"] {
 }
 
 body[data-page="home"] .hero {
-  padding: 108px 0 84px;
+  padding: 78px 0 62px;
 }
 
 body[data-page="home"] .hero-grid {
   width: min(100%, 1160px);
   grid-template-columns: minmax(330px, 400px) minmax(0, 520px);
   gap: clamp(60px, 9vw, 116px);
-  align-items: end;
+  align-items: center;
+  min-height: auto;
 }
 
 body[data-page="home"] .hero-profile-block {
@@ -2706,9 +2707,10 @@ body[data-page="home"] .hero-location {
 body[data-page="home"] .hero-side {
   gap: 18px;
   max-width: 520px;
-  padding-top: 18px;
+  padding-top: 0;
   padding-left: 26px;
   border-left: 1px solid rgba(255, 255, 255, 0.08);
+  align-self: center;
 }
 
 body[data-page="home"] .hero-summary {
@@ -3121,7 +3123,7 @@ body[data-page="project-detail"] .case-study-text {
   }
 
   body[data-page="home"] .hero {
-    padding: 72px 0 58px;
+    padding: 64px 0 52px;
   }
 
   body[data-page="home"] .hero-grid {
