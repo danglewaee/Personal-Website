@@ -1227,6 +1227,7 @@ function renderAboutPage() {
 function renderWorkPage() {
   renderProjectGallery("project-gallery", caseStudyProjects);
   renderArchiveProjectLinks("archive-project-links", archiveProjects);
+  renderSkillGroups("work-skill-groups");
 }
 
 function renderExperiencePage() {
