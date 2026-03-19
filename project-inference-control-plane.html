@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dang Le | Inference Control Plane</title>
-    <meta name="description" content="Inference Control Plane case study by Dang Le." />
+    <meta name="description" content="Inference Control Plane routes requests across self-hosted LLM backends with runtime-aware routing, fallback, observability, and safe rollout support." />
     <meta property="og:title" content="Dang Le | Inference Control Plane" />
-    <meta property="og:description" content="Inference Control Plane case study by Dang Le." />
+    <meta property="og:description" content="Inference Control Plane routes requests across self-hosted LLM backends with runtime-aware routing, fallback, observability, and safe rollout support." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://personal-website-bal2qm9cv-danglewaees-projects.vercel.app/project-inference-control-plane.html" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Dang Le | Inference Control Plane" />
-    <meta name="twitter:description" content="Inference Control Plane case study by Dang Le." />
+    <meta name="twitter:description" content="Inference Control Plane routes requests across self-hosted LLM backends with runtime-aware routing, fallback, observability, and safe rollout support." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -31,9 +31,105 @@
       </header>
 
       <main id="top">
-        <section class="page-intro reveal project-detail-intro" id="project-detail-hero"></section>
-        <section class="section reveal" id="project-detail-artifact"></section>
-        <section class="section reveal" id="project-detail-story"></section>
+        <section class="page-intro reveal project-detail-intro" id="project-detail-hero">
+          <a class="story-trigger project-back-link" href="work.html">Back to projects</a>
+          <div class="page-intro-grid project-detail-hero-grid">
+            <div class="page-intro-copy">
+              <p class="section-kicker">Inference Infrastructure</p>
+              <h1>Inference Control Plane</h1>
+              <p class="subsection-copy page-intro-description">
+                Keeps self-hosted model serving stable when load, latency, and backend health keep changing.
+              </p>
+              <p class="project-detail-lede">
+                Built a control layer for routing, fallback, and safe rollout across self-hosted LLM backends, then benchmarked SLO-aware dispatch at 289.8 ms p95 under mixed-priority load.
+              </p>
+            </div>
+            <div class="project-detail-meta-grid">
+              <article class="project-detail-meta-card">
+                <p class="project-detail-meta-label">Year</p>
+                <p class="project-detail-meta-value">2025</p>
+              </article>
+              <article class="project-detail-meta-card">
+                <p class="project-detail-meta-label">Focus</p>
+                <p class="project-detail-meta-value">Inference Infrastructure</p>
+              </article>
+              <article class="project-detail-meta-card">
+                <p class="project-detail-meta-label">Stack</p>
+                <p class="project-detail-meta-value">FastAPI, HTTPX, Prometheus, Docker Compose</p>
+              </article>
+            </div>
+            <div class="project-detail-highlights">
+              <article class="project-detail-highlight-card">
+                <p class="project-detail-highlight-label">Why it exists</p>
+                <p class="project-detail-highlight-value">Serving one model is easy; serving the right backend under changing traffic without cascading latency or bad rollouts is the harder problem.</p>
+              </article>
+              <article class="project-detail-highlight-card">
+                <p class="project-detail-highlight-label">What changes</p>
+                <p class="project-detail-highlight-value">Keeps self-hosted model serving stable when load, latency, and backend health keep changing.</p>
+              </article>
+              <article class="project-detail-highlight-card">
+                <p class="project-detail-highlight-label">Proof</p>
+                <p class="project-detail-highlight-value">289.8 ms p95 in mixed-priority benchmarking with fallback and rollout support.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="section reveal" id="project-detail-artifact">
+          <div class="project-detail-visual reveal">
+            <a class="project-cover cover-control has-image" href="https://github.com/danglewaee" target="_blank" rel="noreferrer" aria-label="View Inference Control Plane on GitHub">
+              <div class="cover-top">
+                <span class="cover-chip">Inference infrastructure</span>
+                <span class="cover-year">2025</span>
+              </div>
+              <div class="cover-media">
+                <img class="cover-image" src="assets/project-covers/inference-control-plane.png" alt="Inference Control Plane interface preview" loading="lazy" />
+                <div class="cover-fallback"></div>
+              </div>
+              <div class="cover-bottom">
+                <h3 class="cover-title">Inference Control Plane</h3>
+                <p class="cover-caption">A control layer for routing, fallback, and safe model rollout across self-hosted LLM backends.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+        <section class="section reveal" id="project-detail-story">
+          <div class="project-detail-story-grid">
+            <div class="case-study-stats">
+              <span class="case-study-stat">289.8 ms p95</span>
+              <span class="case-study-stat">90-request mixed-priority benchmark</span>
+            </div>
+            <div class="case-study-grid">
+              <article class="case-study-block">
+                <p class="case-study-label">Context</p>
+                <p class="case-study-text">This project comes from a simple operational pain: serving a model is not the same thing as serving the right model on the right capacity at the right moment. Once traffic, latency, and backend health start moving at the same time, static routing stops being enough.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">Why it gets hard</p>
+                <p class="case-study-text">In multi-model inference, one backend can get hot while another stays idle, the first request to a colder model can be slower, and retries can make overload even worse if the system is already under stress.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">What most systems still miss</p>
+                <p class="case-study-text">Basic routing assumes every request looks the same and every healthy backend is equally good. That falls apart once request lengths vary, model health changes, and a bad rollout can affect the whole application at once.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">What I built</p>
+                <p class="case-study-text">I built a control plane for self-hosted LLM stacks that routes requests using runtime health and load signals, falls back when a backend becomes unhealthy, and gives operators safer rollout behavior through canary and rollback support.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">Why teams can trust it</p>
+                <p class="case-study-text">The value is not just smarter routing. It is that the system exposes the operating state teams need to trust under pressure: health, queue depth, latency, request history, fallback behavior, and observability through Prometheus and Grafana.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">Mission link</p>
+                <p class="case-study-text">It carries the same question into AI infrastructure: how do we keep a system reliable enough to trust when conditions change underneath it and someone still needs an answer?</p>
+              </article>
+            </div>
+            <div class="project-links project-detail-links">
+              <a class="text-link" href="https://github.com/danglewaee" target="_blank" rel="noreferrer">View GitHub</a>
+              <a class="text-link" href="work.html">Back to projects</a>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer class="site-footnote">

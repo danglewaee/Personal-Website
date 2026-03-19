@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dang Le | Cloud-Optimizer</title>
-    <meta name="description" content="Cloud-Optimizer case study by Dang Le." />
+    <meta name="description" content="Cloud-Optimizer adds a decision layer for cloud infrastructure so teams can forecast, compare scenarios, and roll out safer capacity changes." />
     <meta property="og:title" content="Dang Le | Cloud-Optimizer" />
-    <meta property="og:description" content="Cloud-Optimizer case study by Dang Le." />
+    <meta property="og:description" content="Cloud-Optimizer adds a decision layer for cloud infrastructure so teams can forecast, compare scenarios, and roll out safer capacity changes." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://personal-website-bal2qm9cv-danglewaees-projects.vercel.app/project-cloud-optimizer.html" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Dang Le | Cloud-Optimizer" />
-    <meta name="twitter:description" content="Cloud-Optimizer case study by Dang Le." />
+    <meta name="twitter:description" content="Cloud-Optimizer adds a decision layer for cloud infrastructure so teams can forecast, compare scenarios, and roll out safer capacity changes." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -31,9 +31,105 @@
       </header>
 
       <main id="top">
-        <section class="page-intro reveal project-detail-intro" id="project-detail-hero"></section>
-        <section class="section reveal" id="project-detail-artifact"></section>
-        <section class="section reveal" id="project-detail-story"></section>
+        <section class="page-intro reveal project-detail-intro" id="project-detail-hero">
+          <a class="story-trigger project-back-link" href="work.html">Back to projects</a>
+          <div class="page-intro-grid project-detail-hero-grid">
+            <div class="page-intro-copy">
+              <p class="section-kicker">Infrastructure Optimization</p>
+              <h1>Cloud-Optimizer</h1>
+              <p class="subsection-copy page-intro-description">
+                Helps platform teams choose safer capacity changes before growth turns into waste or instability.
+              </p>
+              <p class="project-detail-lede">
+                Reduced simulated infrastructure cost by 13.5 percent versus reactive autoscaling while keeping optimization fast enough for near-real-time planning.
+              </p>
+            </div>
+            <div class="project-detail-meta-grid">
+              <article class="project-detail-meta-card">
+                <p class="project-detail-meta-label">Year</p>
+                <p class="project-detail-meta-value">2025</p>
+              </article>
+              <article class="project-detail-meta-card">
+                <p class="project-detail-meta-label">Focus</p>
+                <p class="project-detail-meta-value">Infrastructure Optimization</p>
+              </article>
+              <article class="project-detail-meta-card">
+                <p class="project-detail-meta-label">Stack</p>
+                <p class="project-detail-meta-value">Python, Kubernetes, MILP, TensorFlow</p>
+              </article>
+            </div>
+            <div class="project-detail-highlights">
+              <article class="project-detail-highlight-card">
+                <p class="project-detail-highlight-label">Why it exists</p>
+                <p class="project-detail-highlight-value">When growth arrives quickly, teams need to decide earlier how much to scale without overreacting or taking reckless reliability risks.</p>
+              </article>
+              <article class="project-detail-highlight-card">
+                <p class="project-detail-highlight-label">What changes</p>
+                <p class="project-detail-highlight-value">Helps platform teams choose safer capacity changes before growth turns into waste or instability.</p>
+              </article>
+              <article class="project-detail-highlight-card">
+                <p class="project-detail-highlight-label">Proof</p>
+                <p class="project-detail-highlight-value">13.5% simulated cost reduction versus reactive autoscaling with p95 optimization latency under 1 ms.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="section reveal" id="project-detail-artifact">
+          <div class="project-detail-visual reveal">
+            <a class="project-cover cover-cloud has-image" href="https://github.com/danglewaee" target="_blank" rel="noreferrer" aria-label="View Cloud-Optimizer on GitHub">
+              <div class="cover-top">
+                <span class="cover-chip">Cloud systems</span>
+                <span class="cover-year">2025</span>
+              </div>
+              <div class="cover-media">
+                <img class="cover-image" src="assets/project-covers/cloud-optimizer.png" alt="Cloud-Optimizer interface preview" loading="lazy" />
+                <div class="cover-fallback"></div>
+              </div>
+              <div class="cover-bottom">
+                <h3 class="cover-title">Cloud-Optimizer</h3>
+                <p class="cover-caption">Forecasting, scheduling, and rollout planning for safer and cheaper infrastructure changes.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+        <section class="section reveal" id="project-detail-story">
+          <div class="project-detail-story-grid">
+            <div class="case-study-stats">
+              <span class="case-study-stat">13.5% cost reduction</span>
+              <span class="case-study-stat">p95 &lt; 1 ms</span>
+            </div>
+            <div class="case-study-grid">
+              <article class="case-study-block">
+                <p class="case-study-label">Context</p>
+                <p class="case-study-text">This project is shaped by the kind of launch problem Meta faced with Threads: a product can grow faster than infrastructure teams can safely react. In that moment, the problem is not just scaling. It is deciding how much to change, how early, and where the real risk sits.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">Why it gets hard</p>
+                <p class="case-study-text">When growth arrives quickly, teams can neither wait until traffic is already spiking nor overreact by spraying excess capacity everywhere. The real difficulty is balancing speed, cost, and reliability at the same time.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">What most systems still miss</p>
+                <p class="case-study-text">Autoscaling alone reacts after the fact. It does not tell operators what is likely to happen next, what the safest capacity plan is, or how to roll out that change without turning one bad decision into a larger reliability event.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">What I built</p>
+                <p class="case-study-text">I built a decision layer for cloud infrastructure that combines workload forecasting, optimization, and rollout guardrails so teams can compare scenarios, choose a plan earlier, and scale more deliberately instead of reactively.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">Why teams can trust it</p>
+                <p class="case-study-text">The system is built to be trusted before action, not after regret. It benchmarks against reactive baselines, tests decisions in shadow mode, and wraps changes in canary and rollback logic so optimization does not come at the cost of operational recklessness.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">Mission link</p>
+                <p class="case-study-text">It carries the same mission into cloud infrastructure: turning uncertain tradeoffs into decisions teams can trust enough to act on.</p>
+              </article>
+            </div>
+            <div class="project-links project-detail-links">
+              <a class="text-link" href="https://github.com/danglewaee" target="_blank" rel="noreferrer">View GitHub</a>
+              <a class="text-link" href="work.html">Back to projects</a>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer class="site-footnote">

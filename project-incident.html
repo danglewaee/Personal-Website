@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dang Le | Incident-Intelligence Platform</title>
-    <meta name="description" content="Incident-Intelligence Platform case study by Dang Le." />
+    <meta name="description" content="Incident-Intelligence Platform clusters related failures and ranks likely root causes so on-call teams can respond faster under pressure." />
     <meta property="og:title" content="Dang Le | Incident-Intelligence Platform" />
-    <meta property="og:description" content="Incident-Intelligence Platform case study by Dang Le." />
+    <meta property="og:description" content="Incident-Intelligence Platform clusters related failures and ranks likely root causes so on-call teams can respond faster under pressure." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://personal-website-bal2qm9cv-danglewaees-projects.vercel.app/project-incident.html" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Dang Le | Incident-Intelligence Platform" />
-    <meta name="twitter:description" content="Incident-Intelligence Platform case study by Dang Le." />
+    <meta name="twitter:description" content="Incident-Intelligence Platform clusters related failures and ranks likely root causes so on-call teams can respond faster under pressure." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -31,9 +31,105 @@
       </header>
 
       <main id="top">
-        <section class="page-intro reveal project-detail-intro" id="project-detail-hero"></section>
-        <section class="section reveal" id="project-detail-artifact"></section>
-        <section class="section reveal" id="project-detail-story"></section>
+        <section class="page-intro reveal project-detail-intro" id="project-detail-hero">
+          <a class="story-trigger project-back-link" href="work.html">Back to projects</a>
+          <div class="page-intro-grid project-detail-hero-grid">
+            <div class="page-intro-copy">
+              <p class="section-kicker">Distributed Systems</p>
+              <h1>Incident-Intelligence Platform</h1>
+              <p class="subsection-copy page-intro-description">
+                Helps on-call teams move from alert storms to a smaller, more actionable search space.
+              </p>
+              <p class="project-detail-lede">
+                Built an incident correlation and ranking layer that reduced triage noise by 80.8 percent and found the root cause in the top two candidates across four failure scenarios.
+              </p>
+            </div>
+            <div class="project-detail-meta-grid">
+              <article class="project-detail-meta-card">
+                <p class="project-detail-meta-label">Year</p>
+                <p class="project-detail-meta-value">2025</p>
+              </article>
+              <article class="project-detail-meta-card">
+                <p class="project-detail-meta-label">Focus</p>
+                <p class="project-detail-meta-value">Distributed Systems</p>
+              </article>
+              <article class="project-detail-meta-card">
+                <p class="project-detail-meta-label">Stack</p>
+                <p class="project-detail-meta-value">FastAPI, Redis, PostgreSQL, Prometheus</p>
+              </article>
+            </div>
+            <div class="project-detail-highlights">
+              <article class="project-detail-highlight-card">
+                <p class="project-detail-highlight-label">Why it exists</p>
+                <p class="project-detail-highlight-value">In distributed systems, one upstream failure can look like many unrelated incidents, so responders need structure before they need more telemetry.</p>
+              </article>
+              <article class="project-detail-highlight-card">
+                <p class="project-detail-highlight-label">What changes</p>
+                <p class="project-detail-highlight-value">Helps on-call teams move from alert storms to a smaller, more actionable search space.</p>
+              </article>
+              <article class="project-detail-highlight-card">
+                <p class="project-detail-highlight-label">Proof</p>
+                <p class="project-detail-highlight-value">80.8% less triage noise and 100% top-2 root-cause hits across 4 scenarios.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="section reveal" id="project-detail-artifact">
+          <div class="project-detail-visual reveal">
+            <a class="project-cover cover-incident has-image" href="https://github.com/danglewaee" target="_blank" rel="noreferrer" aria-label="View Incident-Intelligence Platform on GitHub">
+              <div class="cover-top">
+                <span class="cover-chip">Systems observability</span>
+                <span class="cover-year">2025</span>
+              </div>
+              <div class="cover-media">
+                <img class="cover-image" src="assets/project-covers/incident-intelligence.png" alt="Incident-Intelligence Platform interface preview" loading="lazy" />
+                <div class="cover-fallback"></div>
+              </div>
+              <div class="cover-bottom">
+                <h3 class="cover-title">Incident-Intelligence Platform</h3>
+                <p class="cover-caption">Telemetry ingestion, anomaly detection, incident clustering, and root-cause ranking for distributed systems.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+        <section class="section reveal" id="project-detail-story">
+          <div class="project-detail-story-grid">
+            <div class="case-study-stats">
+              <span class="case-study-stat">80.8% less triage noise</span>
+              <span class="case-study-stat">100% top-2 over 4 failures</span>
+            </div>
+            <div class="case-study-grid">
+              <article class="case-study-block">
+                <p class="case-study-label">Context</p>
+                <p class="case-study-text">Modern on-call engineers do not suffer from a lack of telemetry. They suffer from too much of it, arriving from the wrong places at the wrong time. In distributed systems, one upstream failure can look like many unrelated downstream incidents.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">Why it gets hard</p>
+                <p class="case-study-text">When everything turns red at once, teams have to answer the hardest questions under pressure: is this one incident or many, which service is the cause, which ones are only victims, and what should be investigated first?</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">What most systems still miss</p>
+                <p class="case-study-text">Raw dashboards, logs, and alerts still leave responders doing the same cognitive work themselves. The missing layer is not more telemetry. It is structure: what belongs together, what is symptom versus cause, and what changed nearby.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">What I built</p>
+                <p class="case-study-text">I built a platform that ingests multi-service telemetry, detects anomalies, clusters related failures into incidents, and ranks likely root causes using temporal precedence, anomaly intensity, service topology, and deployment proximity.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">Why teams can trust it</p>
+                <p class="case-study-text">The system earns trust by shrinking the search space without pretending to be magic. It reduced triage noise by 80.8 percent in local benchmarking and surfaced the true root cause in the top two candidates across four failure scenarios.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">Mission link</p>
+                <p class="case-study-text">It is the infrastructure version of the same question I keep returning to: how do we turn messy signals into decisions people can trust under pressure?</p>
+              </article>
+            </div>
+            <div class="project-links project-detail-links">
+              <a class="text-link" href="https://github.com/danglewaee" target="_blank" rel="noreferrer">View GitHub</a>
+              <a class="text-link" href="work.html">Back to projects</a>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer class="site-footnote">

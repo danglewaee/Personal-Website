@@ -565,7 +565,7 @@ const skills = [
 
 function renderEducationCards(containerId) {
   const container = document.getElementById(containerId);
-  if (!container) {
+  if (!container || container.children.length) {
     return;
   }
 
@@ -641,7 +641,7 @@ function attachAboutEssayCards() {
 }
 function renderSkillGroups(containerId) {
   const container = document.getElementById(containerId);
-  if (!container) {
+  if (!container || container.children.length) {
     return;
   }
 
@@ -912,7 +912,7 @@ function renderProjects(containerId, projects) {
 
 function renderProjectGallery(containerId, projects) {
   const container = document.getElementById(containerId);
-  if (!container) {
+  if (!container || container.children.length) {
     return;
   }
 
@@ -995,7 +995,7 @@ function renderFeaturedProjectLinks(containerId, projects) {
 
 function renderArchiveProjectLinks(containerId, projects) {
   const container = document.getElementById(containerId);
-  if (!container) {
+  if (!container || container.children.length) {
     return;
   }
 
@@ -1023,24 +1023,31 @@ function renderExperienceCards(containerId, items) {
     return;
   }
 
-  container.innerHTML = items
-    .map(
-      (item, index) => `
-        <button class="experience-card reveal" type="button" data-source="${containerId}" data-index="${index}">
-          <p class="experience-card-company">${item.company}</p>
-          <p class="experience-card-title">${item.title}</p>
-        </button>
-      `
-    )
-    .join("");
+  if (!container.querySelector(".experience-card")) {
+    container.innerHTML = items
+        .map(
+          (item, index) => `
+            <button class="experience-card reveal" type="button" data-source="${containerId}" data-index="${index}">
+              <p class="experience-card-company">${item.company}</p>
+              <p class="experience-card-title">${item.title}</p>
+            </button>
+          `
+        )
+        .join("");
+  }
 
   container.querySelectorAll(".experience-card").forEach((card) => {
+    if (card.dataset.bound === "true") {
+      return;
+    }
+
     card.addEventListener("click", () => {
       const source = card.dataset.source;
       const index = Number(card.dataset.index);
       const collection = source === "leadership-list" ? leadership : experiences;
       openDetailModal(collection[index]);
     });
+    card.dataset.bound = "true";
   });
 }
 
@@ -1116,7 +1123,7 @@ function renderProjectDetailPage() {
   const hero = document.getElementById("project-detail-hero");
   const artifact = document.getElementById("project-detail-artifact");
   const story = document.getElementById("project-detail-story");
-  if (!hero || !artifact || !story) {
+  if (!hero || !artifact || !story || hero.children.length || artifact.children.length || story.children.length) {
     return;
   }
 

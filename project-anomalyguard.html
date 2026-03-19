@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dang Le | AnomalyGuard</title>
-    <meta name="description" content="AnomalyGuard case study by Dang Le." />
+    <meta name="description" content="AnomalyGuard helps under-resourced water teams catch abnormal changes earlier through live telemetry, anomaly detection, and explainable signals." />
     <meta property="og:title" content="Dang Le | AnomalyGuard" />
-    <meta property="og:description" content="AnomalyGuard case study by Dang Le." />
+    <meta property="og:description" content="AnomalyGuard helps under-resourced water teams catch abnormal changes earlier through live telemetry, anomaly detection, and explainable signals." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://personal-website-bal2qm9cv-danglewaees-projects.vercel.app/project-anomalyguard.html" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Dang Le | AnomalyGuard" />
-    <meta name="twitter:description" content="AnomalyGuard case study by Dang Le." />
+    <meta name="twitter:description" content="AnomalyGuard helps under-resourced water teams catch abnormal changes earlier through live telemetry, anomaly detection, and explainable signals." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -31,9 +31,101 @@
       </header>
 
       <main id="top">
-        <section class="page-intro reveal project-detail-intro" id="project-detail-hero"></section>
-        <section class="section reveal" id="project-detail-artifact"></section>
-        <section class="section reveal" id="project-detail-story"></section>
+        <section class="page-intro reveal project-detail-intro" id="project-detail-hero">
+          <a class="story-trigger project-back-link" href="work.html">Back to projects</a>
+          <div class="page-intro-grid project-detail-hero-grid">
+            <div class="page-intro-copy">
+              <p class="section-kicker">Applied ML Platform</p>
+              <h1>AnomalyGuard</h1>
+              <p class="subsection-copy page-intro-description">
+                Helps under-resourced water teams catch abnormal changes earlier and decide what deserves attention first.
+              </p>
+              <p class="project-detail-lede">
+                Combined Isolation Forest and SHAP for pollutant alerts, then pushed search performance to 0.81 ms p50 during 5,000 concurrent upsert benchmarks.
+              </p>
+            </div>
+            <div class="project-detail-meta-grid">
+              <article class="project-detail-meta-card">
+                <p class="project-detail-meta-label">Year</p>
+                <p class="project-detail-meta-value">2025</p>
+              </article>
+              <article class="project-detail-meta-card">
+                <p class="project-detail-meta-label">Focus</p>
+                <p class="project-detail-meta-value">Applied ML Platform</p>
+              </article>
+              <article class="project-detail-meta-card">
+                <p class="project-detail-meta-label">Stack</p>
+                <p class="project-detail-meta-value">FastAPI, React, PostgreSQL/TimescaleDB, Redis/Celery, Kafka, Docker Compose</p>
+              </article>
+            </div>
+            <div class="project-detail-highlights">
+              <article class="project-detail-highlight-card">
+                <p class="project-detail-highlight-label">Why it exists</p>
+                <p class="project-detail-highlight-value">Rural water teams cannot inspect every source continuously, so early abnormal change is easy to miss until it becomes harder to ignore.</p>
+              </article>
+              <article class="project-detail-highlight-card">
+                <p class="project-detail-highlight-label">What changes</p>
+                <p class="project-detail-highlight-value">Helps under-resourced water teams catch abnormal changes earlier and decide what deserves attention first.</p>
+              </article>
+              <article class="project-detail-highlight-card">
+                <p class="project-detail-highlight-label">Proof</p>
+                <p class="project-detail-highlight-value">0.81 ms p50 search under 5,000 concurrent upserts.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="section reveal" id="project-detail-artifact">
+          <div class="project-detail-visual reveal">
+            <a class="project-cover cover-anomaly has-image" href="https://github.com/danglewaee" target="_blank" rel="noreferrer" aria-label="View AnomalyGuard on GitHub">
+              <div class="cover-top">
+                <span class="cover-chip">Operational ML</span>
+                <span class="cover-year">2025</span>
+              </div>
+              <div class="cover-media">
+                <img class="cover-image" src="assets/project-covers/anomalyguard-cover.png" alt="AnomalyGuard interface preview" loading="lazy" />
+                <div class="cover-fallback"></div>
+              </div>
+              <div class="cover-bottom">
+                <h3 class="cover-title">AnomalyGuard</h3>
+                <p class="cover-caption">Real-time telemetry monitoring with explainable anomaly alerts and live operational visibility.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+        <section class="section reveal" id="project-detail-story">
+          <div class="project-detail-story-grid">
+            <div class="case-study-stats">
+              <span class="case-study-stat">0.81 ms p50 search</span>
+              <span class="case-study-stat">5,000 concurrent upserts</span>
+            </div>
+            <div class="case-study-grid">
+              <article class="case-study-block">
+                <p class="case-study-label">Who it helps</p>
+                <p class="case-study-text">Built for rural water operators and local environmental offices in under-resourced areas, where limited staffing and infrastructure make close, continuous monitoring difficult.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">What makes the moment hard</p>
+                <p class="case-study-text">The hardest moment is when a water source may be turning unsafe, but the team does not have enough people, time, or inspection coverage to know early and respond with confidence. Without continuous signals, it becomes easier to miss abnormal change until it is harder to ignore.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">What the system changes</p>
+                <p class="case-study-text">The system turns telemetry into earlier, more interpretable alerts by combining live ingestion, anomaly detection, and explainability. Instead of a black-box warning, teams get a clearer signal about what deserves attention first and why it may matter.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">Why it earns trust</p>
+                <p class="case-study-text">Trust matters here because these teams cannot afford to inspect everything manually. The system helps them use scarce staff and infrastructure more intelligently by surfacing earlier, interpretable signals that show where to investigate, what to prioritize, and when to escalate.</p>
+              </article>
+              <article class="case-study-block">
+                <p class="case-study-label">Why it belongs here</p>
+                <p class="case-study-text">This is one of the clearest expressions of my mission: building systems people can act on before visible damage is the only thing left to trust.</p>
+              </article>
+            </div>
+            <div class="project-links project-detail-links">
+              <a class="text-link" href="https://github.com/danglewaee" target="_blank" rel="noreferrer">View GitHub</a>
+              <a class="text-link" href="work.html">Back to projects</a>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer class="site-footnote">
